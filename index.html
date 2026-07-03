@@ -132,7 +132,7 @@
     gap:10px;
     border-bottom:1px solid var(--border);
     padding-bottom:14px;
-    margin-bottom:18px;
+    margin-bottom:22px;
   }
   .idea-header h2{
     margin:0 0 4px 0;
@@ -156,12 +156,6 @@
   .badge-flagship{background:#fdecec;color:var(--red);}
   .badge-quickwin{background:#fef4e6;color:var(--amber);}
   .badge-espera{background:#fef4e6;color:var(--amber);}
-  .field-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
-    margin-bottom:18px;
-  }
   .field{
     background:#fafbfc;
     border:1px solid var(--border);
@@ -180,18 +174,19 @@
     font-size:14px;
   }
   .field ul{padding-left:18px;}
-  .field.full{grid-column:1 / -1;}
+  .field + .field{margin-top:12px;}
   h3.section-title{
     font-size:14px;
     text-transform:uppercase;
     letter-spacing:.05em;
     color:var(--muted);
-    margin:26px 0 10px 0;
+    margin:20px 0 10px 0;
   }
   table.vendor-table{
     width:100%;
     border-collapse:collapse;
     font-size:13.5px;
+    margin-bottom:16px;
   }
   table.vendor-table th, table.vendor-table td{
     text-align:left;
@@ -213,20 +208,7 @@
     color:var(--muted);
     font-size:13.5px;
     font-style:italic;
-  }
-  .next-steps{
-    background:#eef6fb;
-    border:1px solid #cfe6f2;
-    border-radius:10px;
-    padding:14px 16px;
-    font-size:14px;
-  }
-  .next-steps h4{
-    margin:0 0 8px 0;
-    color:var(--blue);
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:.05em;
+    margin-top:14px;
   }
   footer{
     text-align:center;
@@ -239,7 +221,7 @@
     border:1px solid #f3dfa8;
     border-radius:10px;
     padding:16px 18px;
-    margin:22px 0 18px 0;
+    margin:16px 0 4px 0;
   }
   .econ-box h4{
     margin:0 0 10px 0;
@@ -257,6 +239,7 @@
     font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
     margin-bottom:12px;
     overflow-x:auto;
+    white-space:pre-wrap;
   }
   table.econ-table{
     width:100%;
@@ -285,6 +268,42 @@
     font-weight:700;
     background:#fff3d6;
   }
+
+  /* Stage structure: Situacion actual / Problema / Posibles soluciones / Resultados */
+  .stage{
+    margin:0 0 26px 0;
+  }
+  .stage:last-child{margin-bottom:0;}
+  .stage-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+  }
+  .stage-num{
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:12.5px;
+    flex-shrink:0;
+  }
+  .stage-head h3{
+    margin:0;
+    font-size:15.5px;
+  }
+  .stage-1 .stage-num{background:var(--blue);}
+  .stage-2 .stage-num{background:var(--red);}
+  .stage-3 .stage-num{background:var(--green);}
+  .stage-4 .stage-num{background:var(--amber);}
+  .stage-body{
+    padding-left:36px;
+  }
+  .stage-body > .field:first-child{margin-top:0;}
 </style>
 </head>
 <body>
@@ -317,7 +336,7 @@
       <tr><th>Idea</th><th>Eje que ataca</th><th>Estatus</th></tr>
       <tr><td>1. Call center con captura de datos</td><td>Aumento de ventas (marketing dirigido)</td><td>En desarrollo profundo</td></tr>
       <tr><td>2. RFID en inventarios</td><td>Reducción de costos (mermas, quiebres de stock)</td><td>En desarrollo profundo</td></tr>
-      <tr><td>3. Kioskos con reconocimiento vía app</td><td>Aumento de ventas (upsell, frecuencia)</td><td>Preliminar</td></tr>
+      <tr><td>3. Kioskos con reconocimiento vía app</td><td>Aumento de ventas (upsell, frecuencia)</td><td>En desarrollo profundo</td></tr>
       <tr><td>4. Pantallas de mostrador interactivas</td><td>Reducción de costos (capacitación, errores)</td><td>Preliminar — quick win</td></tr>
       <tr><td>5. Balanceo dinámico de repartidores</td><td>Ambos: costos (repartidores ociosos) y ventas (demanda capturada)</td><td>Candidata a flagship</td></tr>
       <tr><td>6. Análisis de sentimiento de feedback del cliente</td><td>Aumento de ventas / NPS (retención, líneas de acción por tienda-distrito)</td><td>En espera de información</td></tr>
@@ -345,136 +364,142 @@
       <span class="badge badge-desarrollo">En desarrollo profundo</span>
     </div>
 
-    <div class="field-grid">
-      <div class="field">
-        <h4>Qué ataca</h4>
-        <p>Aumento de ventas — vía marketing dirigido y promociones personalizadas a partir de datos hoy no capturados.</p>
-      </div>
-      <div class="field">
-        <h4>Dónde impacta</h4>
-        <p>AWO (recompra vía promociones dirigidas), NPS (personalización).</p>
-      </div>
-      <div class="field full">
-        <h4>Contexto / diagnóstico</h4>
-        <p>El call center está tercerizado. En teoría el operador debe anotar en libreta los datos de la llamada, pero por falta de tiempo no lo hace — la llamada termina siendo anónima y se pierde la oportunidad de construir base de clientes. El problema es de proceso, no solo de tecnología: una solución que dependa de que el operador escriba manualmente tendría la misma falla.</p>
-        <p>La idea se plantea en dos etapas: en el <strong>corto plazo</strong>, la IA solo captura y estructura los datos de la llamada (teléfono, nombre, dirección, pedido) para que el operador se concentre únicamente en tomar el pedido — modelo <strong>híbrido</strong>, sin perder el trato humano. En el <strong>largo plazo</strong>, la meta es que la IA reemplace por completo la atención telefónica, tomando la llamada de principio a fin.</p>
-      </div>
-      <div class="field">
-        <h4>Beneficios clave</h4>
-        <ul>
-          <li>Construye base de CRM para promociones dirigidas</li>
-          <li>Aprovecha infraestructura existente (bajo capex relativo en la fase híbrida)</li>
-          <li>Reduce dependencia de que el operador cumpla un proceso manual</li>
-        </ul>
-      </div>
-      <div class="field">
-        <h4>Principal dificultad</h4>
-        <ul>
-          <li>Depende de negociar acceso/integración con el proveedor tercerizado actual</li>
-          <li>Cumplimiento de protección de datos personales (aviso de privacidad, consentimiento de grabación)</li>
-          <li>El salto a reemplazo total implica mayor costo, integración y riesgo de ejecución que la fase híbrida</li>
-        </ul>
+    <div class="stage stage-1">
+      <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>El call center está tercerizado. En teoría el operador debe anotar en libreta los datos de la llamada, pero por falta de tiempo no lo hace — la llamada termina siendo anónima. Hoy no existe ninguna captura estructurada del cliente que llama.</p>
+        </div>
+        <div class="field">
+          <p><strong>Contexto de industria:</strong> en 2026 la IA de voz para pedidos telefónicos ya es infraestructura estándar en pizza/QSR — McDonald's, Wendy's, Taco Bell, Burger King, y el propio Domino's (vía ConverseNow) ya la usan en EE.UU., con +26% en ingresos por línea telefónica reportado en la industria.</p>
+        </div>
       </div>
     </div>
 
-    <h3 class="section-title">Hoja de ruta por etapas</h3>
-    <table class="vendor-table">
-      <tr><th>Etapa</th><th>Objetivo</th><th>Modelo</th><th>Plazo estimado</th></tr>
-      <tr>
-        <td>Fase 1 — Corto plazo</td>
-        <td>El operador humano se enfoca solo en tomar el pedido; la IA escucha y captura automáticamente los datos del cliente sin que nadie tenga que anotar nada</td>
-        <td>Híbrido (IA de transcripción/extracción + operador humano)</td>
-        <td>0–6 meses tras aprobación</td>
-      </tr>
-      <tr>
-        <td>Fase 2 — Mediano plazo</td>
-        <td>Expandir el piloto a más tiendas/distritos y medir impacto real en AWO y calidad del dato capturado</td>
-        <td>Híbrido, ajustado con datos del piloto</td>
-        <td>6–12 meses</td>
-      </tr>
-      <tr>
-        <td>Fase 3 — Largo plazo</td>
-        <td>La IA toma la llamada completa de principio a fin (saluda, toma pedido, cobra, confirma); el humano solo interviene en casos complejos</td>
-        <td>Reemplazo total con fallback a humano</td>
-        <td>12–24 meses</td>
-      </tr>
-    </table>
+    <div class="stage stage-2">
+      <div class="stage-head"><span class="stage-num">2</span><h3>Problema</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>Se pierde la oportunidad de construir una base de clientes para marketing dirigido y promociones personalizadas (afecta AWO y NPS). El problema es de <strong>proceso</strong>, no solo de tecnología: cualquier solución que dependa de que el humano escriba manualmente tendrá la misma falla.</p>
+        </div>
+        <div class="field">
+          <p>Dificultades adicionales: depende de negociar acceso/integración con el proveedor tercerizado actual; cumplimiento de protección de datos personales (aviso de privacidad, consentimiento de grabación); el salto a reemplazo total (fase larga) implica mayor costo, integración y riesgo que la fase híbrida.</p>
+        </div>
+        <div class="placeholder">En espera de que Luis confirme con su jefe: (1) si Alsea puede exigir/negociar esta tecnología con el call center tercerizado actual o si implicaría cambiar de proveedor, y (2) cómo cubre hoy Alsea el tema de protección de datos personales en las llamadas.</div>
+      </div>
+    </div>
 
-    <h3 class="section-title">Modelo híbrido vs. reemplazo total — comparación de costos</h3>
-    <table class="vendor-table">
-      <tr><th>Dimensión</th><th>Híbrido (Fase 1-2)</th><th>Reemplazo total (Fase 3)</th></tr>
-      <tr>
-        <td>Costo típico de mercado</td>
-        <td>$150–$500 USD/mes por línea; proveedores mexicanos ligeros desde ~$10–90 USD/mes</td>
-        <td>Cotización empresarial ("contact sales"); referencias de mercado van de decenas de miles hasta $150,000+ USD/año</td>
-      </tr>
-      <tr>
-        <td>Tiempo de implementación</td>
-        <td>Días a pocas semanas</td>
-        <td>Semanas a meses (integración profunda con POS y con el call center)</td>
-      </tr>
-      <tr>
-        <td>Riesgo / dependencia</td>
-        <td>Bajo — puede convivir con el proveedor tercerizado actual sin reemplazarlo</td>
-        <td>Alto — probablemente implica renegociar o sustituir la relación con el call center tercerizado actual</td>
-      </tr>
-      <tr>
-        <td>Precedente relevante</td>
-        <td>Proveedores mexicanos como Voztro ofrecen "captura de datos" telefónica como caso de uso explícito</td>
-        <td>ConverseNow ya provee IA de pedidos telefónicos a Domino's y Wingstop en EE.UU. (1,200+ tiendas) — posible palanca para negociar a nivel corporativo</td>
-      </tr>
-    </table>
+    <div class="stage stage-3">
+      <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
+      <div class="stage-body">
+        <p style="margin:0 0 12px 0;">La idea se plantea en dos etapas: en el <strong>corto plazo</strong>, la IA solo captura y estructura los datos de la llamada (teléfono, nombre, dirección, pedido) para que el operador se concentre únicamente en tomar el pedido — modelo <strong>híbrido</strong>, sin perder el trato humano. En el <strong>largo plazo</strong>, la meta es que la IA reemplace por completo la atención telefónica.</p>
 
-    <h3 class="section-title">Proveedores identificados</h3>
-    <table class="vendor-table">
-      <tr><th>Proveedor</th><th>Cobertura</th><th>Tipo de solución</th><th>Por qué encaja</th></tr>
-      <tr>
-        <td>ConverseNow</td>
-        <td>USA, enterprise</td>
-        <td>IA de pedidos telefónicos completos</td>
-        <td>Ya trabaja con Domino's y Wingstop en EE.UU. (1,200+ tiendas) — precedente directo dentro de la marca</td>
-      </tr>
-      <tr>
-        <td>SoundHound</td>
-        <td>Global, enterprise</td>
-        <td>Voz IA para teléfono y drive-thru</td>
-        <td>Sirve a Chipotle, White Castle, Jersey Mike's — gran volumen probado en QSR</td>
-      </tr>
-      <tr>
-        <td>Presto Voice</td>
-        <td>USA, enterprise</td>
-        <td>Integración directa a POS/KDS</td>
-        <td>Fuerte en flujo automático de la orden a cocina sin intervención humana</td>
-      </tr>
-      <tr>
-        <td>Voztro</td>
-        <td>México (nacional)</td>
-        <td>Automatización de llamadas con IA</td>
-        <td>Lista "captura de datos" como caso de uso explícito — encaja directo con la Fase 1 híbrida; soporte local</td>
-      </tr>
-      <tr>
-        <td>Safina AI</td>
-        <td>México/LatAm, entrada económica</td>
-        <td>Asistente telefónico para restaurantes (reservas, pedidos, consultas), desde $9.99 USD/mes</td>
-        <td>Opción de bajo costo para pilotear rápido; validar si escala al volumen de Alsea</td>
-      </tr>
-    </table>
+        <h3 class="section-title">Hoja de ruta por etapas</h3>
+        <table class="vendor-table">
+          <tr><th>Etapa</th><th>Objetivo</th><th>Modelo</th><th>Plazo estimado</th></tr>
+          <tr>
+            <td>Fase 1 — Corto plazo</td>
+            <td>El operador humano se enfoca solo en tomar el pedido; la IA escucha y captura automáticamente los datos del cliente sin que nadie tenga que anotar nada</td>
+            <td>Híbrido (IA de transcripción/extracción + operador humano)</td>
+            <td>0–6 meses tras aprobación</td>
+          </tr>
+          <tr>
+            <td>Fase 2 — Mediano plazo</td>
+            <td>Expandir el piloto a más tiendas/distritos y medir impacto real en AWO y calidad del dato capturado</td>
+            <td>Híbrido, ajustado con datos del piloto</td>
+            <td>6–12 meses</td>
+          </tr>
+          <tr>
+            <td>Fase 3 — Largo plazo</td>
+            <td>La IA toma la llamada completa de principio a fin (saluda, toma pedido, cobra, confirma); el humano solo interviene en casos complejos</td>
+            <td>Reemplazo total con fallback a humano</td>
+            <td>12–24 meses</td>
+          </tr>
+        </table>
 
-    <div class="placeholder" style="margin-top:18px;">En espera de que Luis confirme con su jefe: (1) si Alsea puede exigir/negociar esta tecnología con el call center tercerizado actual o si implicaría cambiar de proveedor, y (2) cómo cubre hoy Alsea el tema de protección de datos personales en las llamadas (aviso de privacidad, consentimiento de grabación).</div>
+        <h3 class="section-title">Modelo híbrido vs. reemplazo total — comparación de costos</h3>
+        <table class="vendor-table">
+          <tr><th>Dimensión</th><th>Híbrido (Fase 1-2)</th><th>Reemplazo total (Fase 3)</th></tr>
+          <tr>
+            <td>Costo típico de mercado</td>
+            <td>$150–$500 USD/mes por línea; proveedores mexicanos ligeros desde ~$10–90 USD/mes</td>
+            <td>Cotización empresarial ("contact sales"); referencias de mercado van de decenas de miles hasta $150,000+ USD/año</td>
+          </tr>
+          <tr>
+            <td>Tiempo de implementación</td>
+            <td>Días a pocas semanas</td>
+            <td>Semanas a meses (integración profunda con POS y con el call center)</td>
+          </tr>
+          <tr>
+            <td>Riesgo / dependencia</td>
+            <td>Bajo — puede convivir con el proveedor tercerizado actual sin reemplazarlo</td>
+            <td>Alto — probablemente implica renegociar o sustituir la relación con el call center tercerizado actual</td>
+          </tr>
+          <tr>
+            <td>Precedente relevante</td>
+            <td>Proveedores mexicanos como Voztro ofrecen "captura de datos" telefónica como caso de uso explícito</td>
+            <td>ConverseNow ya provee IA de pedidos telefónicos a Domino's y Wingstop en EE.UU. (1,200+ tiendas) — posible palanca para negociar a nivel corporativo</td>
+          </tr>
+        </table>
 
-    <div class="econ-box">
-      <h4>Impacto económico — plantilla (benchmark de industria, pendiente de datos reales de Alsea)</h4>
-      <div class="formula">Incremento de ventas anual ≈ (# llamadas/mes × 12 × % capturable × % conversión de promoción) × ticket promedio × frecuencia de recompra anual</div>
-      <table class="econ-table">
-        <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
-        <tr><td>Incremento en ingresos por línea telefónica con IA de voz</td><td>+26%</td><td>Benchmark de industria (pizza/QSR, 2026) — usar de referencia hasta tener dato real de Alsea</td></tr>
-        <tr><td># llamadas mensuales al call center</td><td class="pending">Pendiente</td><td>Pedir a call center tercerizado</td></tr>
-        <tr><td>% de llamadas capturables como dato de cliente</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
-        <tr><td>Ticket promedio de compra</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
-        <tr><td>% conversión de promoción dirigida</td><td class="pending">Pendiente</td><td>Benchmark de marketing / piloto</td></tr>
-        <tr><td>Costo anual de la solución (híbrido o reemplazo total, según fase)</td><td class="pending">Pendiente</td><td>Cotización proveedor según fase</td></tr>
-        <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente</td><td>Ingreso incremental − costo de la solución</td></tr>
-      </table>
+        <h3 class="section-title">Proveedores identificados</h3>
+        <table class="vendor-table">
+          <tr><th>Proveedor</th><th>Cobertura</th><th>Tipo de solución</th><th>Por qué encaja</th></tr>
+          <tr>
+            <td>ConverseNow</td>
+            <td>USA, enterprise</td>
+            <td>IA de pedidos telefónicos completos</td>
+            <td>Ya trabaja con Domino's y Wingstop en EE.UU. (1,200+ tiendas) — precedente directo dentro de la marca</td>
+          </tr>
+          <tr>
+            <td>SoundHound</td>
+            <td>Global, enterprise</td>
+            <td>Voz IA para teléfono y drive-thru</td>
+            <td>Sirve a Chipotle, White Castle, Jersey Mike's — gran volumen probado en QSR</td>
+          </tr>
+          <tr>
+            <td>Presto Voice</td>
+            <td>USA, enterprise</td>
+            <td>Integración directa a POS/KDS</td>
+            <td>Fuerte en flujo automático de la orden a cocina sin intervención humana</td>
+          </tr>
+          <tr>
+            <td>Voztro</td>
+            <td>México (nacional)</td>
+            <td>Automatización de llamadas con IA</td>
+            <td>Lista "captura de datos" como caso de uso explícito — encaja directo con la Fase 1 híbrida; soporte local</td>
+          </tr>
+          <tr>
+            <td>Safina AI</td>
+            <td>México/LatAm, entrada económica</td>
+            <td>Asistente telefónico para restaurantes (reservas, pedidos, consultas), desde $9.99 USD/mes</td>
+            <td>Opción de bajo costo para pilotear rápido; validar si escala al volumen de Alsea</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="stage stage-4">
+      <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p><strong>Dónde impacta:</strong> AWO (recompra vía promociones dirigidas) y NPS (personalización). Construye base de CRM, aprovecha infraestructura existente en la fase híbrida (bajo capex), y reduce la dependencia de que el operador cumpla un proceso manual.</p>
+        </div>
+        <div class="econ-box">
+          <h4>Impacto económico — plantilla (benchmark de industria, pendiente de datos reales de Alsea)</h4>
+          <div class="formula">Incremento de ventas anual ≈ (# llamadas/mes × 12 × % capturable × % conversión de promoción) × ticket promedio × frecuencia de recompra anual</div>
+          <table class="econ-table">
+            <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
+            <tr><td>Incremento en ingresos por línea telefónica con IA de voz</td><td>+26%</td><td>Benchmark de industria (pizza/QSR, 2026) — usar de referencia hasta tener dato real de Alsea</td></tr>
+            <tr><td># llamadas mensuales al call center</td><td class="pending">Pendiente</td><td>Pedir a call center tercerizado</td></tr>
+            <tr><td>% de llamadas capturables como dato de cliente</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
+            <tr><td>Ticket promedio de compra</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
+            <tr><td>% conversión de promoción dirigida</td><td class="pending">Pendiente</td><td>Benchmark de marketing / piloto</td></tr>
+            <tr><td>Costo anual de la solución (híbrido o reemplazo total, según fase)</td><td class="pending">Pendiente</td><td>Cotización proveedor según fase</td></tr>
+            <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente</td><td>Ingreso incremental − costo de la solución</td></tr>
+          </table>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -488,123 +513,113 @@
       <span class="badge badge-desarrollo">En desarrollo profundo</span>
     </div>
 
-    <div class="field-grid">
-      <div class="field">
-        <h4>Qué ataca</h4>
-        <p>Reducción de costos — mermas y quiebres de stock. Indirectamente también evita venta perdida por falta de producto.</p>
-      </div>
-      <div class="field">
-        <h4>Dónde impacta</h4>
-        <p>Directo en la métrica de <strong>tiendas EBITDA negativo</strong>. Además alimenta el pilar de predicción/forecasting de KPIs del objetivo central del proyecto.</p>
-      </div>
-      <div class="field full">
-        <h4>Contexto / diagnóstico</h4>
-        <p>El control de inventario hoy es manual. Domino's es su propio distribuidor: hay productos que se entregan individuales, y otros (masa, cajas de queso) que llegan en caja/lote con varios productos juntos. Esto es clave porque RFID puro no resuelve igual ambos casos: en las cajas de lote solo se sabe "entró/salió la caja", no el consumo real interno.</p>
-      </div>
-      <div class="field full">
-        <h4>Recomendación técnica — enfoque híbrido</h4>
-        <p><strong>RFID</strong> para ítems individuales, con tageo centralizado en la distribuidora propia de Domino's (más barato y escalable que etiquetar en cada tienda) + <strong>sensores IoT/LoRaWAN</strong> de peso y temperatura en refrigeradores/almacén para insumos a granel de las cajas de lote (solución usada en la industria para monitoreo de cámaras frías y consumo real).</p>
-      </div>
-      <div class="field">
-        <h4>Beneficios clave</h4>
-        <ul>
-          <li>Reduce mermas y quiebres de stock</li>
-          <li>Habilita forecasting de demanda por tienda</li>
-          <li>Alertas automáticas de stock bajo / caducidad</li>
-          <li>Reduce tiempo de conteo manual (caso Chipotle: de 30-45 min a segundos)</li>
-        </ul>
-      </div>
-      <div class="field">
-        <h4>Principal dificultad</h4>
-        <ul>
-          <li>Granularidad limitada en productos de caja/lote (solo nivel lote, no unidad)</li>
-          <li>Capex de lectores + tags + software</li>
-          <li>Cambio de proceso para personal de tienda (hoy 100% manual)</li>
-          <li>Ningún proveedor publica precio por tienda — requiere cotización directa</li>
-        </ul>
+    <div class="stage stage-1">
+      <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>El control de inventario hoy es manual. Domino's es su propio distribuidor: hay productos que se entregan individuales, y otros (masa, cajas de queso) que llegan en caja/lote con varios productos juntos.</p>
+        </div>
       </div>
     </div>
 
-    <h3 class="section-title">Referencias de costo (2026, contexto bodega/retail general)</h3>
-    <div class="field-grid">
-      <div class="field">
-        <h4>Hardware y software</h4>
-        <ul>
-          <li>Lectores RFID: $1,000–$8,000 USD c/u</li>
-          <li>Tags pasivos UHF: $0.05–$0.50 USD/unidad según volumen</li>
-          <li>Software: $10,000–$100,000 USD</li>
-        </ul>
-      </div>
-      <div class="field">
-        <h4>ROI de referencia (ajustar a escala tienda)</h4>
-        <ul>
-          <li>Payback típico: 18–36 meses</li>
-          <li>25–40% menos horas-hombre en conteo</li>
-          <li>15–20% menos quiebres de stock / sobre-stock</li>
-          <li>Hasta 99.5% de precisión de inventario</li>
-        </ul>
+    <div class="stage stage-2">
+      <div class="stage-head"><span class="stage-num">2</span><h3>Problema</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>Sin visibilidad en tiempo real hay mermas y quiebres de stock que afectan directo a las tiendas con EBITDA negativo, y no hay datos para hacer forecasting de demanda por tienda. RFID puro no resuelve igual ambos tipos de producto: en las cajas de lote solo se sabe "entró/salió la caja", no el consumo real interno.</p>
+        </div>
+        <div class="field">
+          <p>Otras dificultades: capex de lectores + tags + software; cambio de proceso para personal de tienda (hoy 100% manual); ningún proveedor publica precio por tienda — requiere cotización directa.</p>
+        </div>
       </div>
     </div>
 
-    <h3 class="section-title">Caso de referencia — Chipotle + Avery Dennison</h3>
-    <div class="field full" style="margin-bottom:18px;">
-      <p>Piloto de RFID en centro de distribución y ~200 restaurantes, etiquetando desde carne hasta aguacates. El conteo manual pasó de 30–45 minutos a segundos, con alertas automáticas de stock bajo y caducidad próxima. Es el precedente de QSR más comparable a este proyecto.</p>
+    <div class="stage stage-3">
+      <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <h4>Recomendación técnica — enfoque híbrido</h4>
+          <p><strong>RFID</strong> para ítems individuales, con tageo centralizado en la distribuidora propia de Domino's (más barato y escalable que etiquetar en cada tienda) + <strong>sensores IoT/LoRaWAN</strong> de peso y temperatura en refrigeradores/almacén para insumos a granel de las cajas de lote.</p>
+        </div>
+
+        <h3 class="section-title">Referencias de costo (2026, contexto bodega/retail general)</h3>
+        <div class="field">
+          <ul>
+            <li>Lectores RFID: $1,000–$8,000 USD c/u</li>
+            <li>Tags pasivos UHF: $0.05–$0.50 USD/unidad según volumen</li>
+            <li>Software: $10,000–$100,000 USD</li>
+          </ul>
+        </div>
+
+        <h3 class="section-title">Caso de referencia — Chipotle + Avery Dennison</h3>
+        <div class="field">
+          <p>Piloto de RFID en centro de distribución y ~200 restaurantes, etiquetando desde carne hasta aguacates. El conteo manual pasó de 30–45 minutos a segundos, con alertas automáticas de stock bajo y caducidad próxima. Es el precedente de QSR más comparable a este proyecto.</p>
+        </div>
+
+        <h3 class="section-title">Proveedores identificados</h3>
+        <table class="vendor-table">
+          <tr><th>Proveedor</th><th>Cobertura</th><th>Especialidad</th><th>Por qué encaja</th></tr>
+          <tr>
+            <td>Checkpoint Systems</td>
+            <td>Global · planta nueva en CDMX (2025, $40M USD)</td>
+            <td>RFID retail y food &amp; beverage</td>
+            <td>Mejor relación precio-beneficio para México: fabricación local reduce costo/tiempo de importación</td>
+          </tr>
+          <tr>
+            <td>Avery Dennison</td>
+            <td>Global (USA)</td>
+            <td>Food &amp; beverage, trazabilidad</td>
+            <td>Mayor trayectoria probada (piloto Chipotle); menor riesgo de ejecución, mayor costo</td>
+          </tr>
+          <tr>
+            <td>Senitron</td>
+            <td>USA / remoto</td>
+            <td>Software RFID agnóstico de hardware (Zebra/Impinj)</td>
+            <td>Opción más económica para pilotear: se integra a POS/ERP existente con poca personalización</td>
+          </tr>
+          <tr>
+            <td>Tageos</td>
+            <td>Global, segmento dedicado a food/QSR</td>
+            <td>Fabricación de tags/inlays RFID</td>
+            <td>Útil si el costo por etiqueta en productos individuales es el cuello de botella</td>
+          </tr>
+          <tr>
+            <td>Supportek / Grupo Cubits</td>
+            <td>México (nacional)</td>
+            <td>Integración RFID para almacén, logística e inventario</td>
+            <td>Soporte local en español, sin fricción de importación, buena palanca de negociación</td>
+          </tr>
+        </table>
+
+        <div class="field">
+          <h4>Próximos pasos</h4>
+          <p>Pedir cotización formal a Checkpoint, Senitron y Supportek, especificando: número de tiendas piloto, mezcla de producto individual vs. caja/lote, e integración con la plataforma/Excel maestro que ya construyó el jefe del área.</p>
+        </div>
+      </div>
     </div>
 
-    <h3 class="section-title">Proveedores identificados</h3>
-    <table class="vendor-table">
-      <tr><th>Proveedor</th><th>Cobertura</th><th>Especialidad</th><th>Por qué encaja</th></tr>
-      <tr>
-        <td>Checkpoint Systems</td>
-        <td>Global · planta nueva en CDMX (2025, $40M USD)</td>
-        <td>RFID retail y food &amp; beverage</td>
-        <td>Mejor relación precio-beneficio para México: fabricación local reduce costo/tiempo de importación</td>
-      </tr>
-      <tr>
-        <td>Avery Dennison</td>
-        <td>Global (USA)</td>
-        <td>Food &amp; beverage, trazabilidad</td>
-        <td>Mayor trayectoria probada (piloto Chipotle); menor riesgo de ejecución, mayor costo</td>
-      </tr>
-      <tr>
-        <td>Senitron</td>
-        <td>USA / remoto</td>
-        <td>Software RFID agnóstico de hardware (Zebra/Impinj)</td>
-        <td>Opción más económica para pilotear: se integra a POS/ERP existente con poca personalización</td>
-      </tr>
-      <tr>
-        <td>Tageos</td>
-        <td>Global, segmento dedicado a food/QSR</td>
-        <td>Fabricación de tags/inlays RFID</td>
-        <td>Útil si el costo por etiqueta en productos individuales es el cuello de botella</td>
-      </tr>
-      <tr>
-        <td>Supportek / Grupo Cubits</td>
-        <td>México (nacional)</td>
-        <td>Integración RFID para almacén, logística e inventario</td>
-        <td>Soporte local en español, sin fricción de importación, buena palanca de negociación</td>
-      </tr>
-    </table>
-
-    <div class="econ-box">
-      <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
-      <div class="formula">Ahorro anual = merma mensual promedio por tienda × 12 × # tiendas × % de reducción esperada
+    <div class="stage stage-4">
+      <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p><strong>Dónde impacta:</strong> directo en la métrica de tiendas EBITDA negativo. Además alimenta el pilar de predicción/forecasting de KPIs del objetivo central del proyecto. Reduce mermas y quiebres de stock, habilita forecasting de demanda por tienda, genera alertas automáticas de stock bajo/caducidad.</p>
+        </div>
+        <div class="econ-box">
+          <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
+          <div class="formula">Ahorro anual = merma mensual promedio por tienda × 12 × # tiendas × % de reducción esperada
 Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
-      <table class="econ-table">
-        <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
-        <tr><td>Merma mensual promedio por tienda ($)</td><td class="pending">Pendiente</td><td>Pedir a tu jefe / control de tienda</td></tr>
-        <tr><td># tiendas piloto (Alsea, no franquicia)</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
-        <tr><td>% reducción de merma esperada</td><td class="pending">Pendiente</td><td>Benchmark industria: 15–20%</td></tr>
-        <tr><td>Costo de implementación por tienda (lectores + tags + sensores)</td><td class="pending">Pendiente</td><td>Cotización Checkpoint / Senitron / Supportek</td></tr>
-        <tr><td>Costo de software / mantenimiento anual</td><td class="pending">Pendiente</td><td>Cotización proveedor</td></tr>
-        <tr class="result-row"><td>Ahorro anual estimado</td><td class="pending">Pendiente</td><td>Fórmula arriba</td></tr>
-        <tr class="result-row"><td>Payback estimado (meses)</td><td class="pending">Pendiente</td><td>Benchmark industria: 18–36 meses</td></tr>
-      </table>
-    </div>
-
-    <div class="next-steps" style="margin-top:18px;">
-      <h4>Próximos pasos</h4>
-      <p>Pedir cotización formal a Checkpoint, Senitron y Supportek, especificando: número de tiendas piloto, mezcla de producto individual vs. caja/lote, e integración con la plataforma/Excel maestro que ya construyó el jefe del área. Con eso construir el cálculo de ROI real (mermas actuales × tiendas vs. costo de despliegue).</p>
+          <table class="econ-table">
+            <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
+            <tr><td>Merma mensual promedio por tienda ($)</td><td class="pending">Pendiente</td><td>Pedir a tu jefe / control de tienda</td></tr>
+            <tr><td># tiendas piloto (Alsea, no franquicia)</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
+            <tr><td>% reducción de merma esperada</td><td class="pending">Pendiente</td><td>Benchmark industria: 15–20%</td></tr>
+            <tr><td>Costo de implementación por tienda (lectores + tags + sensores)</td><td class="pending">Pendiente</td><td>Cotización Checkpoint / Senitron / Supportek</td></tr>
+            <tr><td>Costo de software / mantenimiento anual</td><td class="pending">Pendiente</td><td>Cotización proveedor</td></tr>
+            <tr class="result-row"><td>Ahorro anual estimado</td><td class="pending">Pendiente</td><td>Fórmula arriba</td></tr>
+            <tr class="result-row"><td>Payback estimado (meses)</td><td class="pending">Pendiente</td><td>Benchmark industria: 18–36 meses</td></tr>
+          </table>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -613,57 +628,143 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
     <div class="idea-header">
       <div>
         <h2>Idea 3 · Kioskos con reconocimiento de cliente</h2>
-        <p class="tagline">Reducir tiempo en mostrador y personalizar ofertas vía cuenta/app del cliente</p>
+        <p class="tagline">Reutilizar el modelo de lealtad de Starbucks (otra marca de Alsea) para Domino's, y sumarle una capa de IA de venta sugestiva</p>
       </div>
-      <span class="badge badge-preliminar">Preliminar</span>
+      <span class="badge badge-desarrollo">En desarrollo profundo</span>
     </div>
 
-    <div class="field-grid">
-      <div class="field">
-        <h4>Qué ataca</h4>
-        <p>Aumento de ventas — upsell y frecuencia de compra vía personalización.</p>
-      </div>
-      <div class="field">
-        <h4>Dónde impacta</h4>
-        <p>NPS (velocidad en mostrador), AWO (upsell y recompra).</p>
-      </div>
-      <div class="field full">
-        <h4>Contexto / diagnóstico</h4>
-        <p>El "reconocimiento" no debe ser facial (riesgo legal/ético de datos biométricos y consentimiento), sino vía cuenta de lealtad/app. Hoy la app de Domino's/Alsea <strong>no tiene programa de puntos o rewards</strong>, por lo que este proyecto depende de construir primero ese incentivo (puntos por compra, recompensas) para fomentar el uso de la app antes de que el kiosko pueda reconocer al cliente.</p>
-      </div>
-      <div class="field">
-        <h4>Beneficios clave</h4>
-        <ul>
-          <li>Reduce tiempo en mostrador</li>
-          <li>Genera data de primera mano (resuelve parcialmente el mismo problema de CRM que la idea 1)</li>
-          <li>Habilita recomendaciones personalizadas</li>
-        </ul>
-      </div>
-      <div class="field">
-        <h4>Principal dificultad</h4>
-        <ul>
-          <li>Es un proyecto en dos fases: (1) programa de puntos en la app, (2) kiosko físico</li>
-          <li>Capex de hardware por tienda</li>
-          <li>Riesgo de adopción si el cliente no usa la app</li>
-        </ul>
+    <div class="stage stage-1">
+      <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>La app de Domino's en México es un desarrollo local (no comparte plataforma con Domino's global) y hoy solo permite hacer pedidos — no tiene puntos ni rewards. Hoy existen cupones que se entregan al llevar las pizzas y promociones de mostrador, pero nada digital ni acumulable en la app.</p>
+        </div>
+        <div class="field">
+          <p><strong>Hallazgo clave:</strong> Alsea ya opera un programa de lealtad maduro con Starbucks: el cliente escanea un código QR al pagar (con tarjeta registrada o en caja) y acumula "estrellas" canjeables por recompensas. Alsea no necesita construir un sistema de lealtad desde cero para Domino's — ya tiene la capacidad probada en producción con otra de sus marcas.</p>
+        </div>
+        <div class="field">
+          <p>Reparto actual del negocio: <strong>60% delivery / 40% mostrador</strong>.</p>
+        </div>
       </div>
     </div>
 
-    <div class="econ-box">
-      <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
-      <div class="formula">Incremento de ventas anual = ticket promedio × % incremento por upsell × # transacciones mensuales × 12 × # tiendas</div>
-      <table class="econ-table">
-        <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
-        <tr><td>Ticket promedio actual</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
-        <tr><td>% incremento esperado en ticket por upsell personalizado</td><td class="pending">Pendiente</td><td>Benchmark QSR con kioskos</td></tr>
-        <tr><td># transacciones mensuales por tienda</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
-        <tr><td># tiendas piloto</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
-        <tr><td>Costo de kiosko por tienda + desarrollo de programa de puntos</td><td class="pending">Pendiente</td><td>Cotización proveedor hardware + desarrollo app</td></tr>
-        <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente</td><td>Ingreso incremental − costo de implementación</td></tr>
-      </table>
+    <div class="stage stage-2">
+      <div class="stage-head"><span class="stage-num">2</span><h3>Problema</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>No hay forma de identificar o personalizar al cliente recurrente ni de generar venta sugestiva; el mostrador (40% del negocio) no tiene un canal de autoservicio que reduzca tiempos de espera.</p>
+        </div>
+        <div class="field">
+          <p>Dificultades: requiere coordinación entre los equipos de tecnología de Starbucks y Domino's dentro de Alsea (aunque sea la misma empresa, son plataformas separadas); adopción — el cliente debe abrir la app y escanear el QR en cada compra; el kiosko físico (fase posterior) sí implica capex de hardware por tienda.</p>
+        </div>
+        <div class="placeholder">Pendiente de validar con el equipo de TI de Alsea/Starbucks: viabilidad real y esfuerzo de adaptar esa infraestructura a Domino's.</div>
+      </div>
     </div>
 
-    <div class="placeholder">Pendiente de profundizar: diseño del programa de puntos, costo de kioskos por tienda, y proveedores de hardware de autoservicio.</div>
+    <div class="stage stage-3">
+      <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
+      <div class="stage-body">
+        <h3 class="section-title">Hoja de ruta por etapas</h3>
+        <table class="vendor-table">
+          <tr><th>Etapa</th><th>Objetivo</th><th>Modelo</th><th>Plazo estimado</th></tr>
+          <tr>
+            <td>Fase 1 — Corto plazo</td>
+            <td>Adaptar el modelo de QR-y-puntos de Starbucks Rewards México a la app de Domino's, activo en delivery y mostrador</td>
+            <td>Reutilización de infraestructura interna de Alsea (no desarrollo desde cero)</td>
+            <td>0–6 meses</td>
+          </tr>
+          <tr>
+            <td>Fase 2 — Mediano plazo</td>
+            <td>Capa de IA sobre los datos de puntos/compra para venta sugestiva personalizada en la app (ej. "ya que pides X, prueba Y")</td>
+            <td>Motor de recomendación sobre datos de lealtad</td>
+            <td>6–12 meses</td>
+          </tr>
+          <tr>
+            <td>Fase 3 — Largo plazo</td>
+            <td>Kioskos físicos en mostrador con reconocimiento vía cuenta/QR, justificados por el 40% de tráfico de mostrador</td>
+            <td>Hardware de autoservicio + la misma capa de lealtad/IA</td>
+            <td>12–24 meses</td>
+          </tr>
+        </table>
+
+        <h3 class="section-title">Reutilizar infraestructura interna vs. plataforma externa — comparación</h3>
+        <table class="vendor-table">
+          <tr><th>Dimensión</th><th>Reutilizar modelo Starbucks (recomendado)</th><th>Plataforma externa de lealtad</th></tr>
+          <tr>
+            <td>Costo</td>
+            <td>Principalmente esfuerzo de adaptación interna (equipo de TI de Alsea); sin licencia externa recurrente</td>
+            <td>$5.99–$69 USD/mes en soluciones ligeras tipo QR (BonusQR, TurboPush, Stamp Me) hasta $500–$2,000+ USD/mes en soluciones enterprise con integración a POS</td>
+          </tr>
+          <tr>
+            <td>Tiempo de implementación</td>
+            <td>Más rápido — el mecanismo (QR, acumulación, canje) ya existe y está probado en Starbucks México</td>
+            <td>Semanas (soluciones ligeras) a meses (enterprise con integración POS)</td>
+          </tr>
+          <tr>
+            <td>Riesgo</td>
+            <td>Bajo — es tecnología ya validada en producción por la misma empresa</td>
+            <td>Medio — depende de un proveedor externo nuevo, con su propia curva de integración</td>
+          </tr>
+          <tr>
+            <td>Cuándo conviene la alternativa externa</td>
+            <td>—</td>
+            <td>Si el equipo de TI de Starbucks/Alsea no puede ceder capacidad para adaptar el sistema a Domino's en el corto plazo</td>
+          </tr>
+        </table>
+
+        <h3 class="section-title">Proveedores identificados (Fase 3 — kiosko físico, y respaldo de lealtad externa)</h3>
+        <table class="vendor-table">
+          <tr><th>Proveedor</th><th>Tipo</th><th>Costo de referencia</th><th>Por qué encaja</th></tr>
+          <tr>
+            <td>Toast POS (kiosko)</td>
+            <td>Hardware + software de autoservicio</td>
+            <td>Countertop $1,000–$3,000 USD; freestanding $3,000–$10,000+ USD por unidad</td>
+            <td>Integración directa con POS, opción de mostrador (countertop) que encaja con el volumen de tráfico de Domino's</td>
+          </tr>
+          <tr>
+            <td>GRUBBRR</td>
+            <td>Kiosko de autoservicio especializado en QSR</td>
+            <td>~$8,000–$25,000 USD por tienda con 2-4 unidades</td>
+            <td>Enfoque específico en restaurantes de comida rápida</td>
+          </tr>
+          <tr>
+            <td>Otter (Kiosk Bundle)</td>
+            <td>Software + hardware por suscripción</td>
+            <td>~$199 USD/mes por kiosko (sin gran inversión inicial)</td>
+            <td>Modelo de suscripción, más fácil de pilotear sin capex grande por adelantado</td>
+          </tr>
+          <tr>
+            <td>BonusQR / Stamp Me / TurboPush</td>
+            <td>Plataforma externa de lealtad vía QR (respaldo)</td>
+            <td>Gratis–$69 USD/mes</td>
+            <td>Alternativa de bajo costo y sin integración a POS si la ruta interna no avanza a tiempo</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="stage stage-4">
+      <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p><strong>Dónde impacta:</strong> NPS (velocidad en mostrador) y AWO (upsell y recompra). Reutiliza infraestructura y conocimiento interno ya probado, reduciendo tiempo y riesgo de construcción; genera data de primera mano de forma continua; habilita venta sugestiva personalizada con IA.</p>
+        </div>
+        <div class="econ-box">
+          <h4>Impacto económico — plantilla (benchmark de industria, pendiente de datos reales de Alsea)</h4>
+          <div class="formula">Incremento de ventas anual = ticket promedio × % incremento por upsell × # transacciones mensuales × 12 × # tiendas</div>
+          <table class="econ-table">
+            <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
+            <tr><td>Incremento en ticket promedio con kioskos/personalización</td><td>+15% a +30%</td><td>Benchmark de industria QSR, 2026 — usar de referencia hasta tener dato real de Alsea</td></tr>
+            <tr><td>Ticket promedio actual</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
+            <tr><td># transacciones mensuales por tienda (mostrador y app)</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
+            <tr><td># tiendas piloto</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
+            <tr><td>Costo de adaptar el sistema de puntos (Fase 1)</td><td class="pending">Pendiente</td><td>Estimar con equipo de TI de Alsea/Starbucks</td></tr>
+            <tr><td>Costo de kiosko por tienda (Fase 3, si aplica)</td><td class="pending">Pendiente</td><td>Cotización Toast / GRUBBRR / Otter</td></tr>
+            <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente</td><td>Ingreso incremental − costo de implementación</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- IDEA 4 -->
@@ -676,54 +777,60 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
       <span class="badge badge-quickwin">Preliminar — quick win</span>
     </div>
 
-    <div class="field-grid">
-      <div class="field">
-        <h4>Qué ataca</h4>
-        <p>Reducción de costos (capacitación, errores de captura) y algo de ventas (velocidad de atención en hora pico).</p>
-      </div>
-      <div class="field">
-        <h4>Dónde impacta</h4>
-        <p>FC / FL (pendiente confirmar definición exacta de estas siglas), NPS indirecto vía velocidad y precisión del pedido.</p>
-      </div>
-      <div class="field full">
-        <h4>Contexto / diagnóstico</h4>
-        <p>Confirmado en campo (observación directa): el sistema actual tiene muchos botones y ventanas, y a alguien nuevo le toma tiempo aprender a tomar un pedido. El sistema es <strong>interno</strong> de Domino's, no de un proveedor externo — lo cual es una ventaja frente a las otras ideas porque no depende de negociar con terceros.</p>
-      </div>
-      <div class="field">
-        <h4>Beneficios clave</h4>
-        <ul>
-          <li>Onboarding más rápido de personal nuevo</li>
-          <li>Menos errores de captura de pedido</li>
-          <li>Mayor velocidad en mostrador</li>
-          <li>Control total al ser sistema propio (sin dependencia de proveedor)</li>
-        </ul>
-      </div>
-      <div class="field">
-        <h4>Principal dificultad</h4>
-        <ul>
-          <li>Requiere rediseño UX + recursos de desarrollo interno</li>
-          <li>Reentrenar personal ya acostumbrado al sistema actual</li>
-          <li>El componente de "IA" es limitado a menos que se agregue una capa de sugerencias inteligentes (ej. combos predictivos por hora/historial)</li>
-        </ul>
+    <div class="stage stage-1">
+      <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>Confirmado en campo (observación directa): el sistema actual tiene muchos botones y ventanas, y a alguien nuevo le toma tiempo aprender a tomar un pedido. El sistema es <strong>interno</strong> de Domino's, no de un proveedor externo.</p>
+        </div>
       </div>
     </div>
 
-    <div class="econ-box">
-      <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
-      <div class="formula">Ahorro anual = (ahorro en capacitación: horas ahorradas × costo hora × # empleados nuevos/año) + (ahorro por errores evitados: costo mensual de errores × % reducción × 12)</div>
-      <table class="econ-table">
-        <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
-        <tr><td>Costo de capacitación actual por empleado nuevo (horas × costo hora)</td><td class="pending">Pendiente</td><td>Dato interno RH / operaciones</td></tr>
-        <tr><td># empleados nuevos por año (rotación)</td><td class="pending">Pendiente</td><td>Dato interno RH</td></tr>
-        <tr><td>% reducción esperada en tiempo de capacitación</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
-        <tr><td>Costo mensual actual de errores de pedido (reprocesos, cortesías)</td><td class="pending">Pendiente</td><td>Dato interno de tienda</td></tr>
-        <tr><td>% reducción esperada de errores</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
-        <tr><td>Costo de desarrollo interno de la nueva interfaz</td><td class="pending">Pendiente</td><td>Estimar con equipo de TI interno</td></tr>
-        <tr class="result-row"><td>Ahorro neto anual estimado</td><td class="pending">Pendiente</td><td>Fórmula arriba − costo de desarrollo</td></tr>
-      </table>
+    <div class="stage stage-2">
+      <div class="stage-head"><span class="stage-num">2</span><h3>Problema</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>La interfaz lenta y poco intuitiva alarga el tiempo de captura del pedido, aumenta el riesgo de errores, y extiende la curva de aprendizaje del personal nuevo — afecta la velocidad de atención (FC/FL, pendiente confirmar definición exacta de estas siglas) y puede afectar el NPS en horas pico.</p>
+        </div>
+        <div class="field">
+          <p>Dificultades: requiere rediseño UX + recursos de desarrollo interno; reentrenar personal ya acostumbrado al sistema actual; el componente de "IA" es limitado a menos que se agregue una capa de sugerencias inteligentes.</p>
+        </div>
+        <div class="placeholder">Pendiente de profundizar: definición exacta de FC/FL.</div>
+      </div>
     </div>
 
-    <div class="placeholder">Pendiente de profundizar: definición de FC/FL, mockup de la nueva interfaz, y estimación de tiempo/costo de desarrollo interno.</div>
+    <div class="stage stage-3">
+      <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>Rediseño de UX del sistema interno de toma de pedidos — al ser un sistema propio (no depende de proveedor externo) es el "quick win" de menor riesgo técnico y político entre las 7 ideas. Opcionalmente se le puede agregar una capa de IA de sugerencias inteligentes (ej. combos predictivos según hora del día o historial de la tienda) para subir el componente de IA de la idea, más allá de solo UX.</p>
+        </div>
+        <div class="placeholder">Pendiente de profundizar: mockup de la nueva interfaz y estimación de tiempo/costo de desarrollo interno con el equipo de TI.</div>
+      </div>
+    </div>
+
+    <div class="stage stage-4">
+      <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p><strong>Dónde impacta:</strong> FC/FL y NPS indirecto vía velocidad y precisión del pedido. Onboarding más rápido de personal nuevo, menos errores de captura, mayor velocidad en mostrador, control total al ser sistema propio.</p>
+        </div>
+        <div class="econ-box">
+          <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
+          <div class="formula">Ahorro anual = (ahorro en capacitación: horas ahorradas × costo hora × # empleados nuevos/año) + (ahorro por errores evitados: costo mensual de errores × % reducción × 12)</div>
+          <table class="econ-table">
+            <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
+            <tr><td>Costo de capacitación actual por empleado nuevo (horas × costo hora)</td><td class="pending">Pendiente</td><td>Dato interno RH / operaciones</td></tr>
+            <tr><td># empleados nuevos por año (rotación)</td><td class="pending">Pendiente</td><td>Dato interno RH</td></tr>
+            <tr><td>% reducción esperada en tiempo de capacitación</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
+            <tr><td>Costo mensual actual de errores de pedido (reprocesos, cortesías)</td><td class="pending">Pendiente</td><td>Dato interno de tienda</td></tr>
+            <tr><td>% reducción esperada de errores</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
+            <tr><td>Costo de desarrollo interno de la nueva interfaz</td><td class="pending">Pendiente</td><td>Estimar con equipo de TI interno</td></tr>
+            <tr class="result-row"><td>Ahorro neto anual estimado</td><td class="pending">Pendiente</td><td>Fórmula arriba − costo de desarrollo</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- IDEA 5 -->
@@ -736,55 +843,61 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
       <span class="badge badge-flagship">Candidata a flagship</span>
     </div>
 
-    <div class="field-grid">
-      <div class="field">
-        <h4>Qué ataca</h4>
-        <p>Ambos ejes: reducción de costos (repartidores ociosos ya pagados) y aumento de ventas (captura de demanda que hoy se pierde en picos).</p>
-      </div>
-      <div class="field">
-        <h4>Dónde impacta</h4>
-        <p>AWO directo (venta capturada), EBITDA de tienda (mejor uso de costo laboral).</p>
-      </div>
-      <div class="field full">
-        <h4>Contexto / diagnóstico</h4>
-        <p>En la red de Domino's hay tiendas franquicia y tiendas operadas por Alsea/Domino's directamente — <strong>este proyecto se limita a las tiendas operadas por Alsea</strong>, lo cual evita la complejidad legal/contractual de compartir ventas entre franquicias independientes. Ya existe un sistema de ruteo de repartidores en operación, lo que es una ventaja grande: se trata más de una capa de optimización sobre infraestructura existente que de construir algo desde cero.</p>
-      </div>
-      <div class="field">
-        <h4>Beneficios clave</h4>
-        <ul>
-          <li>Captura ventas que hoy se pierden por saturación de repartidores</li>
-          <li>Mejor utilización de repartidores ociosos en tiendas de baja demanda</li>
-          <li>Se apoya en un sistema de ruteo ya existente (menor inversión desde cero)</li>
-        </ul>
-      </div>
-      <div class="field">
-        <h4>Principal dificultad</h4>
-        <ul>
-          <li>Falta definir la regla de negocio para dividir la venta entre tienda que atiende y tienda que apoya</li>
-          <li>Ajuste de incentivos con gerentes de tienda ("mi repartidor, mi venta")</li>
-          <li>Falta confirmar si el sistema de ruteo actual expone datos en tiempo real vía API</li>
-          <li>Logística de zonas de reparto (geocercas) entre tiendas cercanas</li>
-        </ul>
+    <div class="stage stage-1">
+      <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>En la red de Domino's hay tiendas franquicia y tiendas operadas por Alsea/Domino's directamente — <strong>este proyecto se limita a las tiendas operadas por Alsea</strong>. Ya existe un sistema de ruteo de repartidores en operación.</p>
+        </div>
       </div>
     </div>
 
-    <div class="econ-box">
-      <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
-      <div class="formula">Ingreso incremental anual = # pedidos recuperados/mes × 12 × ticket promedio de delivery × # tiendas
+    <div class="stage stage-2">
+      <div class="stage-head"><span class="stage-num">2</span><h3>Problema</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>En picos de demanda hay tiendas saturadas donde los repartidores no dan abasto y se pierden ventas, mientras tiendas cercanas de baja demanda tienen repartidores ociosos ya pagados.</p>
+        </div>
+        <div class="field">
+          <p>Dificultades: falta definir la regla de negocio para dividir la venta entre la tienda que atiende y la que apoya; ajuste de incentivos con gerentes de tienda ("mi repartidor, mi venta"); falta confirmar si el sistema de ruteo actual expone datos en tiempo real vía API; logística de zonas de reparto (geocercas) entre tiendas cercanas.</p>
+        </div>
+        <div class="placeholder">Pendiente de profundizar: acceso técnico al sistema de ruteo actual y confirmación de si expone datos en tiempo real vía API.</div>
+      </div>
+    </div>
+
+    <div class="stage stage-3">
+      <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>Construir una capa de optimización/predicción de demanda sobre el sistema de ruteo ya existente, que detecte saturación en una tienda y notifique a la tienda cercana con repartidores disponibles, junto con una regla de negocio para dividir la venta entre ambas. Al apoyarse en infraestructura ya existente, es más una capa de software que una inversión desde cero.</p>
+        </div>
+        <div class="placeholder">Pendiente de profundizar: modelo de predicción de demanda por tienda y propuesta concreta de la regla de reparto de venta entre tiendas.</div>
+      </div>
+    </div>
+
+    <div class="stage stage-4">
+      <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p><strong>Dónde impacta:</strong> AWO directo (venta capturada) y EBITDA de tienda (mejor uso de costo laboral). Captura ventas que hoy se pierden por saturación, mejor utilización de repartidores ociosos, se apoya en un sistema de ruteo ya existente.</p>
+        </div>
+        <div class="econ-box">
+          <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
+          <div class="formula">Ingreso incremental anual = # pedidos recuperados/mes × 12 × ticket promedio de delivery × # tiendas
 Ahorro anual = horas ociosas de repartidor recuperadas × costo hora × 365</div>
-      <table class="econ-table">
-        <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
-        <tr><td># pedidos perdidos/mes por saturación (estimado)</td><td class="pending">Pendiente</td><td>Estimar con datos del sistema de ruteo actual</td></tr>
-        <tr><td>Ticket promedio de pedido a domicilio</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
-        <tr><td>Costo hora de repartidor</td><td class="pending">Pendiente</td><td>Dato interno RH</td></tr>
-        <tr><td>Horas ociosas promedio/día en tiendas de baja demanda</td><td class="pending">Pendiente</td><td>Estimar con datos del sistema de ruteo actual</td></tr>
-        <tr><td># tiendas piloto (Alsea, no franquicia)</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
-        <tr><td>Costo de desarrollo de la capa de optimización/algoritmo</td><td class="pending">Pendiente</td><td>Estimar con TI interno o proveedor</td></tr>
-        <tr class="result-row"><td>Impacto económico total anual (ingreso + ahorro)</td><td class="pending">Pendiente</td><td>Suma de ambas fórmulas − costo de desarrollo</td></tr>
-      </table>
+          <table class="econ-table">
+            <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
+            <tr><td># pedidos perdidos/mes por saturación (estimado)</td><td class="pending">Pendiente</td><td>Estimar con datos del sistema de ruteo actual</td></tr>
+            <tr><td>Ticket promedio de pedido a domicilio</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
+            <tr><td>Costo hora de repartidor</td><td class="pending">Pendiente</td><td>Dato interno RH</td></tr>
+            <tr><td>Horas ociosas promedio/día en tiendas de baja demanda</td><td class="pending">Pendiente</td><td>Estimar con datos del sistema de ruteo actual</td></tr>
+            <tr><td># tiendas piloto (Alsea, no franquicia)</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
+            <tr><td>Costo de desarrollo de la capa de optimización/algoritmo</td><td class="pending">Pendiente</td><td>Estimar con TI interno o proveedor</td></tr>
+            <tr class="result-row"><td>Impacto económico total anual (ingreso + ahorro)</td><td class="pending">Pendiente</td><td>Suma de ambas fórmulas − costo de desarrollo</td></tr>
+          </table>
+        </div>
+      </div>
     </div>
-
-    <div class="placeholder">Pendiente de profundizar: acceso técnico al sistema de ruteo actual, modelo de predicción de demanda por tienda, y propuesta de regla de reparto de venta entre tiendas.</div>
   </section>
 
   <!-- IDEA 6 -->
@@ -797,53 +910,59 @@ Ahorro anual = horas ociosas de repartidor recuperadas × costo hora × 365</div
       <span class="badge badge-espera">En espera de información</span>
     </div>
 
-    <div class="field-grid">
-      <div class="field">
-        <h4>Qué ataca</h4>
-        <p>Mejora de experiencia del cliente / NPS — detecta patrones de insatisfacción antes de que se reflejen en el número agregado, y los traduce en líneas de acción concretas.</p>
-      </div>
-      <div class="field">
-        <h4>Dónde impacta</h4>
-        <p>NPS +1 estrella (objetivo directo del proyecto); insumo clave para las líneas de acción a Distritales/Regionales que pide el objetivo central.</p>
-      </div>
-      <div class="field full">
-        <h4>Contexto / diagnóstico</h4>
-        <p>Domino's global tiene el proyecto "Voice of the Pizza", que usa GenAI para analizar comentarios de clientes (ej. en su subreddit) y sacar insights automáticamente. La versión para Alsea México dependerá de: qué canales de feedback existen hoy (encuesta NPS post-compra, reseñas en app/Google/redes sociales, quejas al call center), si alguien ya analiza ese feedback de forma sistemática, y si el NPS ya viene desglosado por tienda/distrito o es solo un número agregado de marca.</p>
-        <p><strong>Luis está investigando esto con su jefe — sección pendiente de completar con la respuesta.</strong></p>
-      </div>
-      <div class="field">
-        <h4>Beneficios clave (hipótesis, a validar)</h4>
-        <ul>
-          <li>Detecta insatisfacción por tienda/distrito antes de que baje el NPS agregado</li>
-          <li>Convierte comentarios cualitativos en líneas de acción cuantificables para Distritales/Regionales</li>
-          <li>Reduce tiempo de análisis manual de feedback (si existe hoy)</li>
-        </ul>
-      </div>
-      <div class="field">
-        <h4>Principal dificultad (hipótesis)</h4>
-        <ul>
-          <li>Depende de que existan canales de feedback consistentes y con volumen suficiente</li>
-          <li>Requiere NLP en español, sensible a modismos/regionalismos de México</li>
-          <li>Solo es accionable si los datos se pueden desglosar por tienda/distrito</li>
-        </ul>
+    <div class="stage stage-1">
+      <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>Domino's global tiene el proyecto "Voice of the Pizza", que usa GenAI para analizar comentarios de clientes (ej. en su subreddit) y sacar insights automáticamente. Para la versión de Alsea México aún no sabemos: qué canales de feedback existen hoy (encuesta NPS post-compra, reseñas en app/Google/redes sociales, quejas al call center), si alguien ya analiza ese feedback de forma sistemática, y si el NPS ya viene desglosado por tienda/distrito o es solo un número agregado de marca.</p>
+        </div>
+        <div class="placeholder"><strong>Luis está investigando esto con su jefe</strong> — sección pendiente de completar con la respuesta.</div>
       </div>
     </div>
 
-    <div class="econ-box">
-      <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
-      <div class="formula">Ingreso protegido/incremental anual ≈ (# clientes insatisfechos detectados y atendidos a tiempo por mes × 12) × valor de vida del cliente (CLV) × % de retención adicional lograda</div>
-      <table class="econ-table">
-        <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
-        <tr><td># comentarios/encuestas negativas mensuales</td><td class="pending">Pendiente</td><td>Preguntar a jefe: canales de feedback existentes</td></tr>
-        <tr><td>% de comentarios negativos accionables (identificables por tienda)</td><td class="pending">Pendiente</td><td>Depende de si el NPS ya viene desglosado</td></tr>
-        <tr><td>Valor de vida del cliente (CLV) promedio</td><td class="pending">Pendiente</td><td>Dato interno de marketing/finanzas</td></tr>
-        <tr><td>% de retención adicional lograda por intervención a tiempo</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
-        <tr><td>Costo de herramienta de NLP/GenAI</td><td class="pending">Pendiente</td><td>Cotización proveedor o costo interno de modelo</td></tr>
-        <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente</td><td>Fórmula arriba − costo de la herramienta</td></tr>
-      </table>
+    <div class="stage stage-2">
+      <div class="stage-head"><span class="stage-num">2</span><h3>Problema</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p><em>Hipótesis, a validar:</em> sin un análisis sistemático del feedback, es probable que se pierdan patrones de insatisfacción por tienda/distrito antes de que se reflejen en el NPS agregado, y que no existan líneas de acción claras para Distritales/Regionales basadas en lo que dicen los clientes.</p>
+        </div>
+        <div class="field">
+          <p>Dificultades previstas: depende de que existan canales de feedback consistentes y con volumen suficiente; requiere NLP en español, sensible a modismos/regionalismos de México; solo es accionable si los datos se pueden desglosar por tienda/distrito.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="placeholder">En espera de que Luis confirme con su jefe: canales de feedback existentes, si ya se analiza sistemáticamente, y si el NPS está desglosado por tienda/distrito.</div>
+    <div class="stage stage-3">
+      <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p><em>Hipótesis, a validar:</em> usar GenAI para leer y analizar el feedback del cliente (encuestas, reseñas, quejas) y traducirlo automáticamente en líneas de acción específicas por tienda/distrito para Distritales y Regionales — el mismo enfoque que "Voice of the Pizza" a nivel global.</p>
+        </div>
+        <div class="placeholder">En espera de que Luis confirme con su jefe: canales de feedback existentes, si ya se analiza sistemáticamente, y si el NPS está desglosado por tienda/distrito. Con esa información se define la solución concreta y se investigan proveedores/herramientas.</div>
+      </div>
+    </div>
+
+    <div class="stage stage-4">
+      <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p><strong>Dónde impacta:</strong> NPS +1 estrella (objetivo directo del proyecto); insumo clave para las líneas de acción a Distritales/Regionales. Detecta insatisfacción por tienda/distrito antes de que baje el NPS agregado, convierte comentarios cualitativos en líneas de acción cuantificables, reduce tiempo de análisis manual (si existe hoy).</p>
+        </div>
+        <div class="econ-box">
+          <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
+          <div class="formula">Ingreso protegido/incremental anual ≈ (# clientes insatisfechos detectados y atendidos a tiempo por mes × 12) × valor de vida del cliente (CLV) × % de retención adicional lograda</div>
+          <table class="econ-table">
+            <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
+            <tr><td># comentarios/encuestas negativas mensuales</td><td class="pending">Pendiente</td><td>Preguntar a jefe: canales de feedback existentes</td></tr>
+            <tr><td>% de comentarios negativos accionables (identificables por tienda)</td><td class="pending">Pendiente</td><td>Depende de si el NPS ya viene desglosado</td></tr>
+            <tr><td>Valor de vida del cliente (CLV) promedio</td><td class="pending">Pendiente</td><td>Dato interno de marketing/finanzas</td></tr>
+            <tr><td>% de retención adicional lograda por intervención a tiempo</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
+            <tr><td>Costo de herramienta de NLP/GenAI</td><td class="pending">Pendiente</td><td>Cotización proveedor o costo interno de modelo</td></tr>
+            <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente</td><td>Fórmula arriba − costo de la herramienta</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- IDEA 7 -->
@@ -856,58 +975,64 @@ Ahorro anual = horas ociosas de repartidor recuperadas × costo hora × 365</div
       <span class="badge badge-espera">En espera de información</span>
     </div>
 
-    <div class="field-grid">
-      <div class="field">
-        <h4>Qué ataca</h4>
-        <p>Reducción de costos — tiempo administrativo del gerente de tienda que hoy se va en tareas operativas en vez de piso de venta/atención al cliente.</p>
-      </div>
-      <div class="field">
-        <h4>Dónde impacta</h4>
-        <p>Eficiencia operativa del gerente; indirectamente FC/FL y NPS al liberar tiempo hacia ejecución y atención al cliente.</p>
-      </div>
-      <div class="field full">
-        <h4>Contexto / diagnóstico</h4>
-        <p>Domino's global desarrolló con Microsoft/Azure OpenAI un asistente de GenAI para gerentes de tienda que ayuda con inventario, pedidos a proveedor y consultas operativas (la programación de personal queda fuera, ya que Alsea contrató a un proveedor específico para eso). La versión para Alsea México dependerá de: qué tareas o dudas del día a día consumen más tiempo a los gerentes, y si ya existe una plataforma/app interna donde insertar un asistente conversacional (la misma plataforma de reportes del jefe de Luis, WhatsApp, un portal) o si hoy todo es llamada/Excel/papel.</p>
-        <p><strong>Luis está investigando esto con su jefe — sección pendiente de completar con la respuesta.</strong></p>
-      </div>
-      <div class="field">
-        <h4>Beneficios clave (hipótesis, a validar)</h4>
-        <ul>
-          <li>Libera tiempo del gerente de tareas administrativas hacia piso de venta y atención al cliente</li>
-          <li>Respuestas instantáneas a dudas operativas, sin depender de llamar al Distrital</li>
-          <li>Se puede montar sobre la plataforma de reportes que ya existe (menor esfuerzo de integración)</li>
-        </ul>
-      </div>
-      <div class="field">
-        <h4>Principal dificultad (hipótesis)</h4>
-        <ul>
-          <li>Requiere que el conocimiento operativo esté documentado/estructurado para entrenar al asistente</li>
-          <li>Adopción despareja según el nivel de familiaridad tecnológica del gerente</li>
-          <li>Costo de licenciamiento del modelo de IA (ej. Azure OpenAI u otro)</li>
-        </ul>
+    <div class="stage stage-1">
+      <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p>Domino's global desarrolló con Microsoft/Azure OpenAI un asistente de GenAI para gerentes de tienda que ayuda con inventario, pedidos a proveedor y consultas operativas (la programación de personal queda fuera, ya que Alsea contrató a un proveedor específico para eso). Aún no sabemos qué tareas o dudas del día a día consumen más tiempo a los gerentes de Alsea, ni si ya existe una plataforma/app interna donde insertar un asistente conversacional (la misma plataforma de reportes del jefe de Luis, WhatsApp, un portal) o si hoy todo es llamada/Excel/papel.</p>
+        </div>
+        <div class="placeholder"><strong>Luis está investigando esto con su jefe</strong> — sección pendiente de completar con la respuesta.</div>
       </div>
     </div>
 
-    <div class="econ-box">
-      <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
-      <div class="formula">Ahorro anual = horas administrativas ahorradas por gerente/semana × 52 × costo hora del gerente × # tiendas</div>
-      <table class="econ-table">
-        <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
-        <tr><td>Horas/semana que el gerente dedica hoy a tareas administrativas</td><td class="pending">Pendiente</td><td>Preguntar a jefe / observación en campo</td></tr>
-        <tr><td>% de reducción esperado con el asistente</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
-        <tr><td>Costo hora del gerente</td><td class="pending">Pendiente</td><td>Dato interno RH</td></tr>
-        <tr><td># tiendas piloto</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
-        <tr><td>Costo de licencia del modelo GenAI (mensual)</td><td class="pending">Pendiente</td><td>Cotización Azure OpenAI u otro proveedor</td></tr>
-        <tr class="result-row"><td>Ahorro neto anual estimado</td><td class="pending">Pendiente</td><td>Fórmula arriba − costo de licencia</td></tr>
-      </table>
+    <div class="stage stage-2">
+      <div class="stage-head"><span class="stage-num">2</span><h3>Problema</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p><em>Hipótesis, a validar:</em> los gerentes de tienda probablemente dedican tiempo importante a tareas administrativas (inventario, pedidos, reportes) en vez de piso de venta y atención al cliente, sin un canal rápido para resolver dudas operativas sin llamar al Distrital.</p>
+        </div>
+        <div class="field">
+          <p>Dificultades previstas: requiere que el conocimiento operativo esté documentado/estructurado para entrenar al asistente; adopción despareja según el nivel de familiaridad tecnológica del gerente; costo de licenciamiento del modelo de IA.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="placeholder">En espera de que Luis confirme con su jefe: tareas/dudas que más tiempo consumen a los gerentes, y si existe una plataforma interna donde insertar el asistente.</div>
+    <div class="stage stage-3">
+      <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p><em>Hipótesis, a validar:</em> un asistente conversacional GenAI (similar al de Domino's-Microsoft) montado sobre la plataforma de reportes que ya existe, que responda dudas operativas del día a día y ayude con inventario y pedidos a proveedor.</p>
+        </div>
+        <div class="placeholder">En espera de que Luis confirme con su jefe: tareas/dudas que más tiempo consumen a los gerentes, y si existe una plataforma interna donde insertar el asistente. Con esa información se define la solución concreta y se investigan proveedores/herramientas.</div>
+      </div>
+    </div>
+
+    <div class="stage stage-4">
+      <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
+      <div class="stage-body">
+        <div class="field">
+          <p><strong>Dónde impacta:</strong> eficiencia operativa del gerente; indirectamente FC/FL y NPS al liberar tiempo hacia ejecución y atención al cliente. Libera tiempo administrativo, da respuestas instantáneas a dudas operativas, y se puede montar sobre la plataforma de reportes que ya existe (menor esfuerzo de integración).</p>
+        </div>
+        <div class="econ-box">
+          <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
+          <div class="formula">Ahorro anual = horas administrativas ahorradas por gerente/semana × 52 × costo hora del gerente × # tiendas</div>
+          <table class="econ-table">
+            <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
+            <tr><td>Horas/semana que el gerente dedica hoy a tareas administrativas</td><td class="pending">Pendiente</td><td>Preguntar a jefe / observación en campo</td></tr>
+            <tr><td>% de reducción esperado con el asistente</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
+            <tr><td>Costo hora del gerente</td><td class="pending">Pendiente</td><td>Dato interno RH</td></tr>
+            <tr><td># tiendas piloto</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
+            <tr><td>Costo de licencia del modelo GenAI (mensual)</td><td class="pending">Pendiente</td><td>Cotización Azure OpenAI u otro proveedor</td></tr>
+            <tr class="result-row"><td>Ahorro neto anual estimado</td><td class="pending">Pendiente</td><td>Fórmula arriba − costo de licencia</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
   </section>
 
 </div>
 
-<footer>Última actualización: 2 de julio, 2026 — Documento vivo, se actualiza conforme avanza la investigación y las conversaciones del proyecto.</footer>
+<footer>Última actualización: 3 de julio, 2026 — Documento vivo, se actualiza conforme avanza la investigación y las conversaciones del proyecto.</footer>
 
 <script>
   const buttons = document.querySelectorAll('.tab-btn');
