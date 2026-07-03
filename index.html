@@ -338,7 +338,7 @@
       <tr><td>2. RFID en inventarios</td><td>Reducción de costos (mermas, quiebres de stock)</td><td>En desarrollo profundo</td></tr>
       <tr><td>3. Kioskos con reconocimiento vía app</td><td>Aumento de ventas (upsell, frecuencia)</td><td>En desarrollo profundo</td></tr>
       <tr><td>4. Pantallas de mostrador interactivas</td><td>Reducción de costos (capacitación, errores)</td><td>Preliminar — quick win</td></tr>
-      <tr><td>5. Balanceo dinámico de repartidores</td><td>Ambos: costos (repartidores ociosos) y ventas (demanda capturada)</td><td>Candidata a flagship</td></tr>
+      <tr><td>5. Balanceo dinámico de repartidores</td><td>Ambos: costos (repartidores ociosos) y ventas (demanda capturada)</td><td>En desarrollo profundo — flagship</td></tr>
       <tr><td>6. Análisis de sentimiento de feedback del cliente</td><td>Aumento de ventas / NPS (retención, líneas de acción por tienda-distrito)</td><td>En espera de información</td></tr>
       <tr><td>7. Asistente GenAI para gerentes de tienda</td><td>Reducción de costos (tiempo administrativo del gerente)</td><td>En espera de información</td></tr>
     </table>
@@ -850,14 +850,17 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
         <h2>Idea 5 · Balanceo dinámico de repartidores entre tiendas</h2>
         <p class="tagline">Redirigir capacidad de entrega hacia tiendas saturadas usando repartidores ociosos de tiendas cercanas</p>
       </div>
-      <span class="badge badge-flagship">Candidata a flagship</span>
+      <span class="badge badge-flagship">En desarrollo profundo — flagship</span>
     </div>
 
     <div class="stage stage-1">
       <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
       <div class="stage-body">
         <div class="field">
-          <p>En la red de Domino's hay tiendas franquicia y tiendas operadas por Alsea/Domino's directamente — <strong>este proyecto se limita a las tiendas operadas por Alsea</strong>. Ya existe un sistema de ruteo de repartidores en operación.</p>
+          <p>En la red de Domino's hay tiendas franquicia y tiendas operadas por Alsea/Domino's directamente — <strong>este proyecto se limita a las tiendas operadas por Alsea</strong>. Ya existe un sistema de ruteo de repartidores <strong>propio de Domino's</strong> (no de un tercero), que incluye una app para repartidores que les descarga la dirección de entrega — no sería necesario construir esto desde cero.</p>
+        </div>
+        <div class="field">
+          <p>Las tiendas se manejan por <strong>polígonos</strong>: cada una cubre un radio definido y así se decide a qué distancia debe estar la siguiente tienda. No hay una distancia exacta confirmada, pero las tiendas no están muy dispersas entre sí.</p>
         </div>
       </div>
     </div>
@@ -869,19 +872,91 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
           <p>En picos de demanda hay tiendas saturadas donde los repartidores no dan abasto y se pierden ventas, mientras tiendas cercanas de baja demanda tienen repartidores ociosos ya pagados.</p>
         </div>
         <div class="field">
-          <p>Dificultades: falta definir la regla de negocio para dividir la venta entre la tienda que atiende y la que apoya; ajuste de incentivos con gerentes de tienda ("mi repartidor, mi venta"); falta confirmar si el sistema de ruteo actual expone datos en tiempo real vía API; logística de zonas de reparto (geocercas) entre tiendas cercanas.</p>
+          <p><strong>El reto no es solo técnico, es cultural:</strong> hoy no existe ningún mecanismo, ni siquiera informal, donde una tienda le pida ayuda a otra. El pensamiento general es "mi venta, mi problema". Cualquier solución tiene que resolver el incentivo (por qué le convendría a un gerente prestar a su repartidor), no solo la tecnología de notificación.</p>
         </div>
-        <div class="placeholder">Pendiente de profundizar: acceso técnico al sistema de ruteo actual y confirmación de si expone datos en tiempo real vía API.</div>
+        <div class="field">
+          <p>Otras dificultades: falta definir la regla de negocio para dividir la venta entre la tienda que atiende y la que apoya; falta confirmar si el sistema de ruteo actual expone datos en tiempo real vía API para poder construir una capa de predicción encima.</p>
+        </div>
       </div>
     </div>
 
     <div class="stage stage-3">
       <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
       <div class="stage-body">
-        <div class="field">
-          <p>Construir una capa de optimización/predicción de demanda sobre el sistema de ruteo ya existente, que detecte saturación en una tienda y notifique a la tienda cercana con repartidores disponibles, junto con una regla de negocio para dividir la venta entre ambas. Al apoyarse en infraestructura ya existente, es más una capa de software que una inversión desde cero.</p>
-        </div>
-        <div class="placeholder">Pendiente de profundizar: modelo de predicción de demanda por tienda y propuesta concreta de la regla de reparto de venta entre tiendas.</div>
+        <p style="margin:0 0 12px 0;">Conviene evaluar dos rutas en paralelo, porque resuelven el problema de forma distinta: <strong>Opción A</strong> balancea repartidores entre tiendas propias (requiere resolver el problema cultural de incentivos); <strong>Opción B</strong> usa capacidad de reparto externa bajo demanda como "válvula de escape" en picos, sin depender de que las tiendas se ayuden entre sí.</p>
+
+        <h3 class="section-title">Hoja de ruta por etapas</h3>
+        <table class="vendor-table">
+          <tr><th>Etapa</th><th>Objetivo</th><th>Modelo</th><th>Plazo estimado</th></tr>
+          <tr>
+            <td>Fase 1 — Corto plazo</td>
+            <td>Piloto de Opción B: activar un servicio de reparto bajo demanda como desahogo en tiendas de alta saturación, sin tocar la cultura interna todavía</td>
+            <td>Integración con proveedor externo de reparto de "etiqueta blanca" (no marketplace)</td>
+            <td>0–6 meses</td>
+          </tr>
+          <tr>
+            <td>Fase 2 — Mediano plazo</td>
+            <td>Construir la capa de predicción de demanda + notificación entre tiendas cercanas (Opción A), y definir/probar la regla de reparto de venta que resuelva el incentivo</td>
+            <td>Software sobre el sistema de ruteo propio ya existente</td>
+            <td>6–12 meses</td>
+          </tr>
+          <tr>
+            <td>Fase 3 — Largo plazo</td>
+            <td>Combinar ambas: balanceo entre tiendas propias como primera opción (más barato, usa mano de obra ya pagada), y reparto externo bajo demanda como respaldo cuando ni las tiendas cercanas dan abasto</td>
+            <td>Modelo híbrido interno + externo</td>
+            <td>12–24 meses</td>
+          </tr>
+        </table>
+
+        <h3 class="section-title">Opción A (balanceo interno) vs. Opción B (reparto externo bajo demanda) — comparación</h3>
+        <table class="vendor-table">
+          <tr><th>Dimensión</th><th>Opción A — Balanceo entre tiendas propias</th><th>Opción B — Reparto externo bajo demanda</th></tr>
+          <tr>
+            <td>Costo</td>
+            <td>Sin cuota por entrega (usa mano de obra ya pagada); costo es de desarrollo de la capa de predicción/notificación</td>
+            <td>Tarifa por entrega — mucho menor que un marketplace completo (Uber Eats/Rappi cobran 25–35% de comisión) porque es un modelo de "etiqueta blanca": Uber Direct cobra ~2.5% + $0.29 USD de tarifa de procesamiento por ser el mismo canal/cliente de Domino's</td>
+          </tr>
+          <tr>
+            <td>Tiempo de implementación</td>
+            <td>Más lento — requiere resolver primero el problema cultural de incentivos entre tiendas</td>
+            <td>Rápido — es integración de API con un proveedor que ya opera en México con restaurantes</td>
+          </tr>
+          <tr>
+            <td>Riesgo / dependencia</td>
+            <td>Riesgo de que la regla de reparto de venta no se adopte bien por los gerentes de tienda</td>
+            <td>Depende de un tercero para el último tramo de entrega — puede afectar la experiencia de marca si el repartidor externo no representa bien a Domino's</td>
+          </tr>
+          <tr>
+            <td>Cuándo conviene</td>
+            <td>Cuando hay tiendas cercanas con capacidad ociosa real y se resuelve el incentivo</td>
+            <td>Como solución rápida mientras se resuelve la Opción A, o en zonas donde no hay una tienda cercana con capacidad disponible</td>
+          </tr>
+        </table>
+
+        <h3 class="section-title">Proveedores / precedentes identificados (Opción B)</h3>
+        <table class="vendor-table">
+          <tr><th>Proveedor</th><th>Cobertura</th><th>Modelo</th><th>Por qué encaja</th></tr>
+          <tr>
+            <td>Uber Direct</td>
+            <td>México — ya opera con restaurantes y PyMEs</td>
+            <td>Reparto bajo demanda de "etiqueta blanca" (no marketplace); ~2.5% + $0.29 USD de tarifa de procesamiento</td>
+            <td>El pedido sigue siendo del canal propio de Domino's (app/call center), solo se subcontrata el último tramo — mucho más barato que empujar el pedido a la app de Uber Eats</td>
+          </tr>
+          <tr>
+            <td>DoorDash Drive</td>
+            <td>Principalmente EE.UU. — referencia de modelo, presencia menor en México</td>
+            <td>Tarifa plana por entrega, sin comisión porcentual</td>
+            <td>Útil como referencia de precio de mercado para negociar con proveedores locales</td>
+          </tr>
+          <tr>
+            <td>Rappi Cargo / DiDi (línea empresarial)</td>
+            <td>México — plataformas dominantes localmente</td>
+            <td>Por confirmar — el research no encontró tarifas públicas de su modelo de flota bajo demanda tipo "etiqueta blanca"</td>
+            <td>Vale la pena cotizar directamente dado que ya tienen la mayor flota de repartidores activa en México</td>
+          </tr>
+        </table>
+
+        <div class="placeholder">Pendiente de profundizar: confirmar si el sistema de ruteo actual expone datos en tiempo real vía API (necesario para la Opción A), y cotizar formalmente con Uber Direct, Rappi Cargo y DiDi para la Opción B.</div>
       </div>
     </div>
 
@@ -889,21 +964,24 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
       <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
       <div class="stage-body">
         <div class="field">
-          <p><strong>Dónde impacta:</strong> AWO directo (venta capturada) y EBITDA de tienda (mejor uso de costo laboral). Captura ventas que hoy se pierden por saturación, mejor utilización de repartidores ociosos, se apoya en un sistema de ruteo ya existente.</p>
+          <p><strong>Dónde impacta:</strong> AWO directo (venta capturada) y EBITDA de tienda (mejor uso de costo laboral en la Opción A; menor filtración de margen hacia comisiones de marketplace en la Opción B). Captura ventas que hoy se pierden por saturación, y evita que el cliente termine pidiendo por Uber Eats/Rappi a una comisión de 25-35% cuando la tienda está saturada.</p>
         </div>
         <div class="econ-box">
-          <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
+          <h4>Impacto económico — plantilla (benchmark de industria, pendiente de datos reales)</h4>
           <div class="formula">Ingreso incremental anual = # pedidos recuperados/mes × 12 × ticket promedio de delivery × # tiendas
-Ahorro anual = horas ociosas de repartidor recuperadas × costo hora × 365</div>
+Ahorro anual (Opción A) = horas ociosas de repartidor recuperadas × costo hora × 365
+Costo evitado (Opción B vs. marketplace) = # pedidos derivados × ticket promedio × (comisión marketplace 25-35% − tarifa etiqueta blanca ~2.5%)</div>
           <table class="econ-table">
             <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
+            <tr><td>Tarifa de reparto "etiqueta blanca" (Uber Direct)</td><td>~2.5% + $0.29 USD por entrega</td><td>Benchmark de industria, México, 2026</td></tr>
+            <tr><td>Comisión de marketplace completo (Uber Eats / Rappi)</td><td>25% – 35%</td><td>Benchmark de industria, México, 2026 — referencia de lo que se "filtra" si el pedido se va a un marketplace en vez de resolverse internamente</td></tr>
             <tr><td># pedidos perdidos/mes por saturación (estimado)</td><td class="pending">Pendiente</td><td>Estimar con datos del sistema de ruteo actual</td></tr>
             <tr><td>Ticket promedio de pedido a domicilio</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
             <tr><td>Costo hora de repartidor</td><td class="pending">Pendiente</td><td>Dato interno RH</td></tr>
             <tr><td>Horas ociosas promedio/día en tiendas de baja demanda</td><td class="pending">Pendiente</td><td>Estimar con datos del sistema de ruteo actual</td></tr>
             <tr><td># tiendas piloto (Alsea, no franquicia)</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
-            <tr><td>Costo de desarrollo de la capa de optimización/algoritmo</td><td class="pending">Pendiente</td><td>Estimar con TI interno o proveedor</td></tr>
-            <tr class="result-row"><td>Impacto económico total anual (ingreso + ahorro)</td><td class="pending">Pendiente</td><td>Suma de ambas fórmulas − costo de desarrollo</td></tr>
+            <tr><td>Costo de desarrollo de la capa de optimización/algoritmo (Opción A)</td><td class="pending">Pendiente</td><td>Estimar con TI interno</td></tr>
+            <tr class="result-row"><td>Impacto económico total anual</td><td class="pending">Pendiente</td><td>Suma de fórmulas − costos de implementación</td></tr>
           </table>
         </div>
       </div>
