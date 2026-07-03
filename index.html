@@ -793,9 +793,9 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
           <p>La interfaz lenta y poco intuitiva alarga el tiempo de captura del pedido, aumenta el riesgo de errores, y extiende la curva de aprendizaje del personal nuevo — afecta la velocidad de atención (FC/FL, pendiente confirmar definición exacta de estas siglas) y puede afectar el NPS en horas pico.</p>
         </div>
         <div class="field">
-          <p>Dificultades: requiere rediseño UX + recursos de desarrollo interno; reentrenar personal ya acostumbrado al sistema actual; el componente de "IA" es limitado a menos que se agregue una capa de sugerencias inteligentes.</p>
+          <p>Dificultades: requiere rediseño UX + recursos de desarrollo interno; reentrenar personal ya acostumbrado al sistema actual; el componente de "IA" es limitado a menos que se agregue explícitamente una capa inteligente (ver Posibles soluciones).</p>
         </div>
-        <div class="placeholder">Pendiente de profundizar: definición exacta de FC/FL.</div>
+        <div class="placeholder">Evidencia pendiente de validar antes de presentar: (1) definición exacta de FC/FL — hoy no sabemos qué KPI se mueve ni cuánto; (2) tiempo real de captura de pedido y tasa de errores hoy (la evidencia actual es una sola observación en campo, no un dato sistemático); (3) si este sistema de mostrador es exclusivo de Domino's o compartido con otras marcas de Alsea (cambia la complejidad de gobernanza del proyecto).</div>
       </div>
     </div>
 
@@ -803,7 +803,17 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
       <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
       <div class="stage-body">
         <div class="field">
-          <p>Rediseño de UX del sistema interno de toma de pedidos — al ser un sistema propio (no depende de proveedor externo) es el "quick win" de menor riesgo técnico y político entre las 7 ideas. Opcionalmente se le puede agregar una capa de IA de sugerencias inteligentes (ej. combos predictivos según hora del día o historial de la tienda) para subir el componente de IA de la idea, más allá de solo UX.</p>
+          <p>Rediseño de UX del sistema interno de toma de pedidos — al ser un sistema propio (no depende de proveedor externo) es el "quick win" de menor riesgo técnico y político entre las 7 ideas.</p>
+        </div>
+        <div class="field">
+          <h4>Dónde está la IA — no es solo rediseño de UX</h4>
+          <p>Para que esta idea sea defendible como parte de un proyecto de IA (y no solo de diseño), la propuesta debe incluir capas inteligentes explícitas, no solo pantallas más ordenadas:</p>
+          <ul>
+            <li><strong>Búsqueda inteligente:</strong> el cajero escribe o dice parte del producto ("pepperoni mediana orilla rellena") y el sistema navega automáticamente, en vez de 4-5 clics por menús anidados</li>
+            <li><strong>Sugerencias predictivas de combos</strong> según hora del día, clima o historial de la tienda — se puede conectar con los datos de forecasting de la Idea 2 (RFID) y de lealtad de la Idea 3 (kioskos)</li>
+            <li><strong>Detección de errores en tiempo real:</strong> alerta si la combinación de producto pedida es inusual antes de confirmar</li>
+            <li><strong>Onboarding asistido:</strong> guías contextuales para personal nuevo que se retiran conforme el sistema detecta dominio del flujo</li>
+          </ul>
         </div>
         <div class="placeholder">Pendiente de profundizar: mockup de la nueva interfaz y estimación de tiempo/costo de desarrollo interno con el equipo de TI.</div>
       </div>
@@ -816,15 +826,15 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
           <p><strong>Dónde impacta:</strong> FC/FL y NPS indirecto vía velocidad y precisión del pedido. Onboarding más rápido de personal nuevo, menos errores de captura, mayor velocidad en mostrador, control total al ser sistema propio.</p>
         </div>
         <div class="econ-box">
-          <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
+          <h4>Impacto económico — plantilla (benchmark de industria, pendiente de datos reales)</h4>
           <div class="formula">Ahorro anual = (ahorro en capacitación: horas ahorradas × costo hora × # empleados nuevos/año) + (ahorro por errores evitados: costo mensual de errores × % reducción × 12)</div>
           <table class="econ-table">
             <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
+            <tr><td>Reducción en tiempo de captura de pedido con interfaz táctil bien diseñada</td><td>~30%</td><td>Benchmark de industria (migración de sistema lento/papel a POS táctil) — usar de referencia hasta tener dato real de Alsea</td></tr>
+            <tr><td>Meta de onboarding de referencia</td><td>Primer pedido tomado en la primera hora de trabajo</td><td>Benchmark de industria (operadores con POS bien diseñado); hoy Alsea está lejos de esto según la observación en campo</td></tr>
             <tr><td>Costo de capacitación actual por empleado nuevo (horas × costo hora)</td><td class="pending">Pendiente</td><td>Dato interno RH / operaciones</td></tr>
             <tr><td># empleados nuevos por año (rotación)</td><td class="pending">Pendiente</td><td>Dato interno RH</td></tr>
-            <tr><td>% reducción esperada en tiempo de capacitación</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
             <tr><td>Costo mensual actual de errores de pedido (reprocesos, cortesías)</td><td class="pending">Pendiente</td><td>Dato interno de tienda</td></tr>
-            <tr><td>% reducción esperada de errores</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
             <tr><td>Costo de desarrollo interno de la nueva interfaz</td><td class="pending">Pendiente</td><td>Estimar con equipo de TI interno</td></tr>
             <tr class="result-row"><td>Ahorro neto anual estimado</td><td class="pending">Pendiente</td><td>Fórmula arriba − costo de desarrollo</td></tr>
           </table>
