@@ -451,7 +451,7 @@
     <nav class="side-nav">
       <button class="nav-item active" data-tab="home">🏠 Inicio</button>
       <div class="nav-section-label">Ideas del proyecto</div>
-      <button class="nav-item" data-tab="idea1">1 · Call Center<span class="nav-tag tag-foco">★ Foco</span></button>
+      <button class="nav-item" data-tab="idea1">1 · Call Center + App<span class="nav-tag tag-foco">★ Foco</span></button>
       <button class="nav-item" data-tab="idea2">2 · RFID Inventario<span class="nav-tag tag-foco">★ Foco</span></button>
       <button class="nav-item" data-tab="idea3">3 · Kioskos<span class="nav-tag tag-pausa">Pausa</span></button>
       <button class="nav-item" data-tab="idea4">4 · Pantallas Mostrador<span class="nav-tag tag-pausa">Pausa</span></button>
@@ -494,7 +494,7 @@
         <h2>Mapa rápido — costos vs. ventas</h2>
         <table class="overview-table">
           <tr><th>Idea</th><th>Eje que ataca</th><th>Estatus</th></tr>
-          <tr><td>1. Call center con captura de datos</td><td>Aumento de ventas (marketing dirigido)</td><td>★ Foco principal del proyecto</td></tr>
+          <tr><td>1. Call Center IA + App/QR de lealtad</td><td>Aumento de ventas (marketing dirigido, venta sugestiva)</td><td>★ Foco principal del proyecto</td></tr>
           <tr><td>2. RFID en inventarios</td><td>Reducción de costos (mermas, quiebres de stock)</td><td>★ Foco principal del proyecto</td></tr>
           <tr><td>3. Kioskos con reconocimiento vía app</td><td>Aumento de ventas (upsell, frecuencia)</td><td>En pausa — foco en ideas 1 y 2</td></tr>
           <tr><td>4. Pantallas de mostrador interactivas</td><td>Reducción de costos (capacitación, errores)</td><td>En pausa — foco en ideas 1 y 2</td></tr>
@@ -509,8 +509,8 @@
     <section id="idea1" class="tab-content">
     <div class="idea-header">
       <div>
-        <h2>Idea 1 · Call Center con captura automática de datos</h2>
-        <p class="tagline">Corto plazo: liberar al operador de capturar datos manualmente. Largo plazo: la IA reemplaza por completo la atención telefónica.</p>
+        <h2>Idea 1 · Captura de datos del cliente — Call Center IA + App/QR de lealtad</h2>
+        <p class="tagline">Dos frentes que se refuerzan: IA de voz en el call center para capturar datos por teléfono, y una app con QR de lealtad (modelo Starbucks) para capturar datos en mostrador y delivery — clave en las tiendas que no tienen línea telefónica.</p>
       </div>
       <span class="badge badge-foco">★ Foco principal del proyecto</span>
     </div>
@@ -518,6 +518,7 @@
     <div class="stage stage-1">
       <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
       <div class="stage-body">
+        <h3 class="section-title">Componente A — Call Center</h3>
         <div class="field">
           <p>El call center está tercerizado. En teoría el operador debe anotar en libreta los datos de la llamada, pero por falta de tiempo no lo hace — la llamada termina siendo anónima. Hoy no existe ninguna captura estructurada del cliente que llama.</p>
         </div>
@@ -525,7 +526,27 @@
           <p><strong>Contexto de industria:</strong> en 2026 la IA de voz para pedidos telefónicos ya es infraestructura estándar en pizza/QSR — McDonald's, Wendy's, Taco Bell, Burger King, y el propio Domino's (vía ConverseNow) ya la usan en EE.UU., con +26% en ingresos por línea telefónica reportado en la industria.</p>
         </div>
         <div class="field">
-          <p>Domino's tiene 4 canales oficiales para ordenar una pizza: <strong>mostrador, teléfono, aplicación y agregador</strong> (Uber/DiDi/Rappi). Esta idea ataca específicamente el canal de teléfono, que hoy es el que menos datos estructurados genera de los cuatro.</p>
+          <p>Domino's tiene 4 canales oficiales para ordenar una pizza: <strong>mostrador, teléfono, aplicación y agregador</strong> (Uber/DiDi/Rappi). Este componente ataca específicamente el canal de teléfono, que hoy es el que menos datos estructurados genera de los cuatro.</p>
+        </div>
+
+        <h3 class="section-title">Componente B — App + QR de lealtad</h3>
+        <div class="field">
+          <p><strong>No todas las sucursales tienen línea telefónica</strong> — es la razón estructural por la que se necesita un segundo canal de captura de datos que funcione igual en cualquier tienda, sin depender del teléfono: una app con QR de lealtad.</p>
+        </div>
+        <div class="field">
+          <p><strong>Hallazgo clave (compartido con la Idea 3):</strong> Alsea ya opera un programa de lealtad maduro con Starbucks — el cliente escanea un código QR al pagar y acumula "estrellas" canjeables por recompensas. Alsea no necesita construir un sistema de lealtad desde cero para Domino's; ya tiene la capacidad probada en producción con otra de sus marcas. La Idea 3 (kiosko físico) queda en pausa, pero esta base de lealtad/QR se retoma aquí como el componente central de la Idea 1 para capturar datos de mostrador y delivery.</p>
+        </div>
+        <div class="field">
+          <p>Reparto actual del negocio: <strong>~70% delivery / 30% mostrador</strong> (cifra aproximada, varía por región y tienda — dato previo registrado como 60%/40%, se actualiza con esta nota más reciente de Luis).</p>
+        </div>
+        <div class="field">
+          <p><strong>Las promociones varían por región y distrito</strong> — la app debe poder segmentar y mostrar promociones distintas según la tienda/región/distrito del cliente, no una promoción única a nivel nacional.</p>
+        </div>
+        <div class="field">
+          <p><strong>Campaña de adopción contemplada:</strong> la idea es promover activamente el uso de la app entre los clientes para que empiecen a pedir por ese canal — hoy gran parte del volumen no pasa por la app propia, sino por agregadores, mostrador o teléfono, y sin adopción no hay dato de cliente que capturar por esta vía.</p>
+        </div>
+        <div class="field">
+          <p><strong>Fuente de datos adicional — Qualtrix:</strong> existe una plataforma llamada Qualtrix que reúne datos de desempeño de tienda, similar a los reviews de Google, pero más susceptible a manipulación. Es una señal complementaria sobre la operación de cada tienda, con menor confiabilidad que un dato transaccional directo — relevante también para la futura Idea 6 (análisis de sentimiento).</p>
         </div>
       </div>
     </div>
@@ -537,18 +558,28 @@
           <p>Se pierde la oportunidad de construir una base de clientes para marketing dirigido y promociones personalizadas (afecta AWO y NPS). El problema es de <strong>proceso</strong>, no solo de tecnología: cualquier solución que dependa de que el humano escriba manualmente tendrá la misma falla.</p>
         </div>
         <div class="field">
-          <p>Dificultades adicionales: depende de negociar acceso/integración con el proveedor tercerizado actual; cumplimiento de protección de datos personales (aviso de privacidad, consentimiento de grabación); el salto a reemplazo total (fase larga) implica mayor costo, integración y riesgo que la fase híbrida.</p>
+          <p><strong>El call center por sí solo no cubre el 100% de la red:</strong> las sucursales sin línea telefónica quedan fuera del alcance de ese componente, lo que limita cuánta captura de datos se puede lograr solo con IA de voz — de ahí que se necesite el componente de app+QR en paralelo, no como alternativa sino como complemento.</p>
         </div>
-        <div class="placeholder">En espera de que Luis confirme con su jefe: (1) si Alsea puede exigir/negociar esta tecnología con el call center tercerizado actual o si implicaría cambiar de proveedor, y (2) cómo cubre hoy Alsea el tema de protección de datos personales en las llamadas.</div>
+        <div class="field">
+          <p><strong>La adopción de la app propia hoy es baja</strong> frente al volumen total (mucho pasa por agregadores, mostrador o teléfono) — sin una campaña activa de adopción, el componente app+QR no genera suficiente dato de cliente para ser útil.</p>
+        </div>
+        <div class="field">
+          <p><strong>La segmentación de promociones por región/distrito no es un problema resuelto hoy:</strong> se requiere que la app soporte reglas de promoción distintas por tienda/zona, lo cual añade complejidad técnica frente a un modelo de promoción única nacional.</p>
+        </div>
+        <div class="field">
+          <p>Dificultades adicionales del call center: depende de negociar acceso/integración con el proveedor tercerizado actual; cumplimiento de protección de datos personales (aviso de privacidad, consentimiento de grabación); el salto a reemplazo total (fase larga) implica mayor costo, integración y riesgo que la fase híbrida.</p>
+        </div>
+        <div class="placeholder">En espera de que Luis confirme con su jefe: (1) si Alsea puede exigir/negociar esta tecnología con el call center tercerizado actual o si implicaría cambiar de proveedor; (2) cómo cubre hoy Alsea el tema de protección de datos personales en las llamadas; (3) coordinación real con el equipo de TI de Starbucks/Alsea para adaptar su infraestructura de QR a Domino's; y (4) confirmar la cifra de reparto delivery/mostrador (70/30 vs. 60/40) y qué tanto se usa hoy la plataforma Qualtrix.</div>
       </div>
     </div>
 
     <div class="stage stage-3">
       <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
       <div class="stage-body">
+        <h3 class="section-title">Componente A — Call Center</h3>
         <p style="margin:0 0 12px 0;">La idea se plantea en dos etapas: en el <strong>corto plazo</strong>, la IA solo captura y estructura los datos de la llamada (teléfono, nombre, dirección, pedido) para que el operador se concentre únicamente en tomar el pedido — modelo <strong>híbrido</strong>, sin perder el trato humano. En el <strong>largo plazo</strong>, la meta es que la IA reemplace por completo la atención telefónica.</p>
 
-        <h3 class="section-title">Hoja de ruta por etapas</h3>
+        <h3 class="section-title">Hoja de ruta por etapas (Call Center)</h3>
         <table class="vendor-table">
           <tr><th>Etapa</th><th>Objetivo</th><th>Modelo</th><th>Plazo estimado</th></tr>
           <tr>
@@ -630,6 +661,61 @@
             <td>Opción de bajo costo para pilotear rápido; validar si escala al volumen de Alsea</td>
           </tr>
         </table>
+
+        <h3 class="section-title">Componente B — App + QR de lealtad</h3>
+        <p style="margin:0 0 12px 0;">Reutilizar el mecanismo de QR-y-puntos que Alsea ya opera en producción con Starbucks, en vez de construir un sistema de lealtad desde cero para Domino's. El objetivo inmediato es capturar datos del cliente en mostrador y delivery — los dos canales que hoy generan el 100% de las ventas — y usarlos para venta sugestiva personalizada.</p>
+
+        <h3 class="section-title">Hoja de ruta por etapas (App + QR)</h3>
+        <table class="vendor-table">
+          <tr><th>Etapa</th><th>Objetivo</th><th>Modelo</th><th>Plazo estimado</th></tr>
+          <tr>
+            <td>Fase 1 — Corto plazo</td>
+            <td>Adaptar el modelo de QR-y-puntos de Starbucks Rewards México a la app de Domino's, con promociones segmentables por región/distrito, activo en delivery y mostrador</td>
+            <td>Reutilización de infraestructura interna de Alsea (no desarrollo desde cero)</td>
+            <td>0–6 meses</td>
+          </tr>
+          <tr>
+            <td>Fase 2 — Mediano plazo</td>
+            <td>Campaña activa de adopción de la app (incentivos por primer uso, promoción en tienda) + capa de IA sobre los datos de puntos/compra para venta sugestiva personalizada (ej. "ya que pides X, prueba Y")</td>
+            <td>Motor de recomendación sobre datos de lealtad + campaña de marketing</td>
+            <td>6–12 meses</td>
+          </tr>
+        </table>
+        <div class="placeholder">La Fase 3 de este componente (kiosko físico en mostrador) no se desarrolla dentro de la Idea 1 — queda documentada en la Idea 3, en pausa, como una posible extensión futura una vez que el componente app+QR esté validado aquí.</div>
+
+        <h3 class="section-title">Reutilizar infraestructura interna (Starbucks) vs. plataforma externa de lealtad</h3>
+        <table class="vendor-table">
+          <tr><th>Dimensión</th><th>Reutilizar modelo Starbucks (recomendado)</th><th>Plataforma externa de lealtad</th></tr>
+          <tr>
+            <td>Costo</td>
+            <td>Principalmente esfuerzo de adaptación interna (equipo de TI de Alsea); sin licencia externa recurrente</td>
+            <td>$5.99–$69 USD/mes en soluciones ligeras tipo QR (BonusQR, TurboPush, Stamp Me) hasta $500–$2,000+ USD/mes en soluciones enterprise con integración a POS</td>
+          </tr>
+          <tr>
+            <td>Tiempo de implementación</td>
+            <td>Más rápido — el mecanismo (QR, acumulación, canje) ya existe y está probado en Starbucks México</td>
+            <td>Semanas (soluciones ligeras) a meses (enterprise con integración POS)</td>
+          </tr>
+          <tr>
+            <td>Riesgo</td>
+            <td>Bajo — es tecnología ya validada en producción por la misma empresa</td>
+            <td>Medio — depende de un proveedor externo nuevo, con su propia curva de integración</td>
+          </tr>
+          <tr>
+            <td>Cuándo conviene la alternativa externa</td>
+            <td>—</td>
+            <td>Si el equipo de TI de Starbucks/Alsea no puede ceder capacidad para adaptar el sistema a Domino's en el corto plazo</td>
+          </tr>
+        </table>
+
+        <div class="field">
+          <h4>Requisitos de diseño específicos</h4>
+          <ul>
+            <li><strong>Motor de promociones segmentado:</strong> debe soportar reglas distintas por región/distrito, no un catálogo único nacional.</li>
+            <li><strong>Campaña de adopción:</strong> mecanismos posibles incluyen beneficio exclusivo por primer uso de la app, comunicación en el recibo/empaque físico invitando a escanear el QR, y capacitación al personal de mostrador para promoverlo activamente en cada venta.</li>
+            <li><strong>Cobertura sin teléfono:</strong> priorizar el rollout de este componente en las tiendas que no tienen línea telefónica, ya que ahí no hay alternativa de captura de datos por call center.</li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -637,10 +723,10 @@
       <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
       <div class="stage-body">
         <div class="field">
-          <p><strong>Dónde impacta:</strong> AWO (recompra vía promociones dirigidas) y NPS (personalización). Construye base de CRM, aprovecha infraestructura existente en la fase híbrida (bajo capex), y reduce la dependencia de que el operador cumpla un proceso manual.</p>
+          <p><strong>Dónde impacta:</strong> AWO (recompra vía promociones dirigidas y venta sugestiva) y NPS (personalización). Construye base de CRM combinando dos canales de captura (teléfono + app/QR), aprovecha infraestructura existente en ambos componentes (bajo capex), cierra la brecha de cobertura de las tiendas sin línea telefónica, y reduce la dependencia de procesos manuales.</p>
         </div>
         <div class="econ-box">
-          <h4>Impacto económico — plantilla (benchmark de industria, pendiente de datos reales de Alsea)</h4>
+          <h4>Impacto económico — Componente A (Call Center) — plantilla benchmark, pendiente de datos reales</h4>
           <div class="formula">Incremento de ventas anual ≈ (# llamadas/mes × 12 × % capturable × % conversión de promoción) × ticket promedio × frecuencia de recompra anual</div>
           <table class="econ-table">
             <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
@@ -651,6 +737,23 @@
             <tr><td>% conversión de promoción dirigida</td><td class="pending">Pendiente</td><td>Benchmark de marketing / piloto</td></tr>
             <tr><td>Costo anual de la solución (híbrido o reemplazo total, según fase)</td><td class="pending">Pendiente</td><td>Cotización proveedor según fase</td></tr>
             <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente</td><td>Ingreso incremental − costo de la solución</td></tr>
+          </table>
+        </div>
+        <div class="econ-box">
+          <h4>Impacto económico — Componente B (App + QR) — plantilla benchmark, pendiente de datos reales</h4>
+          <div class="formula">Incremento de ventas anual = ticket promedio × % incremento por venta sugestiva × # transacciones (app) mensuales × 12
+Alcance adicional de cobertura = # tiendas sin línea telefónica que solo podrían capturar dato vía app/QR</div>
+          <table class="econ-table">
+            <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
+            <tr><td>Incremento en ticket promedio con venta sugestiva personalizada</td><td>+15% a +30%</td><td>Benchmark de industria QSR, 2026 — usar de referencia hasta tener dato real de Alsea</td></tr>
+            <tr><td>Ticket promedio actual</td><td>~$249 MXN</td><td>Dato interno Alsea — cifra representativa, varía por región</td></tr>
+            <tr><td>Reparto delivery / mostrador</td><td>~70% / 30%</td><td>Dato interno Alsea — cifra aproximada, varía por región y tienda</td></tr>
+            <tr><td>% de transacciones que hoy pasan por la app propia (baseline de adopción)</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
+            <tr><td>Meta de adopción de app tras campaña</td><td class="pending">Pendiente</td><td>Definir con marketing / piloto</td></tr>
+            <tr><td># tiendas sin línea telefónica (alcance adicional del componente B)</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
+            <tr><td>Costo de adaptar el sistema de puntos (Fase 1)</td><td class="pending">Pendiente</td><td>Estimar con equipo de TI de Alsea/Starbucks</td></tr>
+            <tr><td>Costo de campaña de adopción de app</td><td class="pending">Pendiente</td><td>Estimar con marketing</td></tr>
+            <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente</td><td>Ingreso incremental − costo de implementación y campaña</td></tr>
           </table>
         </div>
       </div>
@@ -833,6 +936,7 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual total ÷ 12)</
     <div class="stage stage-1">
       <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
       <div class="stage-body">
+        <div class="placeholder"><strong>Nota de alcance (julio 2026):</strong> el componente de lealtad/QR (Fase 1-2 de esta idea, reutilizando el modelo Starbucks) se retomó dentro de la Idea 1 como su "Componente B", ya que resuelve directamente el problema de cobertura del call center en tiendas sin teléfono. Esta Idea 3 queda en pausa y, si se reactiva, se enfocaría específicamente en el kiosko físico de mostrador (antes Fase 3) como extensión del trabajo ya hecho en la Idea 1.</div>
         <div class="field">
           <p>La app de Domino's en México es un desarrollo local (no comparte plataforma con Domino's global) y hoy solo permite hacer pedidos — no tiene puntos ni rewards. Hoy existen cupones que se entregan al llevar las pizzas y promociones de mostrador, pero nada digital ni acumulable en la app.</p>
         </div>
@@ -840,7 +944,7 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual total ÷ 12)</
           <p><strong>Hallazgo clave:</strong> Alsea ya opera un programa de lealtad maduro con Starbucks: el cliente escanea un código QR al pagar (con tarjeta registrada o en caja) y acumula "estrellas" canjeables por recompensas. Alsea no necesita construir un sistema de lealtad desde cero para Domino's — ya tiene la capacidad probada en producción con otra de sus marcas.</p>
         </div>
         <div class="field">
-          <p>Reparto actual del negocio: <strong>60% delivery / 40% mostrador</strong>. En total hay 4 canales oficiales para ordenar: mostrador, teléfono, aplicación y agregador (Uber/DiDi/Rappi) — esta idea se enfoca en mostrador y app.</p>
+          <p>Reparto actual del negocio: <strong>~70% delivery / 30% mostrador</strong> (cifra aproximada, varía por región y tienda — actualizada desde el dato previo de 60%/40%). En total hay 4 canales oficiales para ordenar: mostrador, teléfono, aplicación y agregador (Uber/DiDi/Rappi) — esta idea se enfoca en mostrador y app.</p>
         </div>
         <div class="field">
           <p><strong>Segmentación de tiendas relevante para el kiosko (Fase 3):</strong> existen tiendas "express" sin comedor, ubicadas en plazas comerciales, con menú más limitado y alto tráfico peatonal; tiendas "completas" con comedor, mayor variedad de menú y servicio a domicilio; y tiendas completas sin servicio a domicilio. Las tiendas express (alto tráfico, sin dine-in) son probablemente el mejor candidato para pilotear el kiosko físico.</p>
