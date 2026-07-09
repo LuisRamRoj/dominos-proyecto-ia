@@ -156,6 +156,17 @@
   .badge-flagship{background:#fdecec;color:var(--red);}
   .badge-quickwin{background:#fef4e6;color:var(--amber);}
   .badge-espera{background:#fef4e6;color:var(--amber);}
+  .badge-foco{background:var(--blue);color:#fff;}
+  .badge-pausa{background:#eef1f4;color:var(--muted);}
+  .focus-banner{
+    background:#eaf4fb;
+    border:1px solid #bfe0f2;
+    border-radius:10px;
+    padding:14px 18px;
+    margin-bottom:20px;
+    font-size:13.5px;
+  }
+  .focus-banner strong{color:var(--blue);}
   .field{
     background:#fafbfc;
     border:1px solid var(--border);
@@ -331,14 +342,17 @@
 <div class="container">
 
   <section class="overview">
+    <div class="focus-banner">
+      <strong>Foco actual del proyecto (a partir de julio 2026):</strong> el proyecto se concentra en profundizar las ideas 1 (Call Center) y 2 (RFID Inventario) hasta el nivel de detalle necesario para la evaluación final. Las ideas 3, 4 y 5 quedan documentadas pero en pausa; 6 y 7 siguen en espera de información. Próximo paso: mapear la hoja de ruta de Idea 2 con los puntos de impacto positivo, y seguir con Idea 1.
+    </div>
     <h2>Mapa rápido — costos vs. ventas</h2>
     <table class="overview-table">
       <tr><th>Idea</th><th>Eje que ataca</th><th>Estatus</th></tr>
-      <tr><td>1. Call center con captura de datos</td><td>Aumento de ventas (marketing dirigido)</td><td>En desarrollo profundo</td></tr>
-      <tr><td>2. RFID en inventarios</td><td>Reducción de costos (mermas, quiebres de stock)</td><td>En desarrollo profundo</td></tr>
-      <tr><td>3. Kioskos con reconocimiento vía app</td><td>Aumento de ventas (upsell, frecuencia)</td><td>En desarrollo profundo</td></tr>
-      <tr><td>4. Pantallas de mostrador interactivas</td><td>Reducción de costos (capacitación, errores)</td><td>Preliminar — quick win</td></tr>
-      <tr><td>5. Balanceo dinámico de repartidores</td><td>Ambos: costos (repartidores ociosos) y ventas (demanda capturada)</td><td>En desarrollo profundo — flagship</td></tr>
+      <tr><td>1. Call center con captura de datos</td><td>Aumento de ventas (marketing dirigido)</td><td>★ Foco principal del proyecto</td></tr>
+      <tr><td>2. RFID en inventarios</td><td>Reducción de costos (mermas, quiebres de stock)</td><td>★ Foco principal del proyecto</td></tr>
+      <tr><td>3. Kioskos con reconocimiento vía app</td><td>Aumento de ventas (upsell, frecuencia)</td><td>En pausa — foco en ideas 1 y 2</td></tr>
+      <tr><td>4. Pantallas de mostrador interactivas</td><td>Reducción de costos (capacitación, errores)</td><td>En pausa — foco en ideas 1 y 2</td></tr>
+      <tr><td>5. Balanceo dinámico de repartidores</td><td>Ambos: costos (repartidores ociosos) y ventas (demanda capturada)</td><td>En pausa — foco en ideas 1 y 2</td></tr>
       <tr><td>6. Análisis de sentimiento de feedback del cliente</td><td>Aumento de ventas / NPS (retención, líneas de acción por tienda-distrito)</td><td>En espera de información</td></tr>
       <tr><td>7. Asistente GenAI para gerentes de tienda</td><td>Reducción de costos (tiempo administrativo del gerente)</td><td>En espera de información</td></tr>
     </table>
@@ -361,7 +375,7 @@
         <h2>Idea 1 · Call Center con captura automática de datos</h2>
         <p class="tagline">Corto plazo: liberar al operador de capturar datos manualmente. Largo plazo: la IA reemplaza por completo la atención telefónica.</p>
       </div>
-      <span class="badge badge-desarrollo">En desarrollo profundo</span>
+      <span class="badge badge-foco">★ Foco principal del proyecto</span>
     </div>
 
     <div class="stage stage-1">
@@ -372,6 +386,9 @@
         </div>
         <div class="field">
           <p><strong>Contexto de industria:</strong> en 2026 la IA de voz para pedidos telefónicos ya es infraestructura estándar en pizza/QSR — McDonald's, Wendy's, Taco Bell, Burger King, y el propio Domino's (vía ConverseNow) ya la usan en EE.UU., con +26% en ingresos por línea telefónica reportado en la industria.</p>
+        </div>
+        <div class="field">
+          <p>Domino's tiene 4 canales oficiales para ordenar una pizza: <strong>mostrador, teléfono, aplicación y agregador</strong> (Uber/DiDi/Rappi). Esta idea ataca específicamente el canal de teléfono, que hoy es el que menos datos estructurados genera de los cuatro.</p>
         </div>
       </div>
     </div>
@@ -493,7 +510,7 @@
             <tr><td>Incremento en ingresos por línea telefónica con IA de voz</td><td>+26%</td><td>Benchmark de industria (pizza/QSR, 2026) — usar de referencia hasta tener dato real de Alsea</td></tr>
             <tr><td># llamadas mensuales al call center</td><td class="pending">Pendiente</td><td>Pedir a call center tercerizado</td></tr>
             <tr><td>% de llamadas capturables como dato de cliente</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
-            <tr><td>Ticket promedio de compra</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
+            <tr><td>Ticket promedio de compra</td><td>~$249 MXN</td><td>Dato interno Alsea — cifra representativa, varía por región</td></tr>
             <tr><td>% conversión de promoción dirigida</td><td class="pending">Pendiente</td><td>Benchmark de marketing / piloto</td></tr>
             <tr><td>Costo anual de la solución (híbrido o reemplazo total, según fase)</td><td class="pending">Pendiente</td><td>Cotización proveedor según fase</td></tr>
             <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente</td><td>Ingreso incremental − costo de la solución</td></tr>
@@ -510,7 +527,7 @@
         <h2>Idea 2 · RFID / IoT para inventarios</h2>
         <p class="tagline">Visibilidad en tiempo real de entradas/salidas de producto para reducir mermas y habilitar forecasting</p>
       </div>
-      <span class="badge badge-desarrollo">En desarrollo profundo</span>
+      <span class="badge badge-foco">★ Foco principal del proyecto</span>
     </div>
 
     <div class="stage stage-1">
@@ -518,6 +535,9 @@
       <div class="stage-body">
         <div class="field">
           <p>El control de inventario hoy es manual. Domino's es su propio distribuidor: hay productos que se entregan individuales, y otros (masa, cajas de queso) que llegan en caja/lote con varios productos juntos.</p>
+        </div>
+        <div class="field">
+          <p><strong>Patrón de demanda semanal:</strong> las ventas son menores de lunes a miércoles y mayores de jueves a domingo. Este patrón es un insumo directo para el modelo de forecasting que habilitaría RFID/IoT — hoy no se aprovecha porque el control es manual.</p>
         </div>
       </div>
     </div>
@@ -630,7 +650,7 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
         <h2>Idea 3 · Kioskos con reconocimiento de cliente</h2>
         <p class="tagline">Reutilizar el modelo de lealtad de Starbucks (otra marca de Alsea) para Domino's, y sumarle una capa de IA de venta sugestiva</p>
       </div>
-      <span class="badge badge-desarrollo">En desarrollo profundo</span>
+      <span class="badge badge-pausa">En pausa — foco en ideas 1 y 2</span>
     </div>
 
     <div class="stage stage-1">
@@ -643,7 +663,10 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
           <p><strong>Hallazgo clave:</strong> Alsea ya opera un programa de lealtad maduro con Starbucks: el cliente escanea un código QR al pagar (con tarjeta registrada o en caja) y acumula "estrellas" canjeables por recompensas. Alsea no necesita construir un sistema de lealtad desde cero para Domino's — ya tiene la capacidad probada en producción con otra de sus marcas.</p>
         </div>
         <div class="field">
-          <p>Reparto actual del negocio: <strong>60% delivery / 40% mostrador</strong>.</p>
+          <p>Reparto actual del negocio: <strong>60% delivery / 40% mostrador</strong>. En total hay 4 canales oficiales para ordenar: mostrador, teléfono, aplicación y agregador (Uber/DiDi/Rappi) — esta idea se enfoca en mostrador y app.</p>
+        </div>
+        <div class="field">
+          <p><strong>Segmentación de tiendas relevante para el kiosko (Fase 3):</strong> existen tiendas "express" sin comedor, ubicadas en plazas comerciales, con menú más limitado y alto tráfico peatonal; tiendas "completas" con comedor, mayor variedad de menú y servicio a domicilio; y tiendas completas sin servicio a domicilio. Las tiendas express (alto tráfico, sin dine-in) son probablemente el mejor candidato para pilotear el kiosko físico.</p>
         </div>
       </div>
     </div>
@@ -755,8 +778,8 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
           <table class="econ-table">
             <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
             <tr><td>Incremento en ticket promedio con kioskos/personalización</td><td>+15% a +30%</td><td>Benchmark de industria QSR, 2026 — usar de referencia hasta tener dato real de Alsea</td></tr>
-            <tr><td>Ticket promedio actual</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
-            <tr><td># transacciones mensuales por tienda (mostrador y app)</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
+            <tr><td>Ticket promedio actual</td><td>~$249 MXN</td><td>Dato interno Alsea — cifra representativa, varía por región</td></tr>
+            <tr><td># transacciones semanales por tienda (todos los canales)</td><td>~1,200</td><td>Dato interno Alsea — cifra representativa, varía por región</td></tr>
             <tr><td># tiendas piloto</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
             <tr><td>Costo de adaptar el sistema de puntos (Fase 1)</td><td class="pending">Pendiente</td><td>Estimar con equipo de TI de Alsea/Starbucks</td></tr>
             <tr><td>Costo de kiosko por tienda (Fase 3, si aplica)</td><td class="pending">Pendiente</td><td>Cotización Toast / GRUBBRR / Otter</td></tr>
@@ -774,7 +797,7 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
         <h2>Idea 4 · Pantallas de mostrador más interactivas</h2>
         <p class="tagline">Rediseño de UX del sistema de toma de pedido para reducir tiempo y errores</p>
       </div>
-      <span class="badge badge-quickwin">Preliminar — quick win</span>
+      <span class="badge badge-pausa">En pausa — foco en ideas 1 y 2</span>
     </div>
 
     <div class="stage stage-1">
@@ -850,7 +873,7 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
         <h2>Idea 5 · Balanceo dinámico de repartidores entre tiendas</h2>
         <p class="tagline">Redirigir capacidad de entrega hacia tiendas saturadas usando repartidores ociosos de tiendas cercanas</p>
       </div>
-      <span class="badge badge-flagship">En desarrollo profundo — flagship</span>
+      <span class="badge badge-pausa">En pausa — foco en ideas 1 y 2</span>
     </div>
 
     <div class="stage stage-1">
@@ -862,6 +885,15 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
         <div class="field">
           <p>Las tiendas se manejan por <strong>polígonos</strong>: cada una cubre un radio definido y así se decide a qué distancia debe estar la siguiente tienda. No hay una distancia exacta confirmada, pero las tiendas no están muy dispersas entre sí.</p>
         </div>
+        <div class="field">
+          <p><strong>Patrón de demanda semanal:</strong> las ventas son menores de lunes a miércoles y mayores de jueves a domingo — es en ese segundo bloque de días donde más probablemente ocurre la saturación de repartidores que esta idea busca resolver.</p>
+        </div>
+        <div class="field">
+          <p><strong>Alcance por tipo de tienda:</strong> existen tiendas "express" sin comedor (menú limitado, en plazas comerciales), tiendas "completas" con comedor y servicio a domicilio, y tiendas completas sin servicio a domicilio. Esta idea solo aplica a las tiendas con servicio a domicilio activo — las express y las completas sin domicilio quedan fuera del alcance.</p>
+        </div>
+        <div class="field">
+          <p><strong>Domino's ya tiene convenio con los agregadores</strong> (Uber, DiDi, Rappi) en 3 modalidades: (1) "full agregador" — el agregador se lleva la orden completa y Domino's se desentiende de la entrega; (2) Domino's paga al agregador por aparecer en su plataforma, pero es el propio servicio a domicilio de Domino's quien entrega el pedido; (3) modalidad por confirmar — pendiente de investigar, posiblemente sea el modelo donde Domino's usa la flota de repartidores del agregador para sus propios pedidos (lo más parecido a la "Opción B" de esta idea).</p>
+        </div>
       </div>
     </div>
 
@@ -869,7 +901,7 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
       <div class="stage-head"><span class="stage-num">2</span><h3>Problema</h3></div>
       <div class="stage-body">
         <div class="field">
-          <p>En picos de demanda hay tiendas saturadas donde los repartidores no dan abasto y se pierden ventas, mientras tiendas cercanas de baja demanda tienen repartidores ociosos ya pagados.</p>
+          <p>En picos de demanda (jueves a domingo, según el patrón de ventas) hay tiendas saturadas donde los repartidores no dan abasto y se pierden ventas, mientras tiendas cercanas de baja demanda tienen repartidores ociosos ya pagados.</p>
         </div>
         <div class="field">
           <p><strong>El reto no es solo técnico, es cultural:</strong> hoy no existe ningún mecanismo, ni siquiera informal, donde una tienda le pida ayuda a otra. El pensamiento general es "mi venta, mi problema". Cualquier solución tiene que resolver el incentivo (por qué le convendría a un gerente prestar a su repartidor), no solo la tecnología de notificación.</p>
@@ -883,7 +915,7 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
     <div class="stage stage-3">
       <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
       <div class="stage-body">
-        <p style="margin:0 0 12px 0;">Conviene evaluar dos rutas en paralelo, porque resuelven el problema de forma distinta: <strong>Opción A</strong> balancea repartidores entre tiendas propias (requiere resolver el problema cultural de incentivos); <strong>Opción B</strong> usa capacidad de reparto externa bajo demanda como "válvula de escape" en picos, sin depender de que las tiendas se ayuden entre sí.</p>
+        <p style="margin:0 0 12px 0;">Conviene evaluar dos rutas en paralelo, porque resuelven el problema de forma distinta: <strong>Opción A</strong> balancea repartidores entre tiendas propias (requiere resolver el problema cultural de incentivos); <strong>Opción B</strong> usa capacidad de reparto externa bajo demanda como "válvula de escape" en picos, apoyándose en el convenio que Domino's ya tiene con Uber/DiDi/Rappi, sin depender de que las tiendas se ayuden entre sí.</p>
 
         <h3 class="section-title">Hoja de ruta por etapas</h3>
         <table class="vendor-table">
@@ -935,28 +967,34 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
 
         <h3 class="section-title">Proveedores / precedentes identificados (Opción B)</h3>
         <table class="vendor-table">
-          <tr><th>Proveedor</th><th>Cobertura</th><th>Modelo</th><th>Por qué encaja</th></tr>
+          <tr><th>Proveedor</th><th>Relación con Domino's hoy</th><th>Modelo</th><th>Por qué encaja</th></tr>
           <tr>
-            <td>Uber Direct</td>
-            <td>México — ya opera con restaurantes y PyMEs</td>
-            <td>Reparto bajo demanda de "etiqueta blanca" (no marketplace); ~2.5% + $0.29 USD de tarifa de procesamiento</td>
-            <td>El pedido sigue siendo del canal propio de Domino's (app/call center), solo se subcontrata el último tramo — mucho más barato que empujar el pedido a la app de Uber Eats</td>
+            <td>Uber / DiDi / Rappi — Modalidad 1 (full agregador)</td>
+            <td>Convenio ya existente</td>
+            <td>El agregador toma la orden completa y Domino's se desentiende de la entrega</td>
+            <td>No sirve para el problema de saturación de tiendas propias — es un canal de venta aparte, no capacidad de desahogo</td>
           </tr>
           <tr>
-            <td>DoorDash Drive</td>
-            <td>Principalmente EE.UU. — referencia de modelo, presencia menor en México</td>
-            <td>Tarifa plana por entrega, sin comisión porcentual</td>
-            <td>Útil como referencia de precio de mercado para negociar con proveedores locales</td>
+            <td>Uber / DiDi / Rappi — Modalidad 2 (presencia pagada)</td>
+            <td>Convenio ya existente</td>
+            <td>Domino's paga por aparecer en la plataforma del agregador, pero entrega con su propio servicio a domicilio</td>
+            <td>Tampoco resuelve la saturación — sigue dependiendo de los repartidores propios</td>
           </tr>
           <tr>
-            <td>Rappi Cargo / DiDi (línea empresarial)</td>
-            <td>México — plataformas dominantes localmente</td>
-            <td>Por confirmar — el research no encontró tarifas públicas de su modelo de flota bajo demanda tipo "etiqueta blanca"</td>
-            <td>Vale la pena cotizar directamente dado que ya tienen la mayor flota de repartidores activa en México</td>
+            <td>Uber / DiDi / Rappi — Modalidad 3 (por confirmar)</td>
+            <td>Pendiente de investigar con el equipo de Domino's</td>
+            <td>Hipótesis: Domino's usaría la flota de repartidores del agregador para entregar pedidos que entran por el canal propio (app/teléfono) — el equivalente a un modelo de "etiqueta blanca"</td>
+            <td><strong>Es la modalidad que realmente resolvería la Opción B</strong> — hay que confirmar si existe y en qué términos</td>
+          </tr>
+          <tr>
+            <td>Uber Direct (referencia externa)</td>
+            <td>Sin relación confirmada con Alsea — es benchmark de mercado</td>
+            <td>Reparto bajo demanda de "etiqueta blanca"; ~2.5% + $0.29 USD de tarifa de procesamiento</td>
+            <td>Útil como punto de comparación de precio si la Modalidad 3 con los agregadores actuales no existe o no conviene</td>
           </tr>
         </table>
 
-        <div class="placeholder">Pendiente de profundizar: confirmar si el sistema de ruteo actual expone datos en tiempo real vía API (necesario para la Opción A), y cotizar formalmente con Uber Direct, Rappi Cargo y DiDi para la Opción B.</div>
+        <div class="placeholder">Pendiente de profundizar: (1) confirmar si el sistema de ruteo actual expone datos en tiempo real vía API (necesario para la Opción A); (2) investigar con el equipo de Domino's en qué consiste exactamente la Modalidad 3 del convenio con agregadores, y si sus tarifas ya cotizadas se acercan al modelo de "etiqueta blanca" que necesita la Opción B.</div>
       </div>
     </div>
 
@@ -976,7 +1014,7 @@ Costo evitado (Opción B vs. marketplace) = # pedidos derivados × ticket promed
             <tr><td>Tarifa de reparto "etiqueta blanca" (Uber Direct)</td><td>~2.5% + $0.29 USD por entrega</td><td>Benchmark de industria, México, 2026</td></tr>
             <tr><td>Comisión de marketplace completo (Uber Eats / Rappi)</td><td>25% – 35%</td><td>Benchmark de industria, México, 2026 — referencia de lo que se "filtra" si el pedido se va a un marketplace en vez de resolverse internamente</td></tr>
             <tr><td># pedidos perdidos/mes por saturación (estimado)</td><td class="pending">Pendiente</td><td>Estimar con datos del sistema de ruteo actual</td></tr>
-            <tr><td>Ticket promedio de pedido a domicilio</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
+            <tr><td>Ticket promedio de pedido a domicilio</td><td>~$249 MXN</td><td>Dato interno Alsea — cifra representativa, varía por región</td></tr>
             <tr><td>Costo hora de repartidor</td><td class="pending">Pendiente</td><td>Dato interno RH</td></tr>
             <tr><td>Horas ociosas promedio/día en tiendas de baja demanda</td><td class="pending">Pendiente</td><td>Estimar con datos del sistema de ruteo actual</td></tr>
             <tr><td># tiendas piloto (Alsea, no franquicia)</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
@@ -1120,7 +1158,7 @@ Costo evitado (Opción B vs. marketplace) = # pedidos derivados × ticket promed
 
 </div>
 
-<footer>Última actualización: 3 de julio, 2026 (idea 5 agregada) — Documento vivo, se actualiza conforme avanza la investigación y las conversaciones del proyecto.</footer>
+<footer>Última actualización: 9 de julio, 2026 (foco del proyecto en ideas 1 y 2) — Documento vivo, se actualiza conforme avanza la investigación y las conversaciones del proyecto.</footer>
 
 <script>
   const buttons = document.querySelectorAll('.tab-btn');
