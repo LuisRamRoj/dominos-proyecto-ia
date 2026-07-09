@@ -534,10 +534,25 @@
       <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
       <div class="stage-body">
         <div class="field">
-          <p>El control de inventario hoy es manual. Domino's es su propio distribuidor: hay productos que se entregan individuales, y otros (masa, cajas de queso) que llegan en caja/lote con varios productos juntos.</p>
+          <p>El control de inventario ya no es 100% manual: los gerentes registran el producto en una plataforma móvil desde su teléfono. Domino's es su propio distribuidor: hay productos que se entregan individuales, y otros (masa, cajas de queso) que llegan en caja/lote con varios productos juntos — el empaquetado varía entre bolsas, piezas y cajas, y el registro varía entre kg y pieza según el producto.</p>
         </div>
         <div class="field">
-          <p><strong>Patrón de demanda semanal:</strong> las ventas son menores de lunes a miércoles y mayores de jueves a domingo. Este patrón es un insumo directo para el modelo de forecasting que habilitaría RFID/IoT — hoy no se aprovecha porque el control es manual.</p>
+          <p><strong>3 inventarios por tienda, con cadencia distinta:</strong> se llevan inventarios separados de secos, cooler (refrigerado) y front (mostrador). Además de eso, hay inventario general los jueves y domingo, e inventario diario para los insumos de consumo diario.</p>
+        </div>
+        <div class="field">
+          <p><strong>Ecosistema de Excels ligados al inventario:</strong> tabla de caducidad, tabla de preparación/fermentación, excel de variación de producto y excel de pedido de reabastecimiento — todos separados entre sí. Todo el proceso, desde el registro en la app hasta el llenado de estos Excels, lo lleva a cabo el gerente de tienda.</p>
+        </div>
+        <div class="field">
+          <p><strong>Excel de variación (se manda diario):</strong> compara lo que se pidió contra lo que realmente se usó y calcula el "ideal" para el siguiente pedido. Está sujeto a error humano y solo puede representar la variación de 3 formas: (1) <strong>merma</strong> — producto que se tira sin usar, (2) <strong>mal ingreso</strong> — error al capturar el inventario, y (3) <strong>fuga/robo</strong> de producto por parte de colaboradores.</p>
+        </div>
+        <div class="field">
+          <p><strong>Excel de pedido — cuello de botella semanal:</strong> el pedido de reabastecimiento se arma apoyado en los inventarios diarios, pero solo se puede hacer los <strong>lunes</strong>. No hay margen de error: si el gerente no lo hace ese día, la tienda recibe una multa y corre el riesgo de quedarse sin producto.</p>
+        </div>
+        <div class="field">
+          <p><strong>Caso especial — Domino's Express:</strong> algunas tiendas Express (formato sin comedor, espacio reducido) operan con dos almacenes que funcionan como uno: en tienda solo tienen el producto que van a preparar de inmediato, y en un segundo almacén guardan el resto que no necesitan en el momento.</p>
+        </div>
+        <div class="field">
+          <p><strong>Patrón de demanda semanal:</strong> las ventas son menores de lunes a miércoles y mayores de jueves a domingo. Este patrón es un insumo directo para el modelo de forecasting que habilitaría RFID/IoT — hoy no se aprovecha del todo porque los datos viven repartidos entre la app y los distintos Excels.</p>
         </div>
       </div>
     </div>
@@ -546,10 +561,19 @@
       <div class="stage-head"><span class="stage-num">2</span><h3>Problema</h3></div>
       <div class="stage-body">
         <div class="field">
-          <p>Sin visibilidad en tiempo real hay mermas y quiebres de stock que afectan directo a las tiendas con EBITDA negativo, y no hay datos para hacer forecasting de demanda por tienda. RFID puro no resuelve igual ambos tipos de producto: en las cajas de lote solo se sabe "entró/salió la caja", no el consumo real interno.</p>
+          <p>El problema no es la ausencia total de digitalización — ya existe una app móvil de registro — sino la <strong>fragmentación</strong>: el dato vive disperso entre la app, el excel de variación, el excel de pedido, la tabla de caducidad y la tabla de preparación, sin conectarse entre sí. Eso genera mermas y quiebres de stock que afectan directo a las tiendas con EBITDA negativo, y el gerente no tiene un panorama unificado para decidir.</p>
         </div>
         <div class="field">
-          <p>Otras dificultades: capex de lectores + tags + software; cambio de proceso para personal de tienda (hoy 100% manual); ningún proveedor publica precio por tienda — requiere cotización directa.</p>
+          <p><strong>El excel de variación no distingue causas con confianza:</strong> depende de captura manual y estimaciones después del hecho, así que dos tiendas con la misma variación numérica pueden tener causas completamente distintas (una por fuga, otra por error de captura) y hoy se tratan igual — sin esa distinción, no se puede actuar de forma diferenciada (capacitación vs. control de acceso vs. ajuste de proceso).</p>
+        </div>
+        <div class="field">
+          <p><strong>El pedido de los lunes es un punto único de falla:</strong> al no haber margen de error, cualquier falla humana durante la semana (mal conteo, Excel no actualizado a tiempo) se traduce directo en una multa o en quiebre de stock.</p>
+        </div>
+        <div class="field">
+          <p>RFID puro tampoco resuelve igual los 3 inventarios: en secos y front (piezas/cajas) puede tagearse por unidad, pero en cooler e insumos a granel (registrados en kg) el RFID por sí solo no captura el consumo real — ahí se requiere complementar con sensores de peso/IoT.</p>
+        </div>
+        <div class="field">
+          <p>Otras dificultades: capex de lectores + tags + software; cambio de proceso para personal de tienda (ya usan una app, pero tendrían que adoptar un flujo distinto y posiblemente nuevo hardware); ningún proveedor publica precio por tienda — requiere cotización directa.</p>
         </div>
       </div>
     </div>
@@ -559,7 +583,17 @@
       <div class="stage-body">
         <div class="field">
           <h4>Recomendación técnica — enfoque híbrido</h4>
-          <p><strong>RFID</strong> para ítems individuales, con tageo centralizado en la distribuidora propia de Domino's (más barato y escalable que etiquetar en cada tienda) + <strong>sensores IoT/LoRaWAN</strong> de peso y temperatura en refrigeradores/almacén para insumos a granel de las cajas de lote.</p>
+          <p><strong>RFID</strong> para ítems individuales, con tageo centralizado en la distribuidora propia de Domino's (más barato y escalable que etiquetar en cada tienda), aplicado a los inventarios de <strong>secos y front</strong> + <strong>sensores IoT/LoRaWAN</strong> de peso y temperatura para el inventario de <strong>cooler</strong> e insumos a granel. Ambos alimentan una sola plataforma que reemplaza — o se conecta con — la app móvil que ya usan los gerentes, en vez de sumar un sistema más a los que ya existen.</p>
+        </div>
+
+        <div class="field">
+          <h4>Automatizar el excel de variación (atribución de causa)</h4>
+          <p>Con lecturas en tiempo real (entrada, salida y descarte con timestamp) es posible atribuir la variación a una causa específica con mayor confianza: una salida sin registro de venta ni de descarte apunta a <strong>fuga/robo</strong>; una diferencia entre el conteo del sistema y el conteo físico apunta a <strong>mal ingreso</strong>; y un registro de descarte explícito confirma <strong>merma</strong>. Esto convierte el excel de variación, hoy manual y ambiguo, en un reporte automático y accionable por causa — y es un insumo directo para el objetivo del proyecto de dar líneas de acción claras a Distritales/Regionales.</p>
+        </div>
+
+        <div class="field">
+          <h4>Alerta temprana para el pedido de los lunes</h4>
+          <p>Con visibilidad en tiempo real (en vez de depender del inventario acumulado manual), el sistema puede alertar al gerente días antes del lunes si el consumo real se está desviando del plan de pedido — reduciendo el riesgo de multa por pedido incompleto o tardío, que hoy es un punto único de falla.</p>
         </div>
 
         <h3 class="section-title">Referencias de costo (2026, contexto bodega/retail general)</h3>
@@ -613,7 +647,7 @@
 
         <div class="field">
           <h4>Próximos pasos</h4>
-          <p>Pedir cotización formal a Checkpoint, Senitron y Supportek, especificando: número de tiendas piloto, mezcla de producto individual vs. caja/lote, e integración con la plataforma/Excel maestro que ya construyó el jefe del área.</p>
+          <p>Pedir cotización formal a Checkpoint, Senitron y Supportek, especificando: número de tiendas piloto, mezcla de producto individual vs. caja/lote, integración con la app móvil y la plataforma/Excel maestro que ya construyó el jefe del área, y cómo cubrir el caso especial de las tiendas Express con doble almacén (tageo/sensores en ambas ubicaciones, no solo en la tienda).</p>
         </div>
       </div>
     </div>
@@ -622,20 +656,26 @@
       <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
       <div class="stage-body">
         <div class="field">
-          <p><strong>Dónde impacta:</strong> directo en la métrica de tiendas EBITDA negativo. Además alimenta el pilar de predicción/forecasting de KPIs del objetivo central del proyecto. Reduce mermas y quiebres de stock, habilita forecasting de demanda por tienda, genera alertas automáticas de stock bajo/caducidad.</p>
+          <p><strong>Dónde impacta:</strong> directo en la métrica de tiendas EBITDA negativo. Además alimenta el pilar de predicción/forecasting de KPIs del objetivo central del proyecto. Reduce mermas y quiebres de stock, habilita forecasting de demanda por tienda, genera alertas automáticas de stock bajo/caducidad, distingue causas de variación (merma/mal ingreso/fuga) para dar líneas de acción específicas, y reduce el riesgo de multas por el pedido semanal del lunes.</p>
         </div>
         <div class="econ-box">
           <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
-          <div class="formula">Ahorro anual = merma mensual promedio por tienda × 12 × # tiendas × % de reducción esperada
-Payback (meses) = Costo total de implementación ÷ (Ahorro anual ÷ 12)</div>
+          <div class="formula">Ahorro anual (merma) = merma mensual promedio por tienda × 12 × # tiendas × % de reducción esperada
+Ahorro anual (multas evitadas) = # multas anuales por tienda × costo por multa × # tiendas
+Ahorro anual (tiempo de gerente) = horas/mes reconciliando Excels × 12 × costo hora del gerente × # tiendas
+Payback (meses) = Costo total de implementación ÷ (Ahorro anual total ÷ 12)</div>
           <table class="econ-table">
             <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
             <tr><td>Merma mensual promedio por tienda ($)</td><td class="pending">Pendiente</td><td>Pedir a tu jefe / control de tienda</td></tr>
             <tr><td># tiendas piloto (Alsea, no franquicia)</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
             <tr><td>% reducción de merma esperada</td><td class="pending">Pendiente</td><td>Benchmark industria: 15–20%</td></tr>
+            <tr><td># multas anuales por tienda por pedido incompleto/tardío (lunes)</td><td class="pending">Pendiente</td><td>Pedir a tu jefe / control de tienda</td></tr>
+            <tr><td>Costo por multa</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
+            <tr><td>Horas/mes que el gerente dedica a reconciliar el excel de variación y el excel de pedido</td><td class="pending">Pendiente</td><td>Estimar con gerentes de tienda</td></tr>
+            <tr><td>Costo hora del gerente</td><td class="pending">Pendiente</td><td>Dato interno RH</td></tr>
             <tr><td>Costo de implementación por tienda (lectores + tags + sensores)</td><td class="pending">Pendiente</td><td>Cotización Checkpoint / Senitron / Supportek</td></tr>
             <tr><td>Costo de software / mantenimiento anual</td><td class="pending">Pendiente</td><td>Cotización proveedor</td></tr>
-            <tr class="result-row"><td>Ahorro anual estimado</td><td class="pending">Pendiente</td><td>Fórmula arriba</td></tr>
+            <tr class="result-row"><td>Ahorro anual estimado (total)</td><td class="pending">Pendiente</td><td>Suma de las 3 fórmulas arriba</td></tr>
             <tr class="result-row"><td>Payback estimado (meses)</td><td class="pending">Pendiente</td><td>Benchmark industria: 18–36 meses</td></tr>
           </table>
         </div>
