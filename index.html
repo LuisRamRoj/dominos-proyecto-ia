@@ -537,7 +537,24 @@
           <p><strong>Hallazgo clave (compartido con la Idea 3):</strong> Alsea ya opera un programa de lealtad maduro con Starbucks — el cliente escanea un código QR al pagar y acumula "estrellas" canjeables por recompensas. Alsea no necesita construir un sistema de lealtad desde cero para Domino's; ya tiene la capacidad probada en producción con otra de sus marcas. La Idea 3 (kiosko físico) queda en pausa, pero esta base de lealtad/QR se retoma aquí como el componente central de la Idea 1 para capturar datos de mostrador y delivery.</p>
         </div>
         <div class="field">
-          <p>Reparto actual del negocio: <strong>~70% delivery / 30% mostrador</strong> (cifra aproximada, varía por región y tienda — dato previo registrado como 60%/40%, se actualiza con esta nota más reciente de Luis).</p>
+          <p>Reparto actual del negocio: <strong>~70% delivery / 30% mostrador</strong> a nivel agregado (cifra aproximada, varía por región y tienda — dato previo registrado como 60%/40%, se actualiza con esta nota más reciente de Luis). El dato real por tienda varía mucho más de lo que sugiere el promedio — ver tabla abajo.</p>
+        </div>
+        <div class="field">
+          <h4>Dato real de un distrito (10 tiendas)</h4>
+          <table class="vendor-table">
+            <tr><th>Tienda</th><th>% Delivery</th><th>% de ese delivery vía app propia</th><th>% Mostrador</th></tr>
+            <tr><td>1 · Pedregal</td><td>91.0%</td><td>61.5%</td><td>9.0%</td></tr>
+            <tr><td>2 · Periférico</td><td>87.0%</td><td>65.0%</td><td>12.8%</td></tr>
+            <tr><td>3 · Insurgentes</td><td>82.2%</td><td>59.9%</td><td>17.8%</td></tr>
+            <tr><td>4 · Tepeaca</td><td>79.2%</td><td>56.0%</td><td>20.8%</td></tr>
+            <tr><td>5 · Volcanes</td><td>64.7%</td><td>44.8%</td><td>35.3%</td></tr>
+            <tr><td>6 · Ajusco</td><td>67.4%</td><td>52.4%</td><td>32.6%</td></tr>
+            <tr><td>7 · Azteca</td><td>82.8%</td><td>59.3%</td><td>12.2%</td></tr>
+            <tr><td>8 · Perisur Express</td><td>0% (sin delivery)</td><td>2.8%</td><td>100%</td></tr>
+            <tr><td>9 · La Joya</td><td>58.6%</td><td>45.0%</td><td>41.4%</td></tr>
+            <tr><td>10 · Santa Úrsula</td><td>55.5%</td><td>62.6%</td><td>44.5%</td></tr>
+          </table>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);">Nota: "% de ese delivery vía app propia" mide qué porción del delivery ya pasa por el canal propio (vs. agregadores) — no queda claro todavía si "app olo" se refiere a una app propia identificada internamente con ese nombre o a la plataforma de pedidos Olo (proveedor conocido de la industria restaurantera). <strong>Pendiente confirmar con Luis.</strong> La tienda Express (Perisur) confirma en datos reales lo que ya se documentaba: sin servicio a domicilio, 100% mostrador — es la más urgente para priorizar el componente de app/QR ya que no tiene alternativa de captura por delivery.</p>
         </div>
         <div class="field">
           <p><strong>Las promociones varían por región y distrito</strong> — la app debe poder segmentar y mostrar promociones distintas según la tienda/región/distrito del cliente, no una promoción única a nivel nacional.</p>
@@ -546,7 +563,7 @@
           <p><strong>Campaña de adopción contemplada:</strong> la idea es promover activamente el uso de la app entre los clientes para que empiecen a pedir por ese canal — hoy gran parte del volumen no pasa por la app propia, sino por agregadores, mostrador o teléfono, y sin adopción no hay dato de cliente que capturar por esta vía.</p>
         </div>
         <div class="field">
-          <p><strong>Fuente de datos adicional — Qualtrix:</strong> existe una plataforma llamada Qualtrix que reúne datos de desempeño de tienda, similar a los reviews de Google, pero más susceptible a manipulación. Es una señal complementaria sobre la operación de cada tienda, con menor confiabilidad que un dato transaccional directo — relevante también para la futura Idea 6 (análisis de sentimiento).</p>
+          <p><strong>Fuente de datos adicional — Qualtrix:</strong> existe una plataforma llamada Qualtrix que reúne datos de desempeño de tienda a partir de reseñas del cliente — el Distrital puede verla directamente. Es similar a los reviews de Google, pero más susceptible a manipulación. Es una señal complementaria sobre la operación de cada tienda, con menor confiabilidad que un dato transaccional directo — relevante también para la futura Idea 6 (análisis de sentimiento).</p>
         </div>
       </div>
     </div>
@@ -777,7 +794,19 @@ Alcance adicional de cobertura = # tiendas sin línea telefónica que solo podr�
           <p>El control de inventario ya no es 100% manual: los gerentes registran el producto en una plataforma móvil desde su teléfono. Domino's es su propio distribuidor: hay productos que se entregan individuales, y otros (masa, cajas de queso) que llegan en caja/lote con varios productos juntos — el empaquetado varía entre bolsas, piezas y cajas, y el registro varía entre kg y pieza según el producto.</p>
         </div>
         <div class="field">
-          <p><strong>3 inventarios por tienda, con cadencia distinta:</strong> se llevan inventarios separados de secos, cooler (refrigerado) y front (mostrador). Además de eso, hay inventario general los jueves y domingo, e inventario diario para los insumos de consumo diario.</p>
+          <p><strong>3 inventarios por tienda, con cadencia distinta:</strong> se llevan inventarios separados de secos, cooler (refrigerado) y front (mostrador). Además de eso, hay inventario general los jueves y domingo, y todos los días se hace inventario de insumos <strong>críticos</strong> (no de todo el consumo diario, como se tenía registrado antes).</p>
+        </div>
+        <div class="field">
+          <p><strong>Causa raíz de errores en la requisición de comida:</strong> los pedidos de insumos se calculan a partir del tiempo de vida de la masa ("tiempo de vida de la masa" define cuánto pedir). Los errores en la requisición ocurren por dos vías distintas que hoy no se distinguen: un mal conteo de inventario, o un mal pronóstico de ventas — ambas terminan viéndose igual en el reporte final, aunque requieren solución distinta (una es de captura, la otra es de forecasting).</p>
+        </div>
+        <div class="field">
+          <p><strong>Sistema "Pulse":</strong> el gerente captura ahí los datos de costos e inventario que después reconcilia el Distrital. <em>Pendiente confirmar con Luis</em> si Pulse es el mismo sistema que la "plataforma móvil" mencionada arriba (la que ya usan los gerentes para registrar producto), o si son dos sistemas distintos.</p>
+        </div>
+        <div class="field">
+          <p><strong>App de gerentes/distritales:</strong> además de inventario, la misma app cubre <strong>visitas de costos</strong> y <strong>limpieza</strong> — el alcance de esta idea debe considerar que cualquier cambio a esa app afecta también estos otros dos procesos, no solo inventario.</p>
+        </div>
+        <div class="field">
+          <p><strong>Plataforma "PWR":</strong> los Distritales consolidan ahí los datos que les mandan los gerentes (hoy en Excels separados) para presentar status al Regional y evaluar desempeño de tienda — incluye un balanced scorecard. <em>Pendiente confirmar con Luis</em> si PWR es la misma plataforma que está construyendo su jefe (la que unifica reportes en PDF) o una herramienta ya existente y distinta.</p>
         </div>
         <div class="field">
           <p><strong>Ecosistema de Excels ligados al inventario:</strong> tabla de caducidad, tabla de preparación/fermentación, excel de variación de producto y excel de pedido de reabastecimiento — todos separados entre sí. Todo el proceso, desde el registro en la app hasta el llenado de estos Excels, lo lleva a cabo el gerente de tienda.</p>
@@ -794,6 +823,20 @@ Alcance adicional de cobertura = # tiendas sin línea telefónica que solo podr�
         <div class="field">
           <p><strong>Patrón de demanda semanal:</strong> las ventas son menores de lunes a miércoles y mayores de jueves a domingo. Este patrón es un insumo directo para el modelo de forecasting que habilitaría RFID/IoT — hoy no se aprovecha del todo porque los datos viven repartidos entre la app y los distintos Excels.</p>
         </div>
+
+        <h3 class="section-title">Proceso de auditoría del Distrital (recorrido en tienda)</h3>
+        <div class="field">
+          <p>El Distrital sigue un recorrido de 6 pasos en cada tienda que hoy funciona como control posterior (detecta problemas semanas o incluso un mes después de que ocurren), no en tiempo real:</p>
+          <ul>
+            <li><strong>1. Costos de comida (1 vez al mes):</strong> el Distrital coteja las facturas (CEDIS "DIA" y PEPSI) contra lo capturado por el gerente en el sistema Pulse — sujeto a error humano en la captura. Aquí también se revisan transferencias entre tiendas (sin folio, autorizadas por correo) y facturas pendientes. <strong>Este es el único punto donde se detectan "dobles pedidos" no registrados</strong> — un gerente puede pedir de más sin registrar el excedente y revenderlo por fuera, y solo se descubre hasta este corte mensual.</li>
+            <li><strong>2. PIG report:</strong> desglosa el costo por orden. Órdenes al 100% de costo pueden ser promociones, comida de empleado, remakes o malas órdenes — normales. Órdenes de más de 100% requieren investigación puntual y deben ser las menos posibles (pendiente confirmar si existe una meta de % de costo de comida).</li>
+            <li><strong>3. Órdenes diarias</strong> (zoom del PIG report), solo autorizadas por el gerente: pizzas "portero" (repartidores dan pizza a guardias de caseta para agilizar el paso; 20 firmas de guardias = 1 pizza gratis, sin límite), pizzas empleados (5 sábado + 5 domingo, únicos días autorizados), pizzas remake/mal entregada/equivocada, "pizza lover" (regalo para recuperar o fidelizar clientes), y órdenes por app.</li>
+            <li><strong>4. Reporte de cupones:</strong> incidencias de las órdenes diarias. Remakes tienen meta explícita: máximo 2 por semana. Pizzas portero no tienen límite.</li>
+            <li><strong>5. Módulo de mermas:</strong> se nutre de lo que reporta el gerente en Pulse — mismo punto de error humano que el resto del proceso.</li>
+            <li><strong>6. Órdenes editadas / malas órdenes / reimpresas / canceladas.</strong></li>
+          </ul>
+          <p style="margin-top:8px;">Este recorrido confirma con mucho más detalle la hipótesis de "fuga/robo" del excel de variación: el mecanismo concreto es el <strong>doble pedido no registrado</strong>, y hoy solo se detecta con un mes de retraso, en la reconciliación manual de facturas.</p>
+        </div>
       </div>
     </div>
 
@@ -802,6 +845,12 @@ Alcance adicional de cobertura = # tiendas sin línea telefónica que solo podr�
       <div class="stage-body">
         <div class="field">
           <p>El problema no es la ausencia total de digitalización — ya existe una app móvil de registro — sino la <strong>fragmentación</strong>: el dato vive disperso entre la app, el excel de variación, el excel de pedido, la tabla de caducidad y la tabla de preparación, sin conectarse entre sí. Eso genera mermas y quiebres de stock que afectan directo a las tiendas con EBITDA negativo, y el gerente no tiene un panorama unificado para decidir.</p>
+        </div>
+        <div class="field">
+          <p><strong>El mecanismo de fuga ya es conocido y tiene un punto de detección tardío:</strong> el doble pedido no registrado (gerente pide de más y revende por fuera) solo se descubre en la reconciliación mensual de facturas del Distrital — un mes completo de exposición antes de detectarse. Cualquier solución de captura en tiempo real (RFID/IoT) debería poder marcar automáticamente una recepción de producto que no corresponde a ningún pedido registrado, en vez de esperar al corte mensual.</p>
+        </div>
+        <div class="field">
+          <p><strong>Los errores de requisición mezclan dos causas distintas</strong> (mal conteo de inventario vs. mal pronóstico de ventas) que hoy se ven igual en el reporte — sin distinguirlas, no se puede saber si el problema es de captura (RFID lo resuelve) o de forecasting (necesita el patrón de demanda semanal como insumo, no solo mejor conteo).</p>
         </div>
         <div class="field">
           <p><strong>El excel de variación no distingue causas con confianza:</strong> depende de captura manual y estimaciones después del hecho, así que dos tiendas con la misma variación numérica pueden tener causas completamente distintas (una por fuga, otra por error de captura) y hoy se tratan igual — sin esa distinción, no se puede actuar de forma diferenciada (capacitación vs. control de acceso vs. ajuste de proceso).</p>
@@ -829,6 +878,11 @@ Alcance adicional de cobertura = # tiendas sin línea telefónica que solo podr�
         <div class="field">
           <h4>Automatizar el excel de variación (atribución de causa)</h4>
           <p>Con lecturas en tiempo real (entrada, salida y descarte con timestamp) es posible atribuir la variación a una causa específica con mayor confianza: una salida sin registro de venta ni de descarte apunta a <strong>fuga/robo</strong>; una diferencia entre el conteo del sistema y el conteo físico apunta a <strong>mal ingreso</strong>; y un registro de descarte explícito confirma <strong>merma</strong>. Esto convierte el excel de variación, hoy manual y ambiguo, en un reporte automático y accionable por causa — y es un insumo directo para el objetivo del proyecto de dar líneas de acción claras a Distritales/Regionales.</p>
+        </div>
+
+        <div class="field">
+          <h4>Detección de pedidos duplicados no registrados (en tiempo real)</h4>
+          <p>El mecanismo de fuga ya identificado en el recorrido del Distrital (doble pedido no registrado, detectado hoy hasta la reconciliación mensual de facturas) se puede cerrar cruzando en tiempo real la recepción de producto contra el folio del pedido correspondiente en CEDIS. Cualquier recepción sin folio o sin pedido asociado se marca de inmediato para revisión, en vez de esperar el corte mensual de Costos de comida — mismo principio para transferencias entre tiendas, que hoy se autorizan por correo sin folio.</p>
         </div>
 
         <div class="field">
@@ -896,7 +950,7 @@ Alcance adicional de cobertura = # tiendas sin línea telefónica que solo podr�
       <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
       <div class="stage-body">
         <div class="field">
-          <p><strong>Dónde impacta:</strong> directo en la métrica de tiendas EBITDA negativo. Además alimenta el pilar de predicción/forecasting de KPIs del objetivo central del proyecto. Reduce mermas y quiebres de stock, habilita forecasting de demanda por tienda, genera alertas automáticas de stock bajo/caducidad, distingue causas de variación (merma/mal ingreso/fuga) para dar líneas de acción específicas, y reduce el riesgo de multas por el pedido semanal del lunes.</p>
+          <p><strong>Dónde impacta:</strong> directo en la métrica de tiendas EBITDA negativo. Además alimenta el pilar de predicción/forecasting de KPIs del objetivo central del proyecto. Reduce mermas y quiebres de stock, habilita forecasting de demanda por tienda, genera alertas automáticas de stock bajo/caducidad, distingue causas de variación (merma/mal ingreso/fuga) para dar líneas de acción específicas, reduce el riesgo de multas por el pedido semanal del lunes, y cierra en tiempo real la ventana de un mes que hoy existe entre un doble pedido no registrado y su detección en el corte de Costos de comida del Distrital.</p>
         </div>
         <div class="econ-box">
           <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
@@ -909,8 +963,8 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual total ÷ 12)</
             <tr><td>Merma mensual promedio por tienda ($)</td><td class="pending">Pendiente</td><td>Pedir a tu jefe / control de tienda</td></tr>
             <tr><td># tiendas piloto (Alsea, no franquicia)</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
             <tr><td>% reducción de merma esperada</td><td class="pending">Pendiente</td><td>Benchmark industria: 15–20%</td></tr>
-            <tr><td># multas anuales por tienda por pedido incompleto/tardío (lunes)</td><td class="pending">Pendiente</td><td>Pedir a tu jefe / control de tienda</td></tr>
-            <tr><td>Costo por multa</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
+            <tr><td># multas anuales por tienda por pedido incompleto/tardío (lunes)</td><td class="pending">Pendiente</td><td>No hay dato específico de pedidos extemporáneos — falta preguntarle al Regional</td></tr>
+            <tr><td>Costo por multa</td><td>$1,600 MXN</td><td>Dato interno Alsea (confirmado)</td></tr>
             <tr><td>Horas/mes que el gerente dedica a reconciliar el excel de variación y el excel de pedido</td><td class="pending">Pendiente</td><td>Estimar con gerentes de tienda</td></tr>
             <tr><td>Costo hora del gerente</td><td class="pending">Pendiente</td><td>Dato interno RH</td></tr>
             <tr><td>Costo de implementación por tienda (lectores + tags + sensores)</td><td class="pending">Pendiente</td><td>Cotización Checkpoint / Senitron / Supportek</td></tr>
