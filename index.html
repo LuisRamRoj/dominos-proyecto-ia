@@ -528,6 +528,9 @@
         <div class="field">
           <p>Domino's tiene 4 canales oficiales para ordenar una pizza: <strong>mostrador, teléfono, aplicación y agregador</strong> (Uber/DiDi/Rappi). Este componente ataca específicamente el canal de teléfono, que hoy es el que menos datos estructurados genera de los cuatro.</p>
         </div>
+        <div class="field">
+          <p><strong>Plataforma actual identificada — Net2Phone:</strong> el call center opera hoy sobre Net2Phone, una solución de telefonía en la nube (UCaaS/CCaaS). El reto principal es la alta fluctuación de llamadas entrantes en horas pico (fines de semana y festivos) — esto es lo que hace atractivo un modelo de pago por consumo (ver Posibles soluciones) en vez de personal fijo.</p>
+        </div>
 
         <h3 class="section-title">Componente B — App + QR de lealtad</h3>
         <div class="field">
@@ -563,6 +566,9 @@
           <p><strong>Campaña de adopción contemplada:</strong> la idea es promover activamente el uso de la app entre los clientes para que empiecen a pedir por ese canal — hoy gran parte del volumen no pasa por la app propia, sino por agregadores, mostrador o teléfono, y sin adopción no hay dato de cliente que capturar por esta vía.</p>
         </div>
         <div class="field">
+          <p><strong>Mecanismo de QR propuesto (borrador, pendiente de validar con TI):</strong> el cliente genera un código QR único desde la app móvil; el cajero lo escanea en mostrador usando los <strong>lectores ópticos de cupones que ya existen hoy</strong> (no requeriría hardware nuevo, solo confirmar que esos lectores sí leen un QR desde pantalla de celular); el sistema jala el perfil del cliente automáticamente desde la base de datos central, sin que el cajero teclee nada a mano. Esto complementa — no sustituye — la ruta de reutilizar la infraestructura de lealtad de Starbucks: una cosa es de dónde viene el "motor" de puntos (Starbucks), y otra es cómo se lee el QR en la caja (lectores de cupones existentes).</p>
+        </div>
+        <div class="field">
           <p><strong>Fuente de datos adicional — Qualtrix:</strong> existe una plataforma llamada Qualtrix que reúne datos de desempeño de tienda a partir de reseñas del cliente — el Distrital puede verla directamente. Es similar a los reviews de Google, pero más susceptible a manipulación. Es una señal complementaria sobre la operación de cada tienda, con menor confiabilidad que un dato transaccional directo — relevante también para la futura Idea 6 (análisis de sentimiento).</p>
         </div>
       </div>
@@ -586,7 +592,11 @@
         <div class="field">
           <p>Dificultades adicionales del call center: depende de negociar acceso/integración con el proveedor tercerizado actual; cumplimiento de protección de datos personales (aviso de privacidad, consentimiento de grabación); el salto a reemplazo total (fase larga) implica mayor costo, integración y riesgo que la fase híbrida.</p>
         </div>
-        <div class="placeholder">En espera de que Luis confirme con su jefe: (1) si Alsea puede exigir/negociar esta tecnología con el call center tercerizado actual o si implicaría cambiar de proveedor; (2) cómo cubre hoy Alsea el tema de protección de datos personales en las llamadas; (3) coordinación real con el equipo de TI de Starbucks/Alsea para adaptar su infraestructura de QR a Domino's; y (4) confirmar la cifra de reparto delivery/mostrador (70/30 vs. 60/40) y qué tanto se usa hoy la plataforma Qualtrix.</div>
+        <div class="placeholder">
+          <strong>Junta con Net2Phone (proveedor actual):</strong> desglose mensual exacto de costos (licencias, DIDs, bolsas de minutos); reporte histórico CDR de llamadas entrantes y % de llamadas abandonadas de los últimos 3 meses; vigencia del contrato actual y penalizaciones por terminación anticipada; si las sucursales físicas están integradas como extensiones IP de la misma red o son líneas externas independientes, y si las llamadas se graban hoy.<br><br>
+          <strong>Junta con TI / Base de Datos de Alsea:</strong> cómo se extrae hoy la información de llamadas (API o descargas manuales CSV/Excel); si el POS actual tiene webhooks o compatibilidad con APIs para habilitar pantallas emergentes (Screen Pop) de identificación automática; si los lectores ópticos de mostrador pueden escanear códigos QR desde pantallas de smartphone; qué tan unificadas están las bases de datos de la app móvil y del sistema de pedidos en tienda física; y coordinación con el equipo de TI de Starbucks/Alsea para adaptar su infraestructura de lealtad a Domino's.<br><br>
+          <strong>Con tu jefe / Legal:</strong> si Alsea puede exigir/negociar tecnología nueva con el call center tercerizado actual o si implicaría cambiar de proveedor; cómo cubre hoy Alsea la protección de datos personales en las llamadas.
+        </div>
       </div>
     </div>
 
@@ -679,6 +689,60 @@
           </tr>
         </table>
 
+        <div class="field">
+          <h4>Mecanismo técnico complementario — "Screen Pop"</h4>
+          <p>El conmutador (Net2Phone u otro) se vincula por API al sistema de POS/CRM de Domino's, generando una pantalla emergente en la computadora del agente con el historial del cliente en cuanto entra la llamada. Es el mecanismo concreto que habilita tanto la captura estructurada (Fase 1) como la venta sugestiva en vivo durante la llamada (ver Resultados esperados).</p>
+        </div>
+
+        <h3 class="section-title">Modelo comercial: BPO por costo por minuto vs. agente dedicado</h3>
+        <table class="vendor-table">
+          <tr><th>Modelo</th><th>Cómo funciona</th><th>Costo de referencia</th></tr>
+          <tr>
+            <td>Costo por minuto atendido / esquema compartido</td>
+            <td>Se paga solo por el tiempo aire utilizado — absorbe los picos de fin de semana/festivos sin pagar tiempos muertos entre semana</td>
+            <td>Variable según volumen — el más eficiente para el patrón de demanda de Domino's (jueves-domingo alto, lunes-miércoles bajo)</td>
+          </tr>
+          <tr>
+            <td>Agente dedicado (tarifa mensual fija)</td>
+            <td>Un ejecutivo asignado exclusivamente a la marca, sin importar el volumen real de llamadas</td>
+            <td>$16,000–$28,000 MXN/mes por posición en español</td>
+          </tr>
+        </table>
+
+        <h3 class="section-title">Proveedores BPO (staffing/operación, complementa la tabla de IA de voz)</h3>
+        <table class="vendor-table">
+          <tr><th>Proveedor</th><th>Especialidad</th><th>Por qué encaja</th></tr>
+          <tr>
+            <td>Anexa BPO</td>
+            <td>Consumo masivo y retail, esquemas de costo por minuto o por evento</td>
+            <td>Muy flexible — encaja con el modelo comercial recomendado arriba</td>
+          </tr>
+          <tr>
+            <td>CallFasst</td>
+            <td>Toma de pedidos y mesas de entrada rápida, control estricto de TMO</td>
+            <td>Especialización directa en el caso de uso de Domino's (tomar pedidos rápido)</td>
+          </tr>
+          <tr>
+            <td>Pentafon</td>
+            <td>Omnicanalidad — integra llamadas con WhatsApp y apps móviles</td>
+            <td>Podría conectar el call center con el Componente B (app) bajo un mismo proveedor</td>
+          </tr>
+          <tr>
+            <td>Atento México</td>
+            <td>Volúmenes masivos con pools de agentes compartidos</td>
+            <td>Opción de mayor escala si el proyecto crece a nivel nacional</td>
+          </tr>
+        </table>
+
+        <h3 class="section-title">Alternativas tecnológicas a Net2Phone</h3>
+        <table class="vendor-table">
+          <tr><th>Proveedor</th><th>Fortaleza</th></tr>
+          <tr><td>RingCentral México</td><td>IVR (menús interactivos) corporativo avanzado</td></tr>
+          <tr><td>Dialpad AI</td><td>Telefonía con IA nativa — análisis de sentimiento en tiempo real y transcripción automática (más cercano a lo que busca la Fase 1 híbrida)</td></tr>
+          <tr><td>Aircall / Nextiva</td><td>Implementación rápida, fácil de extender a agentes BPO externos</td></tr>
+        </table>
+        <div class="placeholder">Estas tablas son un borrador de investigación preliminar (fuente: propuesta externa compartida por Luis) — pendiente de contrastar contra la cotización real de Net2Phone y decidir si conviene cambiar de plataforma o solo de modelo comercial (BPO).</div>
+
         <h3 class="section-title">Componente B — App + QR de lealtad</h3>
         <p style="margin:0 0 12px 0;">Reutilizar el mecanismo de QR-y-puntos que Alsea ya opera en producción con Starbucks, en vez de construir un sistema de lealtad desde cero para Domino's. El objetivo inmediato es capturar datos del cliente en mostrador y delivery — los dos canales que hoy generan el 100% de las ventas — y usarlos para venta sugestiva personalizada.</p>
 
@@ -740,24 +804,29 @@
       <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
       <div class="stage-body">
         <div class="field">
-          <p><strong>Dónde impacta:</strong> AWO (recompra vía promociones dirigidas y venta sugestiva) y NPS (personalización). Construye base de CRM combinando dos canales de captura (teléfono + app/QR), aprovecha infraestructura existente en ambos componentes (bajo capex), cierra la brecha de cobertura de las tiendas sin línea telefónica, y reduce la dependencia de procesos manuales.</p>
+          <p><strong>Dónde impacta:</strong> AWO (recompra vía promociones dirigidas y venta sugestiva) y NPS (personalización). Construye base de CRM combinando dos canales de captura (teléfono + app/QR), aprovecha infraestructura existente en ambos componentes (bajo capex), cierra la brecha de cobertura de las tiendas sin línea telefónica, y reduce la dependencia de procesos manuales. Con el 100% de clientes identificados, Marketing gana la capacidad de hacer campañas de reactivación segmentadas de costo prácticamente cero vía notificaciones de la app, en vez de depender de promociones masivas sin segmentar.</p>
         </div>
         <div class="econ-box">
           <h4>Impacto económico — Componente A (Call Center) — plantilla benchmark, pendiente de datos reales</h4>
-          <div class="formula">Incremento de ventas anual ≈ (# llamadas/mes × 12 × % capturable × % conversión de promoción) × ticket promedio × frecuencia de recompra anual
+          <div class="formula">Incremento de ventas anual (captura + promoción) ≈ (# llamadas/mes × 12 × % capturable × % conversión de promoción) × ticket promedio × frecuencia de recompra anual
+Incremento de ventas anual (cross-selling en vivo) = # llamadas/mes × 12 × % incremento de ticket por cross-selling × ticket promedio
+Ahorro anual (eficiencia BPO) = reducción de TMO por llamada × # llamadas/mes × 12 × costo por minuto del BPO
 ROI anual (%) = (Beneficio neto anual ÷ Costo total de inversión inicial) × 100
 Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 12)</div>
           <table class="econ-table">
             <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
             <tr><td>Incremento en ingresos por línea telefónica con IA de voz</td><td>+26%</td><td>Benchmark de industria (pizza/QSR, 2026) — usar de referencia hasta tener dato real de Alsea</td></tr>
-            <tr><td># llamadas mensuales al call center</td><td class="pending">Pendiente</td><td>Pedir a call center tercerizado</td></tr>
+            <tr><td>Reducción de Tiempo Medio de Operación (TMO) con Screen Pop</td><td>30–45 seg/llamada</td><td>Benchmark de propuesta externa — usar de referencia hasta validar con piloto</td></tr>
+            <tr><td>Incremento en ticket por cross-selling en vivo (agente ve historial del cliente)</td><td>+10% a +15%</td><td>Benchmark de propuesta externa, 2026 — mecanismo distinto al de venta sugestiva del Componente B</td></tr>
+            <tr><td># llamadas mensuales al call center</td><td class="pending">Pendiente</td><td>Pedir a Net2Phone (reporte CDR histórico)</td></tr>
             <tr><td>% de llamadas capturables como dato de cliente</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
             <tr><td>Ticket promedio de compra</td><td>~$249 MXN</td><td>Dato interno Alsea — cifra representativa, varía por región</td></tr>
             <tr><td>% conversión de promoción dirigida</td><td class="pending">Pendiente</td><td>Benchmark de marketing / piloto</td></tr>
             <tr><td>Frecuencia de recompra anual</td><td class="pending">Pendiente</td><td>Dato interno de marketing/CRM, si existe</td></tr>
+            <tr><td>Costo por minuto del BPO (si se migra a ese modelo comercial)</td><td class="pending">Pendiente</td><td>Cotizar con Anexa BPO / CallFasst / Pentafon / Atento</td></tr>
             <tr><td>Costo total de inversión inicial (implementación, capex)</td><td class="pending">Pendiente</td><td>Cotización proveedor según fase</td></tr>
             <tr><td>Costo anual de la solución (operativo/recurrente, híbrido o reemplazo total)</td><td class="pending">Pendiente</td><td>Cotización proveedor según fase</td></tr>
-            <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente</td><td>Ingreso incremental − costo operativo anual</td></tr>
+            <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente</td><td>Suma de ingresos incrementales + ahorro − costo operativo anual</td></tr>
             <tr class="result-row"><td>ROI anual estimado (%)</td><td class="pending">Pendiente</td><td>Fórmula arriba</td></tr>
             <tr class="result-row"><td>Payback estimado (meses)</td><td class="pending">Pendiente</td><td>Fórmula arriba</td></tr>
           </table>
@@ -771,6 +840,7 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
           <table class="econ-table">
             <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
             <tr><td>Incremento en ticket promedio con venta sugestiva personalizada</td><td>+15% a +30%</td><td>Benchmark de industria QSR, 2026 — usar de referencia hasta tener dato real de Alsea</td></tr>
+            <tr><td>Incremento en frecuencia de compra en mostrador con lealtad (QR)</td><td>hasta +30%</td><td>Benchmark de propuesta externa, 2026 — efecto adicional al de ticket promedio, no lo sustituye</td></tr>
             <tr><td>Ticket promedio actual</td><td>~$249 MXN</td><td>Dato interno Alsea — cifra representativa, varía por región</td></tr>
             <tr><td>Reparto delivery / mostrador</td><td>~70% / 30%</td><td>Dato interno Alsea — cifra aproximada, varía por región y tienda</td></tr>
             <tr><td># transacciones (app) mensuales</td><td class="pending">Pendiente</td><td>Dato interno / BI de Alsea</td></tr>
