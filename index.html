@@ -509,16 +509,21 @@
     <section id="idea1" class="tab-content">
     <div class="idea-header">
       <div>
-        <h2>Idea 1 · Captura de datos del cliente — Call Center IA + App/QR de lealtad</h2>
-        <p class="tagline">Dos frentes que se refuerzan: IA de voz en el call center para capturar datos por teléfono, y una app con QR de lealtad (modelo Starbucks) para capturar datos en mostrador y delivery — clave en las tiendas que no tienen línea telefónica.</p>
+        <h2>Idea 1 · Captura de datos del cliente — App/QR de lealtad</h2>
+        <p class="tagline">Único foco a partir de ahora: la app con QR de lealtad (modelo Starbucks) para capturar datos de cliente en mostrador y delivery — clave en las tiendas que no tienen línea telefónica. El Call Center queda fuera de alcance de esta idea (ver nota abajo).</p>
       </div>
       <span class="badge badge-foco">★ Foco principal del proyecto</span>
+    </div>
+
+    <div class="placeholder">
+      <strong>Nota de alcance (15 jul 2026):</strong> a partir de esta fecha, la Idea 1 se enfoca <strong>únicamente en el Componente B (App/QR de lealtad)</strong>. El Componente A (Call Center) queda fuera de alcance — es gestionado por otra área de Alsea, no por este proyecto — y se mantiene documentado abajo solo como referencia histórica, sin desarrollo futuro planeado aquí.<br><br>
+      <strong>Hallazgo clave — reunión con Director de TI (15 jul 2026):</strong> la parte técnica del componente de QR/lealtad en mostrador <strong>ya fue desarrollada</strong> en un intento anterior de TI — no hace falta seguir indagando en el "cómo" técnico, ya existe. Ese proyecto anterior no avanzó porque <strong>no se logró justificar el retorno de inversión (ROI)</strong> ante la dirección. Esto cambia el centro de gravedad de esta idea: ya no es un problema de construir la solución, es un problema de armar el caso de negocio (ROI) que la vez pasada faltó — con eso se podría reactivar un desarrollo que ya existe.
     </div>
 
     <div class="stage stage-1">
       <div class="stage-head"><span class="stage-num">1</span><h3>Situación actual</h3></div>
       <div class="stage-body">
-        <h3 class="section-title">Componente A — Call Center</h3>
+        <h3 class="section-title">Componente A — Call Center <span style="font-size:12px;font-weight:600;color:var(--muted);">(fuera de alcance — ver nota de alcance arriba)</span></h3>
         <div class="field">
           <p>El call center está tercerizado. En teoría el operador debe anotar en libreta los datos de la llamada, pero por falta de tiempo no lo hace — la llamada termina siendo anónima. Hoy no existe ninguna captura estructurada del cliente que llama.</p>
         </div>
@@ -533,6 +538,9 @@
         </div>
 
         <h3 class="section-title">Componente B — App + QR de lealtad</h3>
+        <div class="field" style="border-left:4px solid var(--red);">
+          <p><strong>Confirmado — reunión con Director de TI, 15 jul 2026:</strong> la parte técnica de este componente <strong>ya fue desarrollada</strong> en un intento anterior — no hace falta indagar más en el "cómo" técnico. El proyecto no avanzó en su momento porque no se logró justificar el ROI ante la dirección. El trabajo pendiente aquí ya no es de construcción, es de caso de negocio: juntar los datos para armar el ROI que la vez pasada faltó.</p>
+        </div>
         <div class="field">
           <p><strong>No todas las sucursales tienen línea telefónica</strong> — es la razón estructural por la que se necesita un segundo canal de captura de datos que funcione igual en cualquier tienda, sin depender del teléfono: una app con QR de lealtad.</p>
         </div>
@@ -605,9 +613,10 @@
           <p><strong>La segmentación de promociones por región/distrito no es un problema resuelto hoy:</strong> se requiere que la app soporte reglas de promoción distintas por tienda/zona, lo cual añade complejidad técnica frente a un modelo de promoción única nacional.</p>
         </div>
         <div class="field">
-          <p>Dificultades adicionales del call center: depende de negociar acceso/integración con el proveedor tercerizado actual; cumplimiento de protección de datos personales (aviso de privacidad, consentimiento de grabación); el salto a reemplazo total (fase larga) implica mayor costo, integración y riesgo que la fase híbrida.</p>
+          <p>Dificultades adicionales del call center <span style="font-size:12px;font-weight:600;color:var(--muted);">(fuera de alcance)</span>: depende de negociar acceso/integración con el proveedor tercerizado actual; cumplimiento de protección de datos personales (aviso de privacidad, consentimiento de grabación); el salto a reemplazo total (fase larga) implica mayor costo, integración y riesgo que la fase híbrida.</p>
         </div>
         <div class="placeholder">
+          <strong>Fuera de alcance (15 jul 2026):</strong> las preguntas de esta junta ya no son prioridad para Luis — el call center lo gestiona otra área. Se conservan por si esa área las necesita más adelante.<br><br>
           <strong>Junta con Net2Phone (proveedor actual):</strong> desglose mensual exacto de costos (licencias, DIDs, bolsas de minutos); reporte histórico CDR de llamadas entrantes y % de llamadas abandonadas de los últimos 3 meses; vigencia del contrato actual y penalizaciones por terminación anticipada; si las sucursales físicas están integradas como extensiones IP de la misma red o son líneas externas independientes, y si las llamadas se graban hoy.<br><br>
           <strong>Junta con TI / Base de Datos de Alsea:</strong> cómo se extrae hoy la información de llamadas (API o descargas manuales CSV/Excel); si el POS actual tiene webhooks o compatibilidad con APIs para habilitar pantallas emergentes (Screen Pop) de identificación automática; si los lectores ópticos de mostrador pueden escanear códigos QR desde pantallas de smartphone; qué tan unificadas están las bases de datos de la app móvil y del sistema de pedidos en tienda física; y coordinación con el equipo de TI de Starbucks/Alsea para adaptar su infraestructura de lealtad a Domino's.<br><br>
           <strong>Con tu jefe / Legal:</strong> si Alsea puede exigir/negociar tecnología nueva con el call center tercerizado actual o si implicaría cambiar de proveedor; cómo cubre hoy Alsea la protección de datos personales en las llamadas.
@@ -618,7 +627,7 @@
     <div class="stage stage-3">
       <div class="stage-head"><span class="stage-num">3</span><h3>Posibles soluciones</h3></div>
       <div class="stage-body">
-        <h3 class="section-title">Componente A — Call Center</h3>
+        <h3 class="section-title">Componente A — Call Center <span style="font-size:12px;font-weight:600;color:var(--muted);">(fuera de alcance — ver nota de alcance al inicio de esta idea)</span></h3>
         <p style="margin:0 0 12px 0;">La idea se plantea en dos etapas: en el <strong>corto plazo</strong>, la IA solo captura y estructura los datos de la llamada (teléfono, nombre, dirección, pedido) para que el operador se concentre únicamente en tomar el pedido — modelo <strong>híbrido</strong>, sin perder el trato humano. En el <strong>largo plazo</strong>, la meta es que la IA reemplace por completo la atención telefónica.</p>
 
         <h3 class="section-title">Hoja de ruta por etapas (Call Center)</h3>
@@ -760,6 +769,7 @@
 
         <h3 class="section-title">Componente B — App + QR de lealtad</h3>
         <p style="margin:0 0 12px 0;">Reutilizar el mecanismo de QR-y-puntos que Alsea ya opera en producción con Starbucks, en vez de construir un sistema de lealtad desde cero para Domino's. El objetivo inmediato es capturar datos del cliente en mostrador y delivery — los dos canales que hoy generan el 100% de las ventas — y usarlos para venta sugestiva personalizada.</p>
+        <div class="placeholder"><strong>Nota (15 jul 2026):</strong> confirmado con el Director de TI que la solución técnica de este componente ya existe (ver "Situación actual"). La hoja de ruta y la comparación de proveedores de abajo quedan como contexto de cómo se había planeado construirlo — ya no es necesario decidir entre construir vs. comprar; lo urgente es recuperar el desarrollo existente y, sobre todo, armar el caso de ROI que la vez pasada no se logró sustentar (ver "Resultados esperados").</div>
 
         <h3 class="section-title">Hoja de ruta por etapas (App + QR)</h3>
         <table class="vendor-table">
@@ -823,7 +833,7 @@
           <p><strong>Dónde impacta:</strong> AWO (recompra vía promociones dirigidas y venta sugestiva) y NPS (personalización). Construye base de CRM combinando dos canales de captura (teléfono + app/QR), aprovecha infraestructura existente en ambos componentes (bajo capex), cierra la brecha de cobertura de las tiendas sin línea telefónica, y reduce la dependencia de procesos manuales. Con el 100% de clientes identificados, Marketing gana la capacidad de hacer campañas de reactivación segmentadas de costo prácticamente cero vía notificaciones de la app, en vez de depender de promociones masivas sin segmentar.</p>
         </div>
         <div class="econ-box">
-          <h4>Impacto económico — Componente A (Call Center) — plantilla benchmark, pendiente de datos reales</h4>
+          <h4>Impacto económico — Componente A (Call Center) <span style="font-size:12px;font-weight:600;color:var(--muted);">— fuera de alcance, se conserva como referencia histórica</span></h4>
           <div class="formula">Incremento de ventas anual (captura + promoción) ≈ (# llamadas/mes × 12 × % capturable × % conversión de promoción) × ticket promedio × frecuencia de recompra anual
 Incremento de ventas anual (cross-selling en vivo) = # llamadas/mes × 12 × % incremento de ticket por cross-selling × ticket promedio
 Ahorro anual (eficiencia BPO) = reducción de TMO por llamada × # llamadas/mes × 12 × costo por minuto del BPO
@@ -847,6 +857,9 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
             <tr class="result-row"><td>ROI anual estimado (%)</td><td class="pending">Pendiente</td><td>Fórmula arriba</td></tr>
             <tr class="result-row"><td>Payback estimado (meses)</td><td class="pending">Pendiente</td><td>Fórmula arriba</td></tr>
           </table>
+        </div>
+        <div class="field" style="border-left:4px solid var(--red);">
+          <p><strong>Esta tabla es ahora el entregable crítico de la Idea 1 (confirmado, reunión con Director de TI, 15 jul 2026):</strong> el desarrollo técnico del QR/lealtad ya existe; lo que hundió el proyecto la vez pasada fue no poder justificar el ROI ante la dirección. Cerrar las filas "Pendiente" de abajo con datos reales es lo que decide si este componente se reactiva o no.</p>
         </div>
         <div class="econ-box">
           <h4>Impacto económico — Componente B (App + QR) — plantilla benchmark, pendiente de datos reales</h4>
