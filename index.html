@@ -540,6 +540,15 @@
           <p><strong>Hallazgo clave (compartido con la Idea 3):</strong> Alsea ya opera un programa de lealtad maduro con Starbucks — el cliente escanea un código QR al pagar y acumula "estrellas" canjeables por recompensas. Alsea no necesita construir un sistema de lealtad desde cero para Domino's; ya tiene la capacidad probada en producción con otra de sus marcas. La Idea 3 (kiosko físico) queda en pausa, pero esta base de lealtad/QR se retoma aquí como el componente central de la Idea 1 para capturar datos de mostrador y delivery.</p>
         </div>
         <div class="field">
+          <p><strong>Domino's ya tiene su propio programa de lealtad — pero solo para e-commerce (confirmado, reunión con CRM, 15 jul 2026):</strong> creado en 2024, aplica exclusivamente a clientes de <strong>App y Web</strong>. Funciona por niveles: Nivel 1 (2 compras), Nivel 2 (4 compras) y Nivel 3 (6 compras), todos dentro de una ventana de 180 días y con compra mínima de $229 MXN cada una; al subir de nivel cambia el cupón que le aparece al cliente en la app. Esto no compite con la estrategia de QR-en-mostrador de este componente — al contrario, confirma que el "motor" de niveles y recompensas ya existe, y que el vacío real está exactamente donde esta idea apunta: mostrador y delivery fuera de la app.</p>
+        </div>
+        <div class="field">
+          <p><strong>Datos que hoy captura CRM vía App/Web (confirmado):</strong> nombre del cliente (sin apellidos), correo electrónico, teléfono, pedido, sucursal, y dirección (a confirmar). Se confirma también algo ya señalado en "Problema": <strong>el call center lo gestiona un ente distinto y no comparte esta base de datos</strong> con CRM — es la misma base de clientes de App/Web la que habría que conectar con lo que capture el call center y el QR de mostrador.</p>
+        </div>
+        <div class="field">
+          <p><strong>Composición de órdenes en app (confirmado, dato CRM):</strong> 57.26% de las órdenes vía app son de clientes registrados, 42.74% de invitados ("guest checkout"). El diseño del QR de mostrador debería apuntar también a convertir invitados en registrados — es el mismo reto que CRM ya enfrenta dentro de la propia app.</p>
+        </div>
+        <div class="field">
           <p>Reparto actual del negocio: <strong>~70% delivery / 30% mostrador</strong> a nivel agregado (cifra aproximada, varía por región y tienda — dato previo registrado como 60%/40%, se actualiza con esta nota más reciente de Luis). El dato real por tienda varía mucho más de lo que sugiere el promedio — ver tabla abajo.</p>
         </div>
         <div class="field">
@@ -571,6 +580,9 @@
         <div class="field">
           <p><strong>Fuente de datos adicional — Qualtrix:</strong> existe una plataforma llamada Qualtrix que reúne datos de desempeño de tienda a partir de reseñas del cliente — el Distrital puede verla directamente. Es similar a los reviews de Google, pero más susceptible a manipulación. Es una señal complementaria sobre la operación de cada tienda, con menor confiabilidad que un dato transaccional directo — relevante también para la futura Idea 6 (análisis de sentimiento).</p>
         </div>
+        <div class="field">
+          <p><strong>Nota importante — franquicias (confirmado, reunión CRM):</strong> el propio equipo de CRM señaló que hay que considerar a las tiendas franquiciadas en el análisis y en las próximas discusiones. Los datos de frecuencia de compra, CLV y composición de órdenes citados en "Resultados esperados" probablemente reflejan solo tiendas operadas por Alsea — falta confirmar si también cubren franquicias, lo cual afectaría el alcance real del ROI.</p>
+        </div>
       </div>
     </div>
 
@@ -579,6 +591,9 @@
       <div class="stage-body">
         <div class="field">
           <p>Se pierde la oportunidad de construir una base de clientes para marketing dirigido y promociones personalizadas (afecta AWO y NPS). El problema es de <strong>proceso</strong>, no solo de tecnología: cualquier solución que dependa de que el humano escriba manualmente tendrá la misma falla.</p>
+        </div>
+        <div class="field">
+          <p><strong>Tensión con la estrategia comercial actual (confirmado, reunión CRM):</strong> hoy las promociones en <strong>agregadores son las más agresivas</strong>, mientras que en app/web se es más conservador por sus altos costos asociados, y el enfoque general de promociones prioriza pick up sobre delivery por el alto costo de este último. Esto genera una tensión de fondo: el canal que este proyecto busca hacer crecer (app propia, vía QR/lealtad) es hoy el menos incentivado comercialmente frente a agregadores externos — vale la pena resolverlo al diseñar la estrategia de promociones del nuevo componente.</p>
         </div>
         <div class="field">
           <p><strong>El call center por sí solo no cubre el 100% de la red:</strong> las sucursales sin línea telefónica quedan fuera del alcance de ese componente, lo que limita cuánta captura de datos se puede lograr solo con IA de voz — de ahí que se necesite el componente de app+QR en paralelo, no como alternativa sino como complemento.</p>
@@ -795,6 +810,7 @@
             <li><strong>Motor de promociones segmentado:</strong> debe soportar reglas distintas por región/distrito, no un catálogo único nacional.</li>
             <li><strong>Campaña de adopción:</strong> mecanismos posibles incluyen beneficio exclusivo por primer uso de la app, comunicación en el recibo/empaque físico invitando a escanear el QR, y capacitación al personal de mostrador para promoverlo activamente en cada venta.</li>
             <li><strong>Cobertura sin teléfono:</strong> priorizar el rollout de este componente en las tiendas que no tienen línea telefónica, ya que ahí no hay alternativa de captura de datos por call center.</li>
+            <li><strong>Evitar canales ya descartados por CRM:</strong> ya se probó SMS (los usuarios lo percibían como fraude/spam) y WhatsApp (generaba solo ~$1,000,000 MXN/semana, se descontinuó). La campaña de adopción del QR/lealtad debería apoyarse en notificaciones dentro de la app y comunicación en punto de venta, no repetir estos dos canales.</li>
           </ul>
         </div>
       </div>
@@ -822,7 +838,8 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
             <tr><td>% de llamadas capturables como dato de cliente</td><td class="pending">Pendiente</td><td>Estimar con piloto</td></tr>
             <tr><td>Ticket promedio de compra</td><td>~$249 MXN</td><td>Dato interno Alsea — cifra representativa, varía por región</td></tr>
             <tr><td>% conversión de promoción dirigida</td><td class="pending">Pendiente</td><td>Benchmark de marketing / piloto</td></tr>
-            <tr><td>Frecuencia de recompra anual</td><td class="pending">Pendiente</td><td>Dato interno de marketing/CRM, si existe</td></tr>
+            <tr><td>Frecuencia de recompra anual</td><td>3.64 (base 365 días) · 2.73 (base 180 días)</td><td>Confirmado — reunión CRM, 15 jul 2026. Ojo: hoy este dato solo mide clientes de e-commerce (App/Web); usarlo como referencia inicial para clientes recién identificados vía call center, a validar con dato real cuando exista</td></tr>
+            <tr><td>CLV (valor de vida del cliente) de referencia</td><td>$957.91 MXN (365 días) · $718.30 MXN (180 días)</td><td>Confirmado — reunión CRM, 15 jul 2026. Mismo caveat: hoy solo mide clientes App/Web, y probablemente no incluye franquicias (ver Situación actual)</td></tr>
             <tr><td>Costo por minuto del BPO (si se migra a ese modelo comercial)</td><td class="pending">Pendiente</td><td>Cotizar con Anexa BPO / CallFasst / Pentafon / Atento</td></tr>
             <tr><td>Costo total de inversión inicial (implementación, capex)</td><td class="pending">Pendiente</td><td>Cotización proveedor según fase</td></tr>
             <tr><td>Costo anual de la solución (operativo/recurrente, híbrido o reemplazo total)</td><td class="pending">Pendiente</td><td>Cotización proveedor según fase</td></tr>
@@ -844,6 +861,7 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
             <tr><td>Ticket promedio actual</td><td>~$249 MXN</td><td>Dato interno Alsea — cifra representativa, varía por región</td></tr>
             <tr><td>Reparto delivery / mostrador</td><td>~70% / 30%</td><td>Dato interno Alsea — cifra aproximada, varía por región y tienda</td></tr>
             <tr><td># transacciones (app) mensuales</td><td class="pending">Pendiente</td><td>Dato interno / BI de Alsea</td></tr>
+            <tr><td>Composición de órdenes en app: % registrado vs. invitado</td><td>57.26% registrado / 42.74% invitado</td><td>Confirmado — reunión CRM, 15 jul 2026. No es lo mismo que la fila de abajo: esta es la mezcla dentro de las órdenes que ya son vía app, útil como referencia para la meta de conversión de invitado a registrado en mostrador</td></tr>
             <tr><td>% de transacciones que hoy pasan por la app propia (baseline de adopción)</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
             <tr><td>Meta de adopción de app tras campaña</td><td class="pending">Pendiente</td><td>Definir con marketing / piloto</td></tr>
             <tr><td># tiendas sin línea telefónica (alcance adicional del componente B)</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
@@ -1121,7 +1139,7 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
 
         <div class="field">
           <h4>Próximos pasos</h4>
-          <p>Pedir cotización formal a Checkpoint, Senitron y Supportek, especificando: número de tiendas piloto, mezcla de producto individual vs. caja/lote, integración con la app móvil y la plataforma/Excel maestro que ya construyó el jefe del área, y cómo cubrir el caso especial de las tiendas Express con doble almacén (tageo/sensores en ambas ubicaciones, no solo en la tienda).</p>
+          <p>Pedir cotización formal a Checkpoint, Senitron y Supportek, especificando: número de tiendas piloto, mezcla de producto individual vs. caja/lote, integración con la app móvil y la plataforma/Excel maestro que ya construyó el jefe del área, y cómo cubrir el caso especial de las tiendas Express con doble almacén (tageo/sensores en ambas ubicaciones, no solo en la tienda). También confirmar si el piloto y el cálculo de ROI deben cubrir solo tiendas operadas por Alsea o también franquicias — mismo punto que CRM señaló para la Idea 1 (reunión CRM, 15 jul 2026).</p>
         </div>
       </div>
     </div>
