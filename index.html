@@ -842,6 +842,16 @@
             <li><strong>Evitar canales ya descartados por CRM:</strong> ya se probó SMS (los usuarios lo percibían como fraude/spam) y WhatsApp (generaba solo ~$1,000,000 MXN/semana, se descontinuó). La campaña de adopción del QR/lealtad debería apoyarse en notificaciones dentro de la app y comunicación en punto de venta, no repetir estos dos canales.</li>
           </ul>
         </div>
+        <div class="field" style="border-left:4px solid var(--green);">
+          <h4>Nuevo — IA como analista continuo de los reportes que ya produce CRM</h4>
+          <p><strong>Idea de Luis (16 jul 2026):</strong> en vez de que la IA solo reemplace el checkeo semanal en abstracto, se alimenta directamente de los dos entregables que CRM ya produce hoy y que hoy requieren revisión manual:</p>
+          <ul>
+            <li><strong>Reporte semanal de KPIs (Excel):</strong> activos 180/365 días, adquisición, recuperación, churn, frecuencia, CLV, composición invitado/registrado — la IA lo revisa para detectar desviaciones vs. objetivo y tendencias (ej. adquisición cayendo -8.7% vs. objetivo) sin esperar a que un analista lo note.</li>
+            <li><strong>Reporte de cohorts/segmentación RFM (infografía mensual):</strong> movimiento de clientes entre niveles (Top/High/Mid-high/Mid-low/Low), CLV y frecuencia por segmento — la IA lo revisa para detectar qué segmentos se están erosionando (ej. Top/High Value con alta tasa de "bajaron de nivel") o creciendo, antes de que se note en el agregado.</li>
+          </ul>
+          <p>Con ambos insumos cruzados, la IA no solo ejecuta el checkeo — genera dos salidas concretas: <strong>(1) ideas de promociones personalizadas por segmento</strong> (ej. oferta de retención dirigida a High Value antes de que baje de nivel, detectado automáticamente en el reporte de cohorts) y <strong>(2) análisis más profundos</strong> que hoy no se hacen por falta de tiempo (correlaciones entre tienda/región/segmento, anomalías, aceleración o desaceleración de un cohort específico). Estas ideas se entregan por el mismo canal app/QR de este componente — no requiere una interfaz nueva.</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);"><strong>Objetivo económico explícito de esta capa de IA:</strong> AWO y ticket promedio — es una palanca de venta con datos, no una mejora de experiencia de mostrador (eso ya lo cubre NPS en el resto del componente). Pendiente de validar con CRM la cadencia real de ambos reportes (¿siempre semanal/mensual, o varía?) y si hoy existe ya alguna capa de analítica automatizada sobre ellos antes de asumir que el checkeo es 100% manual.</p>
+        </div>
       </div>
     </div>
 
@@ -849,7 +859,7 @@
       <div class="stage-head"><span class="stage-num">4</span><h3>Resultados esperados</h3></div>
       <div class="stage-body">
         <div class="field">
-          <p><strong>Dónde impacta:</strong> AWO (recompra vía promociones dirigidas y venta sugestiva) y NPS (personalización). Construye base de CRM aprovechando infraestructura ya existente (bajo capex), cierra la brecha de cobertura de mostrador/delivery fuera de la app, y reduce la dependencia de procesos manuales. Con más clientes identificados, Marketing gana la capacidad de hacer campañas de reactivación segmentadas de costo prácticamente cero vía notificaciones de la app, en vez de depender de promociones masivas sin segmentar.</p>
+          <p><strong>Dónde impacta:</strong> AWO (recompra vía promociones dirigidas y venta sugestiva) y ticket promedio (venta sugestiva personalizada), con NPS (personalización) como beneficio secundario. Construye base de CRM aprovechando infraestructura ya existente (bajo capex), cierra la brecha de cobertura de mostrador/delivery fuera de la app, y reduce la dependencia de procesos manuales. Con más clientes identificados, Marketing gana la capacidad de hacer campañas de reactivación segmentadas de costo prácticamente cero vía notificaciones de la app, en vez de depender de promociones masivas sin segmentar.</p>
         </div>
         <div class="field" style="border-left:4px solid var(--red);">
           <p><strong>Esta tabla es ahora el entregable crítico de la Idea 1 (confirmado, reunión con Director de TI, 15 jul 2026):</strong> el desarrollo técnico del QR/lealtad ya existe; lo que hundió el proyecto la vez pasada fue no poder justificar el ROI ante la dirección. Cerrar las filas "Pendiente" de abajo con datos reales es lo que decide si este componente se reactiva o no.</p>
