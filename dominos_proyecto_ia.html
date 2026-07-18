@@ -943,6 +943,9 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
           <p><strong>Excel de variación (se manda diario):</strong> compara lo que se pidió contra lo que realmente se usó y calcula el "ideal" para el siguiente pedido. Está sujeto a error humano y solo puede representar la variación de 3 formas: (1) <strong>merma</strong> — producto que se tira sin usar, (2) <strong>mal ingreso</strong> — error al capturar el inventario, y (3) <strong>fuga/robo</strong> de producto por parte de colaboradores.</p>
         </div>
         <div class="field">
+          <p><strong>Desglose real de causas de merma (confirmado, 18 jul 2026 — "Historico de mermas 2026.xlsx"):</strong> reporte transaccional ene-jun 2026, 514 tiendas, $7,249,875.52 MXN de costo total de merma en el periodo (0.18% de la venta). Desglose por causa: Vida en anaquel 59.8%, En la elaboración 13.2%, Quedó del día 7.2%, PPAD 6.0%, Estándar de calidad 3.1%, Disección 2.0%, <strong>Fallas del cooler 2.0% (~$142,264 MXN)</strong>, Llegó mal de día 1.8%, Se golpeó 1.75%, Prueba innovación 1.4%, Se cayó al piso 1.4%. Ninguna categoría corresponde a fuga/robo — consistente con que ese mecanismo se detecta aparte, en el corte mensual de Costos de comida (ver recorrido del Distrital abajo). La categoría "Fallas del cooler" es evidencia real a favor de la recomendación de sensores IoT para el inventario de cooler (ver "Posibles soluciones"). Pendiente confirmar si el archivo cubre solo tiendas corporativas o también franquicias — mismo punto abierto que en Idea 1.</p>
+        </div>
+        <div class="field">
           <p><strong>Excel de pedido — cuello de botella semanal:</strong> el pedido de reabastecimiento se arma apoyado en los inventarios diarios, pero solo se puede hacer los <strong>lunes</strong>. No hay margen de error: si el gerente no lo hace ese día, la tienda recibe una multa y corre el riesgo de quedarse sin producto.</p>
         </div>
         <div class="field">
@@ -1187,8 +1190,8 @@ Ahorro anual (tiempo del Distrital) = horas/mes en el recorrido × 12 × costo h
 Payback (meses) = Costo total de implementación ÷ (Ahorro anual total ÷ 12)</div>
           <table class="econ-table">
             <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
-            <tr><td>Merma mensual promedio por tienda ($)</td><td class="pending">Pendiente</td><td>Pedir a tu jefe / control de tienda</td></tr>
-            <tr><td># tiendas piloto (Alsea, no franquicia)</td><td class="pending">Pendiente</td><td>Definir alcance del piloto</td></tr>
+            <tr><td>Merma mensual promedio por tienda ($)</td><td>~$2,350 MXN/tienda/mes</td><td>Confirmado, 18 jul 2026 — "Historico de mermas 2026.xlsx": $7,249,875.52 MXN de costo total de merma en la red (514 tiendas) entre ene-jun 2026, ÷ 6 meses ÷ 514 tiendas. No confirmado si el archivo cubre solo tiendas corporativas o también franquicias</td></tr>
+            <tr><td># tiendas piloto (Alsea, no franquicia)</td><td class="pending">Pendiente</td><td>Definir alcance del piloto. Referencia: 514 tiendas activas en el reporte de mermas ene-jun 2026 (alcance del piloto probablemente será un subconjunto de esa red)</td></tr>
             <tr><td>% reducción de merma esperada</td><td class="pending">Pendiente</td><td>Benchmark industria: 15–20%</td></tr>
             <tr><td># multas anuales por tienda por pedido incompleto/tardío (lunes)</td><td class="pending">Pendiente</td><td>No hay dato específico de pedidos extemporáneos — falta preguntarle al Regional</td></tr>
             <tr><td>Costo por multa</td><td>$1,600 MXN</td><td>Dato interno Alsea (confirmado)</td></tr>
@@ -1198,7 +1201,8 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual total ÷ 12)</
             <tr><td>Costo hora del Distrital</td><td>$173.08 MXN/hora</td><td>Confirmado — salario $30,000 MXN/mes, jornada de 40 hrs/semana ($30,000 × 12 ÷ (40 × 52))</td></tr>
             <tr><td>Costo de implementación por tienda (lectores + tags + sensores)</td><td class="pending">Pendiente</td><td>Cotización Checkpoint / Senitron / Supportek</td></tr>
             <tr><td>Costo de software / mantenimiento anual</td><td class="pending">Pendiente</td><td>Cotización proveedor</td></tr>
-            <tr class="result-row"><td>Ahorro anual estimado (total)</td><td class="pending">Pendiente</td><td>Suma de las 4 fórmulas arriba</td></tr>
+            <tr class="result-row"><td>Merma anual estimada — red completa (referencia)</td><td>~$14.5M MXN/año</td><td>Anualizado de datos reales ene-jun 2026 ($7,249,875.52 × 2). Aplicando el benchmark de reducción de 15-20% (fila de arriba) equivaldría a un ahorro potencial de ~$2.17M a ~$2.90M MXN/año a nivel de toda la red — pero la fórmula "Ahorro anual (merma)" de arriba todavía depende de "# tiendas piloto", que sigue pendiente, así que este número es solo de referencia a escala completa, no el resultado final de la fórmula</td></tr>
+            <tr class="result-row"><td>Ahorro anual estimado (total)</td><td class="pending">Pendiente</td><td>Suma de las 4 fórmulas arriba. Con este cambio, "merma mensual promedio por tienda" ya es un dato real — faltan "# tiendas piloto", "% reducción esperada" (confirmar vs. benchmark), y las 3 variables restantes (multas, horas de gerente, costo de implementación) para cerrar la suma completa</td></tr>
             <tr class="result-row"><td>Payback estimado (meses)</td><td class="pending">Pendiente</td><td>Benchmark industria: 18–36 meses</td></tr>
           </table>
         </div>
