@@ -906,43 +906,44 @@
           <p style="margin-top:8px;font-size:13px;color:var(--muted);">Fórmula corregida: efecto real = % adopción × % frecuencia del benchmark (22-30% según Circana 2025 y la plantilla del documento).</p>
         </div>
 
-        <div class="field" style="border-left:4px solid var(--red);background:#fdecec;">
-          <h4>⚠ Punto abierto sin resolver — el mismo ajuste puede aplicar también al ticket</h4>
-          <p>La corrección de frecuencia de arriba asume que el efecto <strong>solo aplica al cliente identificado</strong> (quien escaneó el QR) — pero nunca se aplicó esa misma lógica al efecto de <strong>ticket</strong> (+15% a +30%), que en el cálculo de abajo sigue aplicado al 100% de las transacciones de cada canal. Si la venta sugestiva depende de reconocer al cliente vía QR, ese efecto tampoco debería aplicar a quien no escaneó.</p>
-          <p style="margin-top:8px;">Con el mismo ajuste (adopción × benchmark), el ticket efectivo pasaría de 15% a ~1.5% (conservador), de 22.5% a ~3.4% (punto medio), y de 30% a ~6.0% (optimista) — esto podría bajar el <strong>Incremento de ventas anual estimado</strong> de abajo entre <strong>5 y 10 veces</strong>. No se recalculó la cifra completa con este ajuste porque requiere confirmar primero con quien definió el benchmark original si el +15-30% ya asume "solo clientes identificados" o es un promedio general de punto de venta (con y sin reconocimiento) — es la variable de mayor peso de todo el modelo y debe resolverse antes de presentar el caso a dirección.</p>
+        <div class="field" style="border-left:4px solid var(--green);background:#eafaf0;">
+          <h4>✓ Punto resuelto — el ticket se escala en mostrador, no en app/web (decisión de sesión, 22 jul 2026)</h4>
+          <p>La corrección de frecuencia de arriba asume que el efecto <strong>solo aplica al cliente identificado</strong> — ahora se aplica la misma lógica al ticket, pero distinta por canal según cómo se diseñó el mecanismo: <strong>en mostrador, la promoción de venta sugestiva solo es válida si el cliente presenta el QR al pagar</strong> — esto obliga a seguir escaneando en cada visita y no se pierde la trazabilidad. En <strong>app/web no hace falta ese candado</strong>: la compra ya está 100% identificada desde que el cliente entra a la app, no hay problema de trazabilidad que resolver ahí.</p>
+          <p style="margin-top:8px;">Por eso el ticket se trata distinto por canal: en <strong>mostrador</strong> se escala igual que la frecuencia (% adopción × 20%), porque solo quien escanea recibe el beneficio; en <strong>app/web</strong> se aplica <strong>20% plano</strong> sobre el 100% de las transacciones, porque ahí no depende de un escaneo adicional — el cliente ya está identificado por definición.</p>
         </div>
 
         <div class="field">
-          <h4>Cálculo combinado corregido: ticket + frecuencia real, mostrador + app/web — sesión de trabajo, 20 jul 2026</h4>
-          <p>Mismos datos base (ticket mostrador $219, ticket app+web $265.58, mostrador = 30% de las transacciones semanales, 514 tiendas), ahora con la frecuencia real escalada por adopción en vez del 30% plano:</p>
+          <h4>Cálculo combinado final: ticket (por canal) + frecuencia real, mostrador + app/web — sesión de trabajo, 22 jul 2026</h4>
+          <p>Mismos datos base (ticket mostrador $219, ticket app+web $265.58, mostrador = 30% de las transacciones semanales, 514 tiendas). El ticket ahora se aplica distinto por canal (ver "Punto resuelto" arriba): en mostrador se escala por adopción (% adopción × 20%), igual que la frecuencia; en app/web se aplica 20% plano sobre el 100% de las transacciones.</p>
           <table class="econ-table">
-            <tr><th>Canal</th><th>Escenario</th><th>Ventas hoy (baseline)</th><th>Ventas con ticket+frecuencia</th><th>Incremento</th></tr>
-            <tr><td>Mostrador</td><td>Conservador</td><td>$1,760.8M MXN</td><td>$2,069.8M MXN</td><td>+$309.0M MXN</td></tr>
-            <tr><td>Mostrador</td><td>Punto medio</td><td>$1,936.8M MXN</td><td>$2,465.4M MXN</td><td>+$528.6M MXN</td></tr>
-            <tr><td>Mostrador</td><td>Optimista</td><td>$2,112.9M MXN</td><td>$2,911.5M MXN</td><td>+$798.6M MXN</td></tr>
-            <tr><td>App+web</td><td>Conservador</td><td>$2,422.7M MXN</td><td>$2,846.6M MXN</td><td>+$423.9M MXN</td></tr>
-            <tr><td>App+web</td><td>Punto medio</td><td>$2,430.1M MXN</td><td>$3,093.2M MXN</td><td>+$663.1M MXN</td></tr>
-            <tr><td>App+web</td><td>Optimista</td><td>$2,438.0M MXN</td><td>$3,358.7M MXN</td><td>+$920.7M MXN</td></tr>
+            <tr><th>Canal</th><th>Escenario</th><th>% ticket aplicado</th><th>Ventas hoy (baseline)</th><th>Ventas con ticket+frecuencia</th><th>Incremento</th></tr>
+            <tr><td>Mostrador</td><td>Conservador</td><td>2.0% (10%×20%)</td><td>$1,760.8M MXN</td><td>$1,834.9M MXN</td><td>+$74.1M MXN</td></tr>
+            <tr><td>Mostrador</td><td>Punto medio</td><td>3.0% (15%×20%)</td><td>$1,936.8M MXN</td><td>$2,073.7M MXN</td><td>+$136.9M MXN</td></tr>
+            <tr><td>Mostrador</td><td>Optimista</td><td>4.0% (20%×20%)</td><td>$2,112.9M MXN</td><td>$2,329.3M MXN</td><td>+$216.4M MXN</td></tr>
+            <tr><td>App+web</td><td>Conservador</td><td>20% (flat)</td><td>$2,422.7M MXN</td><td>$2,971.2M MXN</td><td>+$548.5M MXN</td></tr>
+            <tr><td>App+web</td><td>Punto medio</td><td>20% (flat)</td><td>$2,430.1M MXN</td><td>$3,029.8M MXN</td><td>+$599.7M MXN</td></tr>
+            <tr><td>App+web</td><td>Optimista</td><td>20% (flat)</td><td>$2,438.0M MXN</td><td>$3,101.1M MXN</td><td>+$663.1M MXN</td></tr>
           </table>
           <table class="econ-table" style="margin-top:12px;">
-            <tr><th>Escenario</th><th>Total antes (frecuencia plana 30%)</th><th>Total corregido (frecuencia real)</th><th>Diferencia</th></tr>
-            <tr><td>Conservador</td><td>$815.6M MXN</td><td>$732.9M MXN</td><td>-10.1%</td></tr>
-            <tr><td>Punto medio</td><td>$1,277.4M MXN</td><td>$1,191.7M MXN</td><td>-6.7%</td></tr>
-            <tr><td>Optimista</td><td>$1,774.9M MXN</td><td>$1,719.3M MXN</td><td>-3.1%</td></tr>
+            <tr><th>Escenario</th><th>Total combinado (mostrador + app/web)</th><th>% sobre ventas actuales</th></tr>
+            <tr><td>Conservador</td><td>+$622.6M MXN</td><td>+14.9%</td></tr>
+            <tr><td>Punto medio</td><td>+$736.6M MXN</td><td>+16.9%</td></tr>
+            <tr><td>Optimista</td><td>+$879.5M MXN</td><td>+19.3%</td></tr>
           </table>
-          <p style="margin-top:8px;">La corrección baja el total entre 3-10% — no más, porque el efecto de ticket (15-30%, sin cambios, ver punto abierto arriba) sigue siendo el driver dominante. El escenario conservador corregido (+$732.9M MXN) representa <strong>+17.5%</strong> sobre las ventas actuales combinadas de estos dos canales ($4,183.5M MXN → $4,916.4M MXN) — sigue siendo la cifra a liderar frente a dirección como piso defendible, <strong>sujeta al punto abierto sobre el ticket señalado arriba</strong>.</p>
-          <p style="margin-top:8px;font-size:13px;color:var(--muted);">Bueno para la defensa del número: el caso de negocio no depende críticamente de un supuesto de frecuencia agresivo — sigue siendo sólido incluso con la versión conservadora y realista del efecto de lealtad.</p>
+          <p style="margin-top:8px;">El driver principal ya no es el mostrador (aporta solo 2-4% real, escalado por adopción) sino <strong>app/web</strong>, que mantiene el 20% completo sobre el 100% de sus transacciones porque ya está identificado por diseño. El escenario conservador (+$622.6M MXN) representa <strong>+14.9%</strong> sobre las ventas actuales combinadas de estos dos canales — la cifra a liderar frente a dirección, ya sin el punto abierto de ticket/frecuencia colgando.</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);">Esta cifra reemplaza la estimación anterior ($732.9M–$1,719.3M MXN), que todavía tenía el ticket de mostrador sin escalar por adopción.</p>
         </div>
 
         <div class="econ-box">
           <h4>Impacto económico — Componente B (App + QR) — plantilla benchmark, pendiente de datos reales</h4>
-          <div class="formula">Incremento de ventas anual = ticket promedio × % incremento por venta sugestiva × # transacciones (app+web) mensuales × 12
+          <div class="formula">Incremento de ventas anual (mostrador) = ventas base mostrador × [(1 + % adopción × 20%) × (1 + % adopción × % frecuencia) − 1]
+Incremento de ventas anual (app+web) = ventas base app+web × [(1 + 20%) × (1 + % adopción × % frecuencia) − 1]
 ROI anual (%) = (Beneficio neto anual ÷ Costo total de inversión inicial) × 100
 Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 12)</div>
           <p style="margin:4px 0 10px 0;font-size:13px;color:var(--muted);"><strong>Se retiró la fórmula de "Alcance adicional de cobertura":</strong> ya no aplica — los lectores QR cubren el 100% de las tiendas corporativas (ver nota de cobertura en "Situación actual"), así que no hay un subconjunto de tiendas que aporte alcance adicional por separado.</p>
           <table class="econ-table">
             <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
-            <tr><td>Incremento en ticket promedio con venta sugestiva personalizada</td><td>+15% a +30%</td><td>Benchmark de industria QSR, 2026 — usar de referencia hasta tener dato real de Alsea</td></tr>
+            <tr><td>Incremento en ticket promedio con venta sugestiva personalizada</td><td>20% — flat en app/web, escalado por adopción en mostrador (% adopción × 20%)</td><td>Decisión de sesión, 22 jul 2026 — el benchmark de industria QSR reporta 15-30% (hasta 40% en algunas fuentes); se eligió 20%. En mostrador la promoción requiere presentar el QR (mantiene trazabilidad), por eso se escala igual que la frecuencia; en app/web ya está identificado, se aplica completo</td></tr>
             <tr><td>Incremento en frecuencia de compra en mostrador con lealtad (QR)</td><td>hasta +30%</td><td>Benchmark de propuesta externa, 2026 — efecto adicional al de ticket promedio, no lo sustituye</td></tr>
             <tr><td>Ticket promedio (canal app+web / OLO, corporativo)</td><td>~$265.58 MXN</td><td>Confirmado — calculado de VENTA OLO C TT ÷ ORDENES OLO C TT, promedio ene-jun 2026, base de datos CRM ("Historico"). Reemplaza el dato anterior de ~$249 MXN (sin fuente clara) — este es específico del canal OLO corporativo, que es el que toca este componente</td></tr>
             <tr><td>CLV promedio de la base (180 días / 365 días)</td><td>$718.30 / $957.91</td><td>Confirmado — dato CRM, mayo 2026. Ver tabla de segmentación RFM en "Situación actual" para el CLV por segmento (rango $240.74 a $3,390.83) — útil para priorizar a qué segmento apuntar primero con venta sugestiva</td></tr>
@@ -956,7 +957,7 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
             <tr><td>Costo de adaptar el sistema de puntos</td><td>$0 — no aplica</td><td>Confirmado, 16 jul 2026: el sistema de lealtad ya existe y no requiere adaptación — el QR se detecta como compra automáticamente y el tier se actualiza en el checkeo (ver nota en "Situación actual")</td></tr>
             <tr><td>Costo total de inversión inicial (campaña de lanzamiento)</td><td class="pending">Pendiente</td><td>Ya no incluye costo de adaptación de sistema (ver fila de arriba) — solo el costo de la campaña de adopción</td></tr>
             <tr><td>Costo de campaña de adopción de app</td><td class="pending">Pendiente</td><td>Estimar con marketing</td></tr>
-            <tr class="result-row"><td>Incremento de ventas anual estimado</td><td>$732.9M a $1,719.3M MXN/año (conservador a optimista; punto medio ~$1,191.7M)</td><td>Actualizado 20 jul 2026 — reemplaza la estimación anterior de un solo canal ($363.3M-$731.4M/año). Ahora suma mostrador (ticket $219) + app/web (ticket $265.58) con el efecto de frecuencia corregido para que solo aplique al cliente identificado, no a toda la tienda — ver "Cálculo combinado corregido" arriba. <strong>Sujeto a un punto abierto sin resolver:</strong> si el efecto de ticket también debe escalarse por adopción (igual que se hizo con frecuencia), este número podría bajar entre 5 y 10 veces — ver "⚠ Punto abierto" arriba. No presentar a dirección sin resolver ese punto primero</td></tr>
+            <tr class="result-row"><td>Incremento de ventas anual estimado</td><td>$622.6M a $879.5M MXN/año (conservador a optimista; punto medio ~$736.6M)</td><td>Actualizado 22 jul 2026 — resuelve el punto abierto de ticket/frecuencia: en mostrador el ticket (20%) se escala por adopción igual que la frecuencia (la promoción requiere QR presentado, mantiene trazabilidad); en app/web se aplica 20% plano porque ya está identificado. Reemplaza la estimación anterior de $732.9M-$1,719.3M MXN, que no tenía este ajuste — ver "Cálculo combinado final" arriba</td></tr>
             <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente — falta el costo de la campaña de adopción para restarlo al incremento de arriba</td><td>Incremento de ventas anual (arriba) − costo de campaña de adopción</td></tr>
             <tr class="result-row"><td>ROI anual estimado (%)</td><td class="pending">Pendiente</td><td>Fórmula arriba. Dado que el incremento estimado ya es de cientos de millones de MXN/año, es muy probable que el ROI sea alto y el payback rápido incluso con un costo de campaña considerable — pero falta el dato real para confirmarlo</td></tr>
             <tr class="result-row"><td>Payback estimado (meses)</td><td class="pending">Pendiente</td><td>Fórmula arriba</td></tr>
@@ -966,13 +967,12 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
         <div class="field">
           <h4>Puntos abiertos — a revisar antes de presentar (sesión de trabajo, 20 jul 2026)</h4>
           <ul>
-            <li><strong>El mismo error de frecuencia, sin corregir en ticket</strong> — ver "⚠ Punto abierto" arriba; es la variable de mayor peso de todo el modelo (puede mover el resultado 5-10x).</li>
             <li><strong>"Tiempo ahorrado" no está conectado a un destino de valor</strong> — no aplica del todo a Idea 1 (es un tema de Idea 2), pero la misma lógica de rigor aplica: cualquier ahorro de tiempo/recursos debe tener un destino concreto para contar como flujo de caja real, no "de papel".</li>
             <li><strong>Sin costo de implementación, no hay caso de negocio real todavía</strong> — todo lo calculado es la mitad de la ecuación (beneficio bruto); el ROI/payback sigue sin poder calcularse sin el costo de la campaña de adopción.</li>
             <li><strong>Heterogeneidad de tiendas ignorada</strong> — se documentó que hay tiendas con 91% delivery y otras 100% mostrador (Express), pero el cálculo de arriba aplica 30%/70% mostrador/delivery de forma uniforme a las 514 tiendas. Inconsistente si la mezcla de canal varía tanto entre tiendas — mismo tipo de heterogeneidad que sí se usó para diseñar el piloto de Idea 2 (ver esa idea).</li>
             <li><strong>El benchmark de adopción (10-20%) puede no ser la comparación correcta</strong> — ver campo "Meta de adopción de la app" arriba: Domino's ya tiene una base instalada grande (~57% de transacciones vía app/web), y ese benchmark es para apps que arrancan de cero.</li>
           </ul>
-          <p style="margin-top:8px;font-size:13px;color:var(--muted);"><strong>Lo que sí está bien construido:</strong> la separación de canales sin doble conteo, la corrección de frecuencia con su lógica bien razonada, y el uso consistente de "Pendiente" para no inventar datos donde no los hay.</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);"><strong>Lo que sí está bien construido:</strong> la separación de canales sin doble conteo, la corrección de frecuencia y ahora también de ticket con su lógica bien razonada (mecanismo de QR obligatorio en mostrador para mantener trazabilidad), y el uso consistente de "Pendiente" para no inventar datos donde no los hay.</p>
         </div>
       </div>
     </div>
