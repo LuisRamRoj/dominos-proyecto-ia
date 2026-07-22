@@ -934,6 +934,20 @@
           <p style="margin-top:8px;font-size:13px;color:var(--muted);">Esta cifra reemplaza la estimación anterior ($732.9M–$1,719.3M MXN), que todavía tenía el ticket de mostrador sin escalar por adopción.</p>
         </div>
 
+        <div class="field" style="border-left:4px solid var(--green);background:#eafaf0;">
+          <h4>✓ Margen de utilidad real aplicado — decisión de sesión, 22 jul 2026</h4>
+          <p>El incremento de ventas de arriba es ingreso bruto, no utilidad. Para convertirlo en beneficio neto real se aplica el margen EBITDA ajustado real de Alsea, en vez de un benchmark externo de industria — es la cifra más defendible frente a dirección porque es el margen real de la empresa, no una referencia de terceros.</p>
+          <table class="econ-table">
+            <tr><th>Trimestre</th><th>Margen EBITDA ajustado 2025</th></tr>
+            <tr><td>1T25</td><td>21.0%</td></tr>
+            <tr><td>2T25</td><td>23.7%</td></tr>
+            <tr><td>3T25</td><td>22.6%</td></tr>
+            <tr><td>4T25</td><td>16.8%</td></tr>
+            <tr class="result-row"><td>Promedio 2025 usado en el cálculo</td><td>~21%</td></tr>
+          </table>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);">Fuente: reportes trimestrales de Alsea 2025 (alsea.com.mx). Nota de rigor: es margen <strong>EBITDA</strong> (antes de depreciación, intereses e impuestos), no margen neto puro — sigue siendo más generoso que una utilidad neta final, pero es el estándar que la propia Alsea reporta como "rentabilidad real" y es más conservador que tratar el 100% del incremento de ventas como utilidad. El EBITDA no ajustado de todo 2025 fue 14.1% — si se quiere ser todavía más conservador, ese sería el número a usar en vez de 21%.</p>
+        </div>
+
         <div class="econ-box">
           <h4>Impacto económico — Componente B (App + QR) — plantilla benchmark, pendiente de datos reales</h4>
           <div class="formula">Incremento de ventas anual (mostrador) = ventas base mostrador × [(1 + % adopción × 20%) × (1 + % adopción × % frecuencia) − 1]
@@ -959,22 +973,22 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
             <tr><td>Costo de campaña de adopción de app</td><td>Incluido arriba</td><td>Confirmado, 22 jul 2026 — ya está contemplada dentro del $1.2M USD de relanzamiento, no es un costo aparte</td></tr>
             <tr><td>Costo de mantenimiento anual</td><td class="pending">Pendiente</td><td>Confirmado que existirá algún costo recurrente de mantenimiento — falta el monto</td></tr>
             <tr class="result-row"><td>Incremento de ventas anual estimado</td><td>$622.6M a $879.5M MXN/año (conservador a optimista; punto medio ~$736.6M)</td><td>Actualizado 22 jul 2026 — resuelve el punto abierto de ticket/frecuencia: en mostrador el ticket (20%) se escala por adopción igual que la frecuencia (la promoción requiere QR presentado, mantiene trazabilidad); en app/web se aplica 20% plano porque ya está identificado. Reemplaza la estimación anterior de $732.9M-$1,719.3M MXN, que no tenía este ajuste — ver "Cálculo combinado final" arriba</td></tr>
-            <tr class="result-row"><td>Beneficio neto anual estimado</td><td>$622.6M a $879.5M MXN/año (sin restar mantenimiento, aún pendiente)</td><td>= Incremento de ventas anual (arriba), ya que el costo de inversión inicial es único y la campaña ya está incluida ahí — <strong>ojo:</strong> esto es sobre incremento de ventas (ingreso bruto), no una utilidad neta real; falta aplicar el margen de utilidad de Alsea y restar el costo de mantenimiento anual (pendiente)</td></tr>
-            <tr class="result-row"><td>ROI anual estimado (%)</td><td>~2,982% a ~4,213%</td><td>(Beneficio neto ÷ $20.9M MXN) × 100. <strong>No presentar así a dirección:</strong> está calculado sobre ingreso bruto, no sobre utilidad — sin un margen real de Alsea, este % está sobreestimado y no es defendible como está</td></tr>
-            <tr class="result-row"><td>Payback estimado (meses)</td><td>~0.28 a ~0.40 meses (~9 a ~12 días)</td><td>Mismo problema que el ROI% de arriba — un payback de días es una señal de que falta aplicar margen de utilidad real, no que el proyecto sea así de bueno</td></tr>
+            <tr class="result-row"><td>Beneficio neto anual estimado</td><td>$130.7M a $184.7M MXN/año (punto medio ~$154.7M; sin restar mantenimiento, aún pendiente)</td><td>Actualizado 22 jul 2026 — = Incremento de ventas anual (arriba) × margen EBITDA ajustado real de Alsea (~21%, ver campo "Margen de utilidad real aplicado"). Reemplaza la cifra anterior de $622.6M-$879.5M MXN, que era ingreso bruto sin margen aplicado. Sigue pendiente restar el costo de mantenimiento anual una vez que se confirme el monto</td></tr>
+            <tr class="result-row"><td>ROI anual estimado (%)</td><td>~625% a ~884% (punto medio ~740%)</td><td>(Beneficio neto ÷ $20.9M MXN) × 100, ya con el margen del 21% aplicado. Sigue siendo un ROI muy alto — razonable dado que es relanzar algo ya parcialmente construido, con un costo de inversión relativamente bajo frente al tamaño de la base de clientes que toca — pero preséntese junto con el supuesto de margen (21% EBITDA ajustado Alsea) explícito</td></tr>
+            <tr class="result-row"><td>Payback estimado (meses)</td><td>~1.4 a ~1.9 meses (~41 a ~58 días)</td><td>Ya con margen aplicado — mucho más creíble que el ~9-12 días de la versión sin margen, aunque sigue siendo rápido porque no hay costo de capex nuevo (relanzamiento de algo parcialmente construido) ni costo de mantenimiento restado todavía</td></tr>
           </table>
         </div>
 
         <div class="field">
           <h4>Puntos abiertos — a revisar antes de presentar (sesión de trabajo, 22 jul 2026)</h4>
           <ul>
-            <li><strong>ROI%/Payback están sobre ingreso bruto, no utilidad — el punto más importante ahora mismo</strong>: con el costo de inversión ($1.2M USD) ya confirmado, el ROI%/payback dan ~2,982%-4,213% y ~9-12 días de payback. Es un número irreal porque nunca se le aplicó un margen de utilidad al incremento de ventas — hay que conseguir el margen real de Alsea (o al menos un benchmark de industria) antes de mostrar estas cifras a dirección tal cual están.</li>
+            <li><strong>El margen aplicado es EBITDA, no utilidad neta pura</strong>: el ~21% usado para pasar de ingreso bruto a beneficio neto es el margen EBITDA ajustado de Alsea (reportes 2025), no un margen neto final después de intereses/impuestos/depreciación. Sigue siendo la referencia más real disponible (mejor que un benchmark externo de industria), pero conviene tenerlo presente si dirección pregunta por "utilidad neta" en sentido estricto — la alternativa más conservadora sería el 14.1% (EBITDA no ajustado, año completo 2025).</li>
             <li><strong>"Tiempo ahorrado" no está conectado a un destino de valor</strong> — no aplica del todo a Idea 1 (es un tema de Idea 2), pero la misma lógica de rigor aplica: cualquier ahorro de tiempo/recursos debe tener un destino concreto para contar como flujo de caja real, no "de papel".</li>
             <li><strong>Costo de mantenimiento anual todavía pendiente</strong> — el $1.2M USD es un costo único de relanzamiento; falta el monto del mantenimiento recurrente para restarlo del beneficio neto de cada año.</li>
             <li><strong>Heterogeneidad de tiendas ignorada</strong> — se documentó que hay tiendas con 91% delivery y otras 100% mostrador (Express), pero el cálculo de arriba aplica 30%/70% mostrador/delivery de forma uniforme a las 514 tiendas. Inconsistente si la mezcla de canal varía tanto entre tiendas — mismo tipo de heterogeneidad que sí se usó para diseñar el piloto de Idea 2 (ver esa idea).</li>
             <li><strong>El benchmark de adopción (10-20%) puede no ser la comparación correcta</strong> — ver campo "Meta de adopción de la app" arriba: Domino's ya tiene una base instalada grande (~57% de transacciones vía app/web), y ese benchmark es para apps que arrancan de cero.</li>
           </ul>
-          <p style="margin-top:8px;font-size:13px;color:var(--muted);"><strong>Lo que sí está bien construido:</strong> la separación de canales sin doble conteo, la corrección de frecuencia y ahora también de ticket con su lógica bien razonada (mecanismo de QR obligatorio en mostrador para mantener trazabilidad), y el uso consistente de "Pendiente" para no inventar datos donde no los hay.</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);"><strong>Lo que sí está bien construido:</strong> la separación de canales sin doble conteo, la corrección de frecuencia y ahora también de ticket con su lógica bien razonada (mecanismo de QR obligatorio en mostrador para mantener trazabilidad), el margen de utilidad real de Alsea ya aplicado al beneficio neto/ROI%/payback (en vez de ingreso bruto), y el uso consistente de "Pendiente" para no inventar datos donde no los hay.</p>
         </div>
       </div>
     </div>
