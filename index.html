@@ -913,25 +913,48 @@
         </div>
 
         <div class="field">
-          <h4>Cálculo combinado final: ticket (por canal) + frecuencia real, mostrador + app/web — sesión de trabajo, 22 jul 2026</h4>
-          <p>Mismos datos base (ticket mostrador $219, ticket app+web $265.58, mostrador = 30% de las transacciones semanales, 514 tiendas). El ticket ahora se aplica distinto por canal (ver "Punto resuelto" arriba): en mostrador se escala por adopción (% adopción × 20%), igual que la frecuencia; en app/web se aplica 20% plano sobre el 100% de las transacciones.</p>
+          <h4>Aclaración del mecanismo: el QR identifica, la IA es la que sube el ticket — sesión de trabajo, 22 jul 2026</h4>
+          <p>Importante no confundir el medio con la causa: <strong>escanear el QR no sube el ticket por sí solo</strong> — el QR únicamente identifica al cliente en el momento de la compra. Lo que realmente eleva el ticket es la <strong>venta sugestiva personalizada generada por IA</strong> a partir de esa identificación (historial de compra, CLV, segmento RFM), entregada de dos formas según el canal: en <strong>app/web</strong> aparece directo en el flujo de pedido (recomendación de producto dentro de la app); en <strong>mostrador</strong> tendría que llegar como sugerencia al cajero (pantalla de POS) o como promoción/notificación al teléfono del cliente al momento de pagar. El cliente acepta (o no) esa sugerencia, y ahí es donde sube el ticket — no en el escaneo en sí.</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);">Esto implica una capa adicional que hoy no se modela por separado: la calidad/madurez del motor de recomendación de IA (necesita datos de comportamiento para afinarse) y la tasa de ejecución de la sugerencia en el punto de venta (que el cajero la diga, o que el cliente la vea y la tome en la app). El cálculo usa "% de adopción del QR" como proxy único para todo esto, porque no hay benchmark para separar cada parte por su lado — ver el listado de supuestos del componente B para el detalle completo de qué es benchmark, qué es dato interno y qué sigue pendiente.</p>
+        </div>
+
+        <div class="field">
+          <h4>Cálculo combinado final: curva de maduración a 3 años (ticket + frecuencia, mostrador + app/web) — sesión de trabajo, 22 jul 2026</h4>
+          <p>En vez de tratar conservador/punto medio/optimista como tres escenarios paralelos e igual de probables, se usan como una curva de maduración real en el tiempo: <strong>Año 1</strong> = adopción QR 10% (arranque de campaña), <strong>Año 2</strong> = 15% (adopción madurando), <strong>Año 3</strong> = 20% (adopción madura) — mismos datos que ya se tenían, ahora secuenciados. Además, el ticket de app+web ya no se aplica plano al 20% desde el día uno: se escala según la madurez del motor de recomendación de IA (necesita datos de comportamiento para afinarse), no según la adopción del QR — el cliente de app+web ya está identificado desde siempre. Ver campo "Aclaración del mecanismo" arriba.</p>
+
+          <h4 style="margin-top:16px;font-size:14px;">Ticket promedio por canal — antes / después</h4>
           <table class="econ-table">
-            <tr><th>Canal</th><th>Escenario</th><th>% ticket aplicado</th><th>Ventas hoy (baseline)</th><th>Ventas con ticket+frecuencia</th><th>Incremento</th></tr>
-            <tr><td>Mostrador</td><td>Conservador</td><td>2.0% (10%×20%)</td><td>$1,760.8M MXN</td><td>$1,834.9M MXN</td><td>+$74.1M MXN</td></tr>
-            <tr><td>Mostrador</td><td>Punto medio</td><td>3.0% (15%×20%)</td><td>$1,936.8M MXN</td><td>$2,073.7M MXN</td><td>+$136.9M MXN</td></tr>
-            <tr><td>Mostrador</td><td>Optimista</td><td>4.0% (20%×20%)</td><td>$2,112.9M MXN</td><td>$2,329.3M MXN</td><td>+$216.4M MXN</td></tr>
-            <tr><td>App+web</td><td>Conservador</td><td>20% (flat)</td><td>$2,422.7M MXN</td><td>$2,971.2M MXN</td><td>+$548.5M MXN</td></tr>
-            <tr><td>App+web</td><td>Punto medio</td><td>20% (flat)</td><td>$2,430.1M MXN</td><td>$3,029.8M MXN</td><td>+$599.7M MXN</td></tr>
-            <tr><td>App+web</td><td>Optimista</td><td>20% (flat)</td><td>$2,438.0M MXN</td><td>$3,101.1M MXN</td><td>+$663.1M MXN</td></tr>
+            <tr><th>Canal</th><th>Año</th><th>Ticket antes</th><th>Ticket después</th><th>% incremento</th><th>Incremento en pesos</th></tr>
+            <tr><td>Mostrador</td><td>Año 1 (adopción 10%)</td><td>$219.00</td><td>$223.38</td><td>+2.0%</td><td>+$4.38</td></tr>
+            <tr><td>Mostrador</td><td>Año 2 (adopción 15%)</td><td>$219.00</td><td>$225.57</td><td>+3.0%</td><td>+$6.57</td></tr>
+            <tr><td>Mostrador</td><td>Año 3 (adopción 20%)</td><td>$219.00</td><td>$227.76</td><td>+4.0%</td><td>+$8.76</td></tr>
+            <tr><td>App+web</td><td>Año 1 (motor 50% maduro)</td><td>$265.58</td><td>$292.14</td><td>+10.0%</td><td>+$26.56</td></tr>
+            <tr><td>App+web</td><td>Año 2 (motor 75% maduro)</td><td>$265.58</td><td>$305.42</td><td>+15.0%</td><td>+$39.84</td></tr>
+            <tr><td>App+web</td><td>Año 3 (motor 100% maduro)</td><td>$265.58</td><td>$318.70</td><td>+20.0%</td><td>+$53.12</td></tr>
           </table>
-          <table class="econ-table" style="margin-top:12px;">
-            <tr><th>Escenario</th><th>Total combinado (mostrador + app/web)</th><th>% sobre ventas actuales</th></tr>
-            <tr><td>Conservador</td><td>+$622.6M MXN</td><td>+14.9%</td></tr>
-            <tr><td>Punto medio</td><td>+$736.6M MXN</td><td>+16.9%</td></tr>
-            <tr><td>Optimista</td><td>+$879.5M MXN</td><td>+19.3%</td></tr>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);">El mostrador sube poco en ticket (2-4%) porque solo quien escanea el QR recibe la venta sugestiva, y eso se diluye contra el 100% de las transacciones de la tienda. En app+web el efecto no se diluye (100% de las órdenes ya está identificado), pero se limita por la madurez del motor de IA en los primeros años. <strong>La curva de madurez del motor (50%/75%/100% del efecto completo en Año 1/2/3) es un supuesto de modelado de esta sesión, sin benchmark externo</strong> — elegido por dar una progresión conservadora y razonable, no por un dato confirmado.</p>
+
+          <h4 style="margin-top:16px;font-size:14px;">Ventas totales por canal — antes / después</h4>
+          <table class="econ-table">
+            <tr><th>Canal</th><th>Año</th><th>Ventas antes</th><th>Ventas después</th><th>% incremento</th><th>Incremento bruto</th></tr>
+            <tr><td>Mostrador</td><td>Año 1</td><td>$1,760.8M MXN</td><td>$1,834.9M MXN</td><td>+4.2%</td><td>+$74.1M MXN</td></tr>
+            <tr><td>Mostrador</td><td>Año 2</td><td>$1,936.8M MXN</td><td>$2,073.7M MXN</td><td>+7.1%</td><td>+$136.9M MXN</td></tr>
+            <tr><td>Mostrador</td><td>Año 3</td><td>$2,112.9M MXN</td><td>$2,329.3M MXN</td><td>+10.2%</td><td>+$216.4M MXN</td></tr>
+            <tr><td>App+web</td><td>Año 1</td><td>$2,422.7M MXN</td><td>$2,723.6M MXN</td><td>+12.4%</td><td>+$300.9M MXN</td></tr>
+            <tr><td>App+web</td><td>Año 2</td><td>$2,430.1M MXN</td><td>$2,903.6M MXN</td><td>+19.5%</td><td>+$473.5M MXN</td></tr>
+            <tr><td>App+web</td><td>Año 3</td><td>$2,438.0M MXN</td><td>$3,101.1M MXN</td><td>+27.2%</td><td>+$663.1M MXN</td></tr>
           </table>
-          <p style="margin-top:8px;">El driver principal ya no es el mostrador (aporta solo 2-4% real, escalado por adopción) sino <strong>app/web</strong>, que mantiene el 20% completo sobre el 100% de sus transacciones porque ya está identificado por diseño. El escenario conservador (+$622.6M MXN) representa <strong>+14.9%</strong> sobre las ventas actuales combinadas de estos dos canales — la cifra a liderar frente a dirección, ya sin el punto abierto de ticket/frecuencia colgando.</p>
-          <p style="margin-top:8px;font-size:13px;color:var(--muted);">Esta cifra reemplaza la estimación anterior ($732.9M–$1,719.3M MXN), que todavía tenía el ticket de mostrador sin escalar por adopción.</p>
+
+          <h4 style="margin-top:16px;font-size:14px;">Combinado (mostrador + app/web) — con margen de utilidad aplicado</h4>
+          <table class="econ-table">
+            <tr><th>Año</th><th>Ventas antes</th><th>Ventas después</th><th>% incremento</th><th>Incremento bruto</th><th>Beneficio neto (margen 21%)</th></tr>
+            <tr><td>Año 1</td><td>$4,183.5M MXN</td><td>$4,558.5M MXN</td><td>+9.0%</td><td>+$375.0M MXN</td><td>+$78.8M MXN</td></tr>
+            <tr><td>Año 2</td><td>$4,366.9M MXN</td><td>$4,977.3M MXN</td><td>+14.0%</td><td>+$610.4M MXN</td><td>+$128.2M MXN</td></tr>
+            <tr><td>Año 3</td><td>$4,550.9M MXN</td><td>$5,430.4M MXN</td><td>+19.3%</td><td>+$879.5M MXN</td><td>+$184.7M MXN</td></tr>
+            <tr class="result-row"><td colspan="5">Beneficio neto acumulado a 3 años</td><td>$391.7M MXN</td></tr>
+          </table>
+          <p style="margin-top:8px;">El Año 3 coincide exactamente con el antiguo escenario "optimista" ($879.5M, +19.3%) — es el punto donde adopción y motor de IA ya maduraron ambos al 100%. Lo que cambió es el arranque: el Año 1 baja de +14.9% ($622.6M bruto) a +9.0% ($375.0M bruto) frente a la versión sin ramp de app+web, porque ya no se le da crédito al motor de IA por un 20% completo desde el primer mes — es un número de arranque más conservador y defendible frente a dirección.</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);">Esta curva reemplaza la presentación anterior por escenarios paralelos (conservador/punto medio/optimista sin secuencia temporal) y el ROI% anual (~625%-884%) que se manejaba antes: aunque matemáticamente correcto, ese % comparaba un beneficio recurrente anual contra un costo único — una estructura que infla cualquier porcentaje sin importar qué tan conservadores sean los supuestos debajo. Ver "Elementos del cálculo" abajo para el detalle de qué es benchmark, qué es dato interno y qué es supuesto de esta sesión.</p>
         </div>
 
         <div class="field" style="border-left:4px solid var(--green);background:#eafaf0;">
@@ -948,16 +971,39 @@
           <p style="margin-top:8px;font-size:13px;color:var(--muted);">Fuente: reportes trimestrales de Alsea 2025 (alsea.com.mx). Nota de rigor: es margen <strong>EBITDA</strong> (antes de depreciación, intereses e impuestos), no margen neto puro — sigue siendo más generoso que una utilidad neta final, pero es el estándar que la propia Alsea reporta como "rentabilidad real" y es más conservador que tratar el 100% del incremento de ventas como utilidad. El EBITDA no ajustado de todo 2025 fue 14.1% — si se quiere ser todavía más conservador, ese sería el número a usar en vez de 21%.</p>
         </div>
 
+        <div class="field">
+          <h4>Elementos del cálculo — qué es benchmark, qué es dato interno, qué es supuesto (sesión de trabajo, 22 jul 2026)</h4>
+          <p>Inventario completo de qué sustenta cada número del modelo, para poder defender el origen de cada supuesto frente a dirección.</p>
+          <table class="econ-table">
+            <tr><th>Variable</th><th>Tipo</th><th>Nota</th></tr>
+            <tr><td>Ticket promedio mostrador ($219 MXN)</td><td>Dato interno, no confirmado formalmente en CRM</td><td>Aportado por Luis en sesión, 20 jul 2026 — "varía por tienda"</td></tr>
+            <tr><td>Ticket promedio app+web ($265.58 MXN)</td><td>Dato interno confirmado (CRM)</td><td>VENTA OLO C TT ÷ ORDENES OLO C TT, ene-jun 2026</td></tr>
+            <tr><td>Reparto mostrador/delivery (~30%/70%)</td><td>Dato interno, aproximado</td><td>Cifra interna Alsea, varía por tienda/región</td></tr>
+            <tr><td># tiendas corporativas (514-517)</td><td>Dato interno confirmado</td><td>—</td></tr>
+            <tr><td># transacciones app+web/mes (~760-765K)</td><td>Dato interno confirmado (CRM)</td><td>Promedio real ene-jun 2026</td></tr>
+            <tr><td>% adopción QR objetivo (10%/15%/20%)</td><td>Benchmark externo, no confirmado por Alsea</td><td>QSR 2025-2026</td></tr>
+            <tr><td>% incremento en ticket con venta sugestiva (20% máximo)</td><td>Benchmark externo + decisión de sesión</td><td>QSR reporta 15-30% (hasta 40%); se eligió 20% como punto medio conservador</td></tr>
+            <tr><td>Curva de madurez del motor de IA (50%/75%/100% en Año 1/2/3, solo app+web)</td><td>Supuesto de modelado de esta sesión, sin benchmark</td><td>22 jul 2026 — elegido por dar una progresión conservadora, no por dato confirmado</td></tr>
+            <tr><td>% incremento en frecuencia con lealtad (hasta +30%)</td><td>Benchmark externo</td><td>Circana 2025 / plantilla de propuesta externa</td></tr>
+            <tr><td>CLV promedio (180d/365d)</td><td>Dato interno confirmado (CRM)</td><td>Contexto/priorización, no entra directo en la fórmula de ingreso</td></tr>
+            <tr><td>Costo de inversión inicial ($1.2M USD / $20.9M MXN)</td><td>Dato interno confirmado + tipo de cambio (benchmark de mercado)</td><td>Costo confirmado por Luis; conversión a MXN vía tipo de cambio del día</td></tr>
+            <tr><td>Costo de campaña de adopción</td><td>Dato interno confirmado</td><td>Incluido en el $1.2M</td></tr>
+            <tr><td>Costo de mantenimiento anual</td><td class="pending">Pendiente</td><td>Sin monto aún</td></tr>
+            <tr><td>Margen EBITDA ajustado Alsea (~21%)</td><td>Dato real/público de la empresa</td><td>Reportes trimestrales Alsea 2025</td></tr>
+          </table>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);"><strong>Elementos que todavía no están en el cálculo</strong> (limitaciones conocidas, no fatales pero a tener presentes si se pregunta): incrementalidad real / canibalización (no se evalúa si parte del "ticket extra" se hubiera comprado de todos modos); retención/desinstalación de app (83% en 30 días, benchmark) no se descuenta numéricamente del efecto en el tiempo; fricción operativa en mostrador (segundos extra por transacción) se asume despreciable pero no está cuantificada; el beneficio acumulado a 3 años es una suma nominal simple, no un NPV descontado por costo de capital.</p>
+        </div>
+
         <div class="econ-box">
           <h4>Impacto económico — Componente B (App + QR) — plantilla benchmark, pendiente de datos reales</h4>
-          <div class="formula">Incremento de ventas anual (mostrador) = ventas base mostrador × [(1 + % adopción × 20%) × (1 + % adopción × % frecuencia) − 1]
-Incremento de ventas anual (app+web) = ventas base app+web × [(1 + 20%) × (1 + % adopción × % frecuencia) − 1]
-ROI anual (%) = (Beneficio neto anual ÷ Costo total de inversión inicial) × 100
-Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 12)</div>
+          <div class="formula">Incremento de ventas anual (mostrador, por año) = ventas base mostrador × [(1 + % adopción_año × 20%) × (1 + % adopción_año × % frecuencia_año) − 1]
+Incremento de ventas anual (app+web, por año) = ventas base app+web × [(1 + % madurez_motor_IA_año × 20%) × (1 + % adopción_año × % frecuencia_año) − 1]
+Beneficio neto anual = Incremento de ventas anual (combinado) × margen EBITDA ajustado Alsea (~21%)
+Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto Año 1 ÷ 12)</div>
           <p style="margin:4px 0 10px 0;font-size:13px;color:var(--muted);"><strong>Se retiró la fórmula de "Alcance adicional de cobertura":</strong> ya no aplica — los lectores QR cubren el 100% de las tiendas corporativas (ver nota de cobertura en "Situación actual"), así que no hay un subconjunto de tiendas que aporte alcance adicional por separado.</p>
           <table class="econ-table">
             <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
-            <tr><td>Incremento en ticket promedio con venta sugestiva personalizada</td><td>20% — flat en app/web, escalado por adopción en mostrador (% adopción × 20%)</td><td>Decisión de sesión, 22 jul 2026 — el benchmark de industria QSR reporta 15-30% (hasta 40% en algunas fuentes); se eligió 20%. En mostrador la promoción requiere presentar el QR (mantiene trazabilidad), por eso se escala igual que la frecuencia; en app/web ya está identificado, se aplica completo</td></tr>
+            <tr><td>Incremento en ticket promedio con venta sugestiva personalizada</td><td>20% máximo — en mostrador escalado por adopción (% adopción × 20%); en app+web escalado por madurez del motor de IA (50%/75%/100% en Año 1/2/3)</td><td>Decisión de sesión, 22 jul 2026 — benchmark de industria QSR reporta 15-30% (hasta 40% en algunas fuentes); se eligió 20% como techo. En mostrador la promoción requiere presentar el QR (mantiene trazabilidad); en app+web ya está identificado, pero el 20% completo solo se alcanza cuando el motor de recomendación de IA madura (Año 3) — ver "Cálculo combinado final" y "Elementos del cálculo" arriba</td></tr>
             <tr><td>Incremento en frecuencia de compra en mostrador con lealtad (QR)</td><td>hasta +30%</td><td>Benchmark de propuesta externa, 2026 — efecto adicional al de ticket promedio, no lo sustituye</td></tr>
             <tr><td>Ticket promedio (canal app+web / OLO, corporativo)</td><td>~$265.58 MXN</td><td>Confirmado — calculado de VENTA OLO C TT ÷ ORDENES OLO C TT, promedio ene-jun 2026, base de datos CRM ("Historico"). Reemplaza el dato anterior de ~$249 MXN (sin fuente clara) — este es específico del canal OLO corporativo, que es el que toca este componente</td></tr>
             <tr><td>CLV promedio de la base (180 días / 365 días)</td><td>$718.30 / $957.91</td><td>Confirmado — dato CRM, mayo 2026. Ver tabla de segmentación RFM en "Situación actual" para el CLV por segmento (rango $240.74 a $3,390.83) — útil para priorizar a qué segmento apuntar primero con venta sugestiva</td></tr>
@@ -972,23 +1018,23 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
             <tr><td>Costo total de inversión inicial (relanzamiento app)</td><td>$1.2M USD (~$20.9M MXN)</td><td>Confirmado, 22 jul 2026 — costo único (no recurrente) para relanzar el desarrollo de QR/lealtad que ya estaba parcialmente construido (ver hallazgo TI, 15 jul 2026). Conversión al tipo de cambio del día, ~17.4 MXN/USD</td></tr>
             <tr><td>Costo de campaña de adopción de app</td><td>Incluido arriba</td><td>Confirmado, 22 jul 2026 — ya está contemplada dentro del $1.2M USD de relanzamiento, no es un costo aparte</td></tr>
             <tr><td>Costo de mantenimiento anual</td><td class="pending">Pendiente</td><td>Confirmado que existirá algún costo recurrente de mantenimiento — falta el monto</td></tr>
-            <tr class="result-row"><td>Incremento de ventas anual estimado</td><td>$622.6M a $879.5M MXN/año (conservador a optimista; punto medio ~$736.6M)</td><td>Actualizado 22 jul 2026 — resuelve el punto abierto de ticket/frecuencia: en mostrador el ticket (20%) se escala por adopción igual que la frecuencia (la promoción requiere QR presentado, mantiene trazabilidad); en app/web se aplica 20% plano porque ya está identificado. Reemplaza la estimación anterior de $732.9M-$1,719.3M MXN, que no tenía este ajuste — ver "Cálculo combinado final" arriba</td></tr>
-            <tr class="result-row"><td>Beneficio neto anual estimado</td><td>$130.7M a $184.7M MXN/año (punto medio ~$154.7M; sin restar mantenimiento, aún pendiente)</td><td>Actualizado 22 jul 2026 — = Incremento de ventas anual (arriba) × margen EBITDA ajustado real de Alsea (~21%, ver campo "Margen de utilidad real aplicado"). Reemplaza la cifra anterior de $622.6M-$879.5M MXN, que era ingreso bruto sin margen aplicado. Sigue pendiente restar el costo de mantenimiento anual una vez que se confirme el monto</td></tr>
-            <tr class="result-row"><td>ROI anual estimado (%)</td><td>~625% a ~884% (punto medio ~740%)</td><td>(Beneficio neto ÷ $20.9M MXN) × 100, ya con el margen del 21% aplicado. Sigue siendo un ROI muy alto — razonable dado que es relanzar algo ya parcialmente construido, con un costo de inversión relativamente bajo frente al tamaño de la base de clientes que toca — pero preséntese junto con el supuesto de margen (21% EBITDA ajustado Alsea) explícito</td></tr>
-            <tr class="result-row"><td>Payback estimado (meses)</td><td>~1.4 a ~1.9 meses (~41 a ~58 días)</td><td>Ya con margen aplicado — mucho más creíble que el ~9-12 días de la versión sin margen, aunque sigue siendo rápido porque no hay costo de capex nuevo (relanzamiento de algo parcialmente construido) ni costo de mantenimiento restado todavía</td></tr>
+            <tr class="result-row"><td>Incremento de ventas anual (por año, curva de maduración)</td><td>Año 1: $375.0M · Año 2: $610.4M · Año 3: $879.5M MXN</td><td>Actualizado 22 jul 2026 — ya no se presenta como escenarios paralelos (conservador/punto medio/optimista), sino como una curva de maduración a 3 años (adopción QR + madurez del motor de IA). Ver tablas completas en "Cálculo combinado final" arriba</td></tr>
+            <tr class="result-row"><td>Beneficio neto anual (margen EBITDA 21% aplicado)</td><td>Año 1: $78.8M · Año 2: $128.2M · Año 3: $184.7M MXN — <strong>acumulado 3 años: $391.7M MXN</strong></td><td>Actualizado 22 jul 2026 — = incremento de ventas de cada año × margen EBITDA ajustado real de Alsea (~21%). Sigue pendiente restar el costo de mantenimiento anual una vez que se confirme el monto</td></tr>
+            <tr class="result-row"><td>Payback estimado (meses)</td><td>~3.2 meses (~97 días), con solo el beneficio del Año 1</td><td>Se retiró el "ROI anual (%)" como métrica principal — comparar un beneficio recurrente anual contra un costo único infla cualquier % (daba ~625%-884%, un número que no se puede defender bien frente a dirección aunque el cálculo debajo sea correcto). El payback y el beneficio acumulado a 3 años son las cifras que se presentan en su lugar</td></tr>
           </table>
         </div>
 
         <div class="field">
           <h4>Puntos abiertos — a revisar antes de presentar (sesión de trabajo, 22 jul 2026)</h4>
           <ul>
+            <li><strong>La curva de madurez del motor de IA (50%/75%/100%) es un supuesto sin benchmark</strong> — a diferencia de la adopción del QR (que sí tiene benchmark externo), esta curva se eligió por dar una progresión conservadora y razonable, no por un dato confirmado. Hay que poder decir esto abiertamente si se pregunta.</li>
             <li><strong>El margen aplicado es EBITDA, no utilidad neta pura</strong>: el ~21% usado para pasar de ingreso bruto a beneficio neto es el margen EBITDA ajustado de Alsea (reportes 2025), no un margen neto final después de intereses/impuestos/depreciación. Sigue siendo la referencia más real disponible (mejor que un benchmark externo de industria), pero conviene tenerlo presente si dirección pregunta por "utilidad neta" en sentido estricto — la alternativa más conservadora sería el 14.1% (EBITDA no ajustado, año completo 2025).</li>
-            <li><strong>"Tiempo ahorrado" no está conectado a un destino de valor</strong> — no aplica del todo a Idea 1 (es un tema de Idea 2), pero la misma lógica de rigor aplica: cualquier ahorro de tiempo/recursos debe tener un destino concreto para contar como flujo de caja real, no "de papel".</li>
+            <li><strong>Incrementalidad real (canibalización) no evaluada</strong> — no se descuenta si parte del "ticket extra" de la venta sugestiva es algo que el cliente hubiera comprado de todos modos sin la sugerencia.</li>
             <li><strong>Costo de mantenimiento anual todavía pendiente</strong> — el $1.2M USD es un costo único de relanzamiento; falta el monto del mantenimiento recurrente para restarlo del beneficio neto de cada año.</li>
             <li><strong>Heterogeneidad de tiendas ignorada</strong> — se documentó que hay tiendas con 91% delivery y otras 100% mostrador (Express), pero el cálculo de arriba aplica 30%/70% mostrador/delivery de forma uniforme a las 514 tiendas. Inconsistente si la mezcla de canal varía tanto entre tiendas — mismo tipo de heterogeneidad que sí se usó para diseñar el piloto de Idea 2 (ver esa idea).</li>
             <li><strong>El benchmark de adopción (10-20%) puede no ser la comparación correcta</strong> — ver campo "Meta de adopción de la app" arriba: Domino's ya tiene una base instalada grande (~57% de transacciones vía app/web), y ese benchmark es para apps que arrancan de cero.</li>
           </ul>
-          <p style="margin-top:8px;font-size:13px;color:var(--muted);"><strong>Lo que sí está bien construido:</strong> la separación de canales sin doble conteo, la corrección de frecuencia y ahora también de ticket con su lógica bien razonada (mecanismo de QR obligatorio en mostrador para mantener trazabilidad), el margen de utilidad real de Alsea ya aplicado al beneficio neto/ROI%/payback (en vez de ingreso bruto), y el uso consistente de "Pendiente" para no inventar datos donde no los hay.</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);"><strong>Lo que sí está bien construido:</strong> la separación de canales sin doble conteo, la corrección de frecuencia y ticket con su lógica bien razonada (mecanismo de QR obligatorio en mostrador para mantener trazabilidad; venta sugestiva de IA, no el escaneo en sí, como causa real del ticket), la curva de maduración a 3 años en vez de escenarios paralelos, el margen de utilidad real de Alsea ya aplicado al beneficio neto (en vez de ingreso bruto), el reemplazo del ROI% por payback + beneficio acumulado (métrica más defendible frente a dirección), y el uso consistente de "Pendiente" para no inventar datos donde no los hay.</p>
         </div>
       </div>
     </div>
