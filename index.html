@@ -870,6 +870,70 @@
         <div class="field" style="border-left:4px solid var(--red);">
           <p><strong>Esta tabla es ahora el entregable crítico de la Idea 1 (confirmado, reunión con Director de TI, 15 jul 2026):</strong> el desarrollo técnico del QR/lealtad ya existe; lo que hundió el proyecto la vez pasada fue no poder justificar el ROI ante la dirección. Cerrar las filas "Pendiente" de abajo con datos reales es lo que decide si este componente se reactiva o no.</p>
         </div>
+
+        <div class="field">
+          <h4>Meta de adopción de la app — benchmark externo (sesión de trabajo, 20 jul 2026)</h4>
+          <p>No hay benchmark propio de Alsea todavía. Se investigó benchmark externo de industria QSR 2025-2026 como referencia:</p>
+          <table class="econ-table">
+            <tr><th>Formato de loyalty</th><th>Adopción típica</th><th>Nota</th></tr>
+            <tr><td>Wallet pass (Apple/Google Wallet, sin descarga)</td><td>65–75%</td><td>Benchmark externo — ej. Portillo's: 2M miembros en 10 meses, sin exigir app</td></tr>
+            <tr><td>App de marca (requiere descarga)</td><td>10–20%</td><td>Benchmark externo — es el mecanismo actual de Domino's: el cliente genera el QR desde la app</td></tr>
+          </table>
+          <p style="margin-top:8px;">Meta realista para el mecanismo actual (app): ~10-20% de las transacciones de mostrador escaneando QR en los primeros 6-12 meses de campaña activa. Riesgo adicional: 83% de las apps de loyalty se desinstalan en los primeros 30 días — no basta con lograr la descarga inicial. Si se quisiera una meta más agresiva (30-40%+), habría que explorar simplificar el mecanismo (ej. wallet-pass en vez de app completa).</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);"><strong>Punto abierto:</strong> este benchmark es para apps que se descargan desde cero — Domino's ya tiene ~57% de sus transacciones pasando por app/web (base instalada grande). Lo que se necesita en mostrador no es que bajen la app, sino que quien ya la tiene la use para el QR — una barrera más baja que una descarga nueva, que podría justificar una meta más alta que 10-20%. Ver "Puntos abiertos" al final de esta sección.</p>
+        </div>
+
+        <div class="field">
+          <h4>Ticket de mostrador vs. ticket general (app+web) — decisión de sesión, 20 jul 2026</h4>
+          <table class="econ-table">
+            <tr><th>Ticket</th><th>Valor</th><th>Fuente</th></tr>
+            <tr><td>Mostrador</td><td>$219 MXN (varía por tienda)</td><td>Dato aportado en sesión de trabajo, 20 jul 2026</td></tr>
+            <tr><td>App+web (OLO, corporativo)</td><td>$265.58 MXN</td><td>Confirmado — dato CRM, ene-jun 2026</td></tr>
+          </table>
+          <p style="margin-top:8px;"><strong>Decisión:</strong> se calculan ambos canales por separado y se suman — son poblaciones de transacciones mutuamente excluyentes (una orden es de mostrador o de app/web, nunca ambas a la vez), así que no hay doble conteo de ingreso al sumarlos. El mostrador es el canal sin ningún dato de cliente hoy (ahí está el valor incremental "nuevo" real); el ticket app+web ya tiene fuente CRM confirmada, y el Componente B apunta explícitamente a mostrador <strong>y</strong> delivery, no solo a mostrador.</p>
+        </div>
+
+        <div class="field" style="border-left:4px solid var(--amber);">
+          <h4>Corrección al efecto de frecuencia (+30%) — sesión de trabajo, 20 jul 2026</h4>
+          <p>El documento dice textualmente "<strong>hasta</strong> +30%" — es un techo, no un promedio. Además, ese 30% aplica solo al cliente que está identificado (escaneó el QR), no a la tienda completa. En los cálculos previos se aplicó por error al 100% de las órdenes de mostrador, sobreestimando el efecto real entre 5x y 14x.</p>
+          <p style="margin-top:8px;"><strong>Ejemplo ilustrativo — 100 clientes de mostrador, 1 visita/mes c/u:</strong> con 15% de adopción QR, 15 clientes identificados aumentan su frecuencia +30% (19.5 visitas), los 85 restantes no cambian (85 visitas) → nuevo total 104.5 visitas/mes → efecto real sobre el total de la tienda es <strong>+4.5%, no +30%</strong>.</p>
+          <table class="econ-table">
+            <tr><th>Escenario</th><th>% ticket</th><th>% adopción</th><th>% frecuencia (benchmark)</th><th>Frecuencia real (adopción × benchmark)</th></tr>
+            <tr><td>Conservador</td><td>15%</td><td>10%</td><td>22%</td><td>2.2%</td></tr>
+            <tr><td>Punto medio</td><td>22.5%</td><td>15%</td><td>26%</td><td>3.9%</td></tr>
+            <tr><td>Optimista</td><td>30%</td><td>20%</td><td>30%</td><td>6.0%</td></tr>
+          </table>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);">Fórmula corregida: efecto real = % adopción × % frecuencia del benchmark (22-30% según Circana 2025 y la plantilla del documento).</p>
+        </div>
+
+        <div class="field" style="border-left:4px solid var(--red);background:#fdecec;">
+          <h4>⚠ Punto abierto sin resolver — el mismo ajuste puede aplicar también al ticket</h4>
+          <p>La corrección de frecuencia de arriba asume que el efecto <strong>solo aplica al cliente identificado</strong> (quien escaneó el QR) — pero nunca se aplicó esa misma lógica al efecto de <strong>ticket</strong> (+15% a +30%), que en el cálculo de abajo sigue aplicado al 100% de las transacciones de cada canal. Si la venta sugestiva depende de reconocer al cliente vía QR, ese efecto tampoco debería aplicar a quien no escaneó.</p>
+          <p style="margin-top:8px;">Con el mismo ajuste (adopción × benchmark), el ticket efectivo pasaría de 15% a ~1.5% (conservador), de 22.5% a ~3.4% (punto medio), y de 30% a ~6.0% (optimista) — esto podría bajar el <strong>Incremento de ventas anual estimado</strong> de abajo entre <strong>5 y 10 veces</strong>. No se recalculó la cifra completa con este ajuste porque requiere confirmar primero con quien definió el benchmark original si el +15-30% ya asume "solo clientes identificados" o es un promedio general de punto de venta (con y sin reconocimiento) — es la variable de mayor peso de todo el modelo y debe resolverse antes de presentar el caso a dirección.</p>
+        </div>
+
+        <div class="field">
+          <h4>Cálculo combinado corregido: ticket + frecuencia real, mostrador + app/web — sesión de trabajo, 20 jul 2026</h4>
+          <p>Mismos datos base (ticket mostrador $219, ticket app+web $265.58, mostrador = 30% de las transacciones semanales, 514 tiendas), ahora con la frecuencia real escalada por adopción en vez del 30% plano:</p>
+          <table class="econ-table">
+            <tr><th>Canal</th><th>Escenario</th><th>Ventas hoy (baseline)</th><th>Ventas con ticket+frecuencia</th><th>Incremento</th></tr>
+            <tr><td>Mostrador</td><td>Conservador</td><td>$1,760.8M MXN</td><td>$2,069.8M MXN</td><td>+$309.0M MXN</td></tr>
+            <tr><td>Mostrador</td><td>Punto medio</td><td>$1,936.8M MXN</td><td>$2,465.4M MXN</td><td>+$528.6M MXN</td></tr>
+            <tr><td>Mostrador</td><td>Optimista</td><td>$2,112.9M MXN</td><td>$2,911.5M MXN</td><td>+$798.6M MXN</td></tr>
+            <tr><td>App+web</td><td>Conservador</td><td>$2,422.7M MXN</td><td>$2,846.6M MXN</td><td>+$423.9M MXN</td></tr>
+            <tr><td>App+web</td><td>Punto medio</td><td>$2,430.1M MXN</td><td>$3,093.2M MXN</td><td>+$663.1M MXN</td></tr>
+            <tr><td>App+web</td><td>Optimista</td><td>$2,438.0M MXN</td><td>$3,358.7M MXN</td><td>+$920.7M MXN</td></tr>
+          </table>
+          <table class="econ-table" style="margin-top:12px;">
+            <tr><th>Escenario</th><th>Total antes (frecuencia plana 30%)</th><th>Total corregido (frecuencia real)</th><th>Diferencia</th></tr>
+            <tr><td>Conservador</td><td>$815.6M MXN</td><td>$732.9M MXN</td><td>-10.1%</td></tr>
+            <tr><td>Punto medio</td><td>$1,277.4M MXN</td><td>$1,191.7M MXN</td><td>-6.7%</td></tr>
+            <tr><td>Optimista</td><td>$1,774.9M MXN</td><td>$1,719.3M MXN</td><td>-3.1%</td></tr>
+          </table>
+          <p style="margin-top:8px;">La corrección baja el total entre 3-10% — no más, porque el efecto de ticket (15-30%, sin cambios, ver punto abierto arriba) sigue siendo el driver dominante. El escenario conservador corregido (+$732.9M MXN) representa <strong>+17.5%</strong> sobre las ventas actuales combinadas de estos dos canales ($4,183.5M MXN → $4,916.4M MXN) — sigue siendo la cifra a liderar frente a dirección como piso defendible, <strong>sujeta al punto abierto sobre el ticket señalado arriba</strong>.</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);">Bueno para la defensa del número: el caso de negocio no depende críticamente de un supuesto de frecuencia agresivo — sigue siendo sólido incluso con la versión conservadora y realista del efecto de lealtad.</p>
+        </div>
+
         <div class="econ-box">
           <h4>Impacto económico — Componente B (App + QR) — plantilla benchmark, pendiente de datos reales</h4>
           <div class="formula">Incremento de ventas anual = ticket promedio × % incremento por venta sugestiva × # transacciones (app+web) mensuales × 12
@@ -888,15 +952,27 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
             <tr><td>Composición de primeras compras: % registrado vs. invitado (solo clientes nuevos)</td><td>10.0% registrado / 90.0% invitado (semanal) — 11.3% / 88.7% (YTD)</td><td>Confirmado — base de datos CRM ("Adquisición Waterfall", may-jul 2026). Métrica distinta a la fila de arriba: aquí se mide solo la primera compra de un cliente nuevo, no el total histórico de órdenes — casi toda primera compra hoy entra como invitado, lo que refuerza la oportunidad del QR en mostrador</td></tr>
             <tr><td>% de registros nuevos que concretan una compra</td><td>35-38%</td><td>Confirmado — dato CRM, base de movimiento may-jul 2026. El resto (62-65%) queda como "registro sin compra"; el QR liga el registro a una compra real desde el primer momento</td></tr>
             <tr><td>% de transacciones que hoy pasan por la app propia (baseline de adopción)</td><td class="pending">Pendiente</td><td>Dato interno Alsea</td></tr>
-            <tr><td>Meta de adopción de app tras campaña</td><td class="pending">Pendiente</td><td>Definir con marketing / piloto</td></tr>
+            <tr><td>Meta de adopción de app tras campaña</td><td>~10-20% de transacciones de mostrador (benchmark externo)</td><td>Sesión 20 jul 2026 — benchmark QSR 2025-2026, no confirmado por Alsea. Ver campo "Meta de adopción de la app" arriba para detalle, alternativa wallet-pass (65-75%) y riesgo de desinstalación (83% en 30 días)</td></tr>
             <tr><td>Costo de adaptar el sistema de puntos</td><td>$0 — no aplica</td><td>Confirmado, 16 jul 2026: el sistema de lealtad ya existe y no requiere adaptación — el QR se detecta como compra automáticamente y el tier se actualiza en el checkeo (ver nota en "Situación actual")</td></tr>
             <tr><td>Costo total de inversión inicial (campaña de lanzamiento)</td><td class="pending">Pendiente</td><td>Ya no incluye costo de adaptación de sistema (ver fila de arriba) — solo el costo de la campaña de adopción</td></tr>
             <tr><td>Costo de campaña de adopción de app</td><td class="pending">Pendiente</td><td>Estimar con marketing</td></tr>
-            <tr class="result-row"><td>Incremento de ventas anual estimado</td><td>$363.3M a $731.4M MXN/año (punto medio ~$546.8M)</td><td>Primer cálculo real: ticket promedio ($265.58) × incremento por venta sugestiva (+15% a +30%) × transacciones mensuales (760,000-765,000) × 12, aplicado a la base completa de transacciones app+web (decisión de Luis, ver fila de arriba). <strong>Importante:</strong> el rango de +15-30% sigue siendo benchmark de industria QSR, no un piloto real de Alsea — este número debe tratarse como una primera estimación de orden de magnitud, no como cifra final para presentar a dirección sin validar con un piloto</td></tr>
+            <tr class="result-row"><td>Incremento de ventas anual estimado</td><td>$732.9M a $1,719.3M MXN/año (conservador a optimista; punto medio ~$1,191.7M)</td><td>Actualizado 20 jul 2026 — reemplaza la estimación anterior de un solo canal ($363.3M-$731.4M/año). Ahora suma mostrador (ticket $219) + app/web (ticket $265.58) con el efecto de frecuencia corregido para que solo aplique al cliente identificado, no a toda la tienda — ver "Cálculo combinado corregido" arriba. <strong>Sujeto a un punto abierto sin resolver:</strong> si el efecto de ticket también debe escalarse por adopción (igual que se hizo con frecuencia), este número podría bajar entre 5 y 10 veces — ver "⚠ Punto abierto" arriba. No presentar a dirección sin resolver ese punto primero</td></tr>
             <tr class="result-row"><td>Beneficio neto anual estimado</td><td class="pending">Pendiente — falta el costo de la campaña de adopción para restarlo al incremento de arriba</td><td>Incremento de ventas anual (arriba) − costo de campaña de adopción</td></tr>
             <tr class="result-row"><td>ROI anual estimado (%)</td><td class="pending">Pendiente</td><td>Fórmula arriba. Dado que el incremento estimado ya es de cientos de millones de MXN/año, es muy probable que el ROI sea alto y el payback rápido incluso con un costo de campaña considerable — pero falta el dato real para confirmarlo</td></tr>
             <tr class="result-row"><td>Payback estimado (meses)</td><td class="pending">Pendiente</td><td>Fórmula arriba</td></tr>
           </table>
+        </div>
+
+        <div class="field">
+          <h4>Puntos abiertos — a revisar antes de presentar (sesión de trabajo, 20 jul 2026)</h4>
+          <ul>
+            <li><strong>El mismo error de frecuencia, sin corregir en ticket</strong> — ver "⚠ Punto abierto" arriba; es la variable de mayor peso de todo el modelo (puede mover el resultado 5-10x).</li>
+            <li><strong>"Tiempo ahorrado" no está conectado a un destino de valor</strong> — no aplica del todo a Idea 1 (es un tema de Idea 2), pero la misma lógica de rigor aplica: cualquier ahorro de tiempo/recursos debe tener un destino concreto para contar como flujo de caja real, no "de papel".</li>
+            <li><strong>Sin costo de implementación, no hay caso de negocio real todavía</strong> — todo lo calculado es la mitad de la ecuación (beneficio bruto); el ROI/payback sigue sin poder calcularse sin el costo de la campaña de adopción.</li>
+            <li><strong>Heterogeneidad de tiendas ignorada</strong> — se documentó que hay tiendas con 91% delivery y otras 100% mostrador (Express), pero el cálculo de arriba aplica 30%/70% mostrador/delivery de forma uniforme a las 514 tiendas. Inconsistente si la mezcla de canal varía tanto entre tiendas — mismo tipo de heterogeneidad que sí se usó para diseñar el piloto de Idea 2 (ver esa idea).</li>
+            <li><strong>El benchmark de adopción (10-20%) puede no ser la comparación correcta</strong> — ver campo "Meta de adopción de la app" arriba: Domino's ya tiene una base instalada grande (~57% de transacciones vía app/web), y ese benchmark es para apps que arrancan de cero.</li>
+          </ul>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted);"><strong>Lo que sí está bien construido:</strong> la separación de canales sin doble conteo, la corrección de frecuencia con su lógica bien razonada, y el uso consistente de "Pendiente" para no inventar datos donde no los hay.</p>
         </div>
       </div>
     </div>
@@ -1105,6 +1181,17 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
         </div>
 
         <div class="field">
+          <h4>Dónde vive la IA — 3 capas (sesión de trabajo, 20 jul 2026)</h4>
+          <table class="econ-table">
+            <tr><th>Capa de IA</th><th>Qué hace</th><th>Dónde vive en el diagrama</th></tr>
+            <tr><td>1. Predicción de inventario requerido</td><td>Con el dato de RFID ya en Pulse, un modelo predice cuánto inventario se necesita y sugiere el pedido semanal. El gerente sigue validando/ajustando antes de enviarlo.</td><td>Paso 1 · Pedido de reabasto</td></tr>
+            <tr><td>2. Llenado asistido de Excels</td><td>Genera automáticamente los 4 Excels: variación, mermas, caducidad y preparación/fermentación. Caducidad y preparación son la prioridad: al recibir el pedido del CEDIS, las fechas se generan en automático — el gerente solo imprime.</td><td>Paso 7 · Cierre de tienda</td></tr>
+            <tr><td>3. Inventario al día (no a día vencido)</td><td>Efecto transversal: la lectura en tiempo real vía RFID/IoT es la base que hace posibles las dos capas anteriores.</td><td>Base de los pasos 2 y 3 del diagrama</td></tr>
+          </table>
+          <p style="margin-top:8px;">Conexión directa con las causas de merma (ver "Situación actual"): la <strong>capa 2</strong> (fechas de caducidad automáticas) es el mecanismo específico que ataca <strong>"Vida en anaquel" (59.8% de la merma)</strong> — no solo RFID/IoT en abstracto. La <strong>capa 3</strong> (sensores IoT de temperatura, lectura transversal) es la que ataca <strong>"Fallas del cooler" (2.0%)</strong>. Entre las dos cubren el ~62% de la merma real con palanca directa — la base del 15% de reducción esperada (ver econ-box abajo).</p>
+        </div>
+
+        <div class="field">
           <h4>Automatizar el excel de variación (atribución de causa)</h4>
           <p>Con lecturas en tiempo real (entrada, salida y descarte con timestamp) es posible atribuir la variación a una causa específica con mayor confianza: una salida sin registro de venta ni de descarte apunta a <strong>fuga/robo</strong>; una diferencia entre el conteo del sistema y el conteo físico apunta a <strong>mal ingreso</strong>; y un registro de descarte explícito confirma <strong>merma</strong>. Esto convierte el excel de variación, hoy manual y ambiguo, en un reporte automático y accionable por causa — y es un insumo directo para el objetivo del proyecto de dar líneas de acción claras a Distritales/Regionales.</p>
         </div>
@@ -1170,7 +1257,7 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
 
         <div class="field">
           <h4>Próximos pasos</h4>
-          <p>Pedir cotización formal a Checkpoint, Senitron y Supportek, especificando: número de tiendas piloto, mezcla de producto individual vs. caja/lote, integración con la app móvil y la plataforma/Excel maestro que ya construyó el jefe del área, y cómo cubrir el caso especial de las tiendas Express con doble almacén (tageo/sensores en ambas ubicaciones, no solo en la tienda). También confirmar si el piloto y el cálculo de ROI deben cubrir solo tiendas operadas por Alsea o también franquicias — mismo punto que CRM señaló para la Idea 1 (reunión CRM, 15 jul 2026).</p>
+          <p>Pedir cotización formal a Checkpoint, Senitron y Supportek, especificando: 15 tiendas piloto (ver "Definición del piloto" abajo), mezcla de producto individual vs. caja/lote, integración con la app móvil (ya conectada a Pulse — ver "Situación actual") y cómo cubrir el caso especial de las tiendas Express con doble almacén (tageo/sensores en ambas ubicaciones, no solo en la tienda). También confirmar si el piloto y el cálculo de ROI deben cubrir solo tiendas operadas por Alsea o también franquicias — mismo punto que CRM señaló para la Idea 1 (reunión CRM, 15 jul 2026).</p>
         </div>
       </div>
     </div>
@@ -1180,6 +1267,19 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
       <div class="stage-body">
         <div class="field">
           <p><strong>Dónde impacta:</strong> directo en la métrica de tiendas EBITDA negativo. Además alimenta el pilar de predicción/forecasting de KPIs del objetivo central del proyecto. Reduce mermas y quiebres de stock, habilita forecasting de demanda por tienda, genera alertas automáticas de stock bajo/caducidad, distingue causas de variación (merma/mal ingreso/fuga) para dar líneas de acción específicas, reduce el riesgo de multas por el pedido semanal del lunes, y cierra en tiempo real la ventana de un mes que hoy existe entre un doble pedido no registrado y su detección en el corte de Costos de comida del Distrital.</p>
+        </div>
+        <div class="field">
+          <h4>Definición del piloto: tamaño y cobertura (decisión de sesión, 20 jul 2026)</h4>
+          <p>Alsea maneja 3 distritos de 10 tiendas cada uno — Centro, Occidente y Bajío. Se evaluaron 5 tamaños de piloto posibles:</p>
+          <table class="econ-table">
+            <tr><th># Tiendas</th><th>Ahorro anual estimado</th><th>Cobertura geográfica sugerida</th><th>Ruido estadístico</th></tr>
+            <tr><td>5</td><td>$345,622 MXN</td><td>Selección cruzada, sin distrito completo</td><td>Alto</td></tr>
+            <tr><td>8</td><td>$552,995 MXN</td><td>Selección cruzada con arquetipos (Express, alto delivery, mixto)</td><td>Medio-alto</td></tr>
+            <tr style="background:#eaf4fb;"><td><strong>15 — decisión final</strong></td><td><strong>$1,036,865 MXN</strong></td><td>1 distrito completo + 5 tiendas de un segundo distrito</td><td>Medio</td></tr>
+            <tr><td>20</td><td>$1,382,486 MXN</td><td>2 distritos completos (Centro + Occidente)</td><td>Bajo</td></tr>
+            <tr><td>30</td><td>$2,073,730 MXN</td><td>Los 3 distritos completos (Centro, Occidente, Bajío)</td><td>Más bajo — pero ya es rollout, no piloto</td></tr>
+          </table>
+          <p style="margin-top:8px;">15 tiendas cubre variación geográfica real (algo que 5-8 tiendas no logran) sin comprometerse todavía a las 30 tiendas completas antes del primer resultado de campo. Debe incluir al menos 1 tienda formato Express (doble almacén — el caso más complejo de implementar) y una mezcla de arquetipos de canal (alto delivery, mixto, promedio).</p>
         </div>
         <div class="econ-box">
           <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
@@ -1191,20 +1291,33 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual total ÷ 12)</
           <table class="econ-table">
             <tr><th>Variable</th><th>Valor</th><th>Fuente / nota</th></tr>
             <tr><td>Merma mensual promedio por tienda ($)</td><td>~$2,350 MXN/tienda/mes</td><td>Confirmado, 18 jul 2026 — "Historico de mermas 2026.xlsx": $7,249,875.52 MXN de costo total de merma en la red (514 tiendas) entre ene-jun 2026, ÷ 6 meses ÷ 514 tiendas. No confirmado si el archivo cubre solo tiendas corporativas o también franquicias</td></tr>
-            <tr><td># tiendas piloto (Alsea, no franquicia)</td><td class="pending">Pendiente</td><td>Definir alcance del piloto. Referencia: 514 tiendas activas en el reporte de mermas ene-jun 2026 (alcance del piloto probablemente será un subconjunto de esa red)</td></tr>
-            <tr><td>% reducción de merma esperada</td><td class="pending">Pendiente</td><td>Benchmark industria: 15–20%</td></tr>
+            <tr><td># tiendas piloto (Alsea, no franquicia)</td><td>15 tiendas</td><td>Decisión de sesión, 20 jul 2026 — 1 distrito completo + 5 tiendas de un segundo distrito, incluye ≥1 tienda Express. Ver tabla "Definición del piloto" arriba</td></tr>
+            <tr><td>% reducción de merma esperada</td><td>15%</td><td>Decisión de sesión, 20 jul 2026 — solo ~62% de la merma real (vida en anaquel 59.8% + fallas de cooler 2.0%) tiene palanca directa de RFID/IoT, por eso 15% es el piso conservador y defendible (no 20%, que queda como techo solo si el piloto muestra un efecto mayor al esperado en "vida en anaquel")</td></tr>
             <tr><td># multas anuales por tienda por pedido incompleto/tardío (lunes)</td><td class="pending">Pendiente</td><td>No hay dato específico de pedidos extemporáneos — falta preguntarle al Regional</td></tr>
             <tr><td>Costo por multa</td><td>$1,600 MXN</td><td>Dato interno Alsea (confirmado)</td></tr>
-            <tr><td>Horas/mes que el gerente dedica a reconciliar el excel de variación y el excel de pedido</td><td class="pending">Pendiente</td><td>Estimar con gerentes de tienda</td></tr>
-            <tr><td>Costo hora del gerente</td><td>$121.73 MXN/hora</td><td>Confirmado — salario $21,099 MXN/mes, jornada de 40 hrs/semana ($21,099 × 12 ÷ (40 × 52))</td></tr>
-            <tr><td>Horas/mes que el Distrital dedica al recorrido (revisión de Excels + costos de comida + PIG report)</td><td>4-5 hrs/mes por tienda</td><td>Confirmado — se hace 1 vez al mes por tienda, ~4-5h cada vez. Nota: la fórmula asume que RFID/IoT elimina toda esta hora; la meta real documentada arriba es reducirlo "muy por debajo de ~4-5h", no necesariamente a cero — usar esto como techo optimista</td></tr>
+            <tr><td>Horas/mes que el gerente dedica a reconciliar el excel de variación y el excel de pedido</td><td>45.6 hrs/mes (techo optimista)</td><td>Sesión 20 jul 2026 — 1.5 hrs/día × 7 días × 4.345 sem/mes. Es el techo optimista, asume que se recupera el 100% de esa hora. <strong>Destino confirmado (Luis, 20 jul 2026):</strong> el tiempo liberado se destina a capacitación continua de personal — la mayoría de las sucursales batalla con "manos de báscula" (mal manejo/porcionamiento de producto), así que no es un ahorro "de papel"</td></tr>
+            <tr><td>Costo hora del gerente</td><td>$101.44 MXN/hora</td><td>Corregido, 20 jul 2026 — la jornada real es de 48 hrs/semana, no 40. $21,099 × 12 ÷ (48 × 52). Reemplaza el dato anterior de $121.73 MXN/hora (calculado con 40 hrs/semana)</td></tr>
+            <tr><td>Horas/mes que el Distrital dedica al recorrido (revisión de Excels + costos de comida + PIG report)</td><td>4-5 hrs/mes por tienda</td><td>Confirmado — se hace 1 vez al mes por tienda, ~4-5h cada vez. El consolidado del piloto (abajo) usa 4.5h (punto medio del rango) como cifra de cálculo. Nota: la fórmula asume que RFID/IoT elimina toda esta hora; la meta real documentada arriba es reducirlo "muy por debajo de ~4-5h", no necesariamente a cero — usar esto como techo optimista</td></tr>
             <tr><td>Costo hora del Distrital</td><td>$173.08 MXN/hora</td><td>Confirmado — salario $30,000 MXN/mes, jornada de 40 hrs/semana ($30,000 × 12 ÷ (40 × 52))</td></tr>
             <tr><td>Costo de implementación por tienda (lectores + tags + sensores)</td><td class="pending">Pendiente</td><td>Cotización Checkpoint / Senitron / Supportek</td></tr>
             <tr><td>Costo de software / mantenimiento anual</td><td class="pending">Pendiente</td><td>Cotización proveedor</td></tr>
-            <tr class="result-row"><td>Merma anual estimada — red completa (referencia)</td><td>~$14.5M MXN/año</td><td>Anualizado de datos reales ene-jun 2026 ($7,249,875.52 × 2). Aplicando el benchmark de reducción de 15-20% (fila de arriba) equivaldría a un ahorro potencial de ~$2.17M a ~$2.90M MXN/año a nivel de toda la red — pero la fórmula "Ahorro anual (merma)" de arriba todavía depende de "# tiendas piloto", que sigue pendiente, así que este número es solo de referencia a escala completa, no el resultado final de la fórmula</td></tr>
-            <tr class="result-row"><td>Ahorro anual estimado (total)</td><td class="pending">Pendiente</td><td>Suma de las 4 fórmulas arriba. Con este cambio, "merma mensual promedio por tienda" ya es un dato real — faltan "# tiendas piloto", "% reducción esperada" (confirmar vs. benchmark), y las 3 variables restantes (multas, horas de gerente, costo de implementación) para cerrar la suma completa</td></tr>
-            <tr class="result-row"><td>Payback estimado (meses)</td><td class="pending">Pendiente</td><td>Benchmark industria: 18–36 meses</td></tr>
+            <tr class="result-row"><td>Merma anual estimada — red completa (referencia)</td><td>~$14.5M MXN/año</td><td>Anualizado de datos reales ene-jun 2026 ($7,249,875.52 × 2). A escala del piloto (15 tiendas, no red completa) el componente de merma es mucho menor — ver consolidado del piloto abajo</td></tr>
           </table>
+          <h4 style="margin-top:16px;">Consolidado económico del piloto (15 tiendas) — sesión de trabajo, 20 jul 2026</h4>
+          <table class="econ-table">
+            <tr><th>Componente</th><th>Cálculo</th><th>Valor anual (15 tiendas)</th></tr>
+            <tr><td>Merma (15%)</td><td>$2,350 × 12 × 15 tiendas × 15%</td><td>$63,450 MXN</td></tr>
+            <tr><td>Tiempo del gerente (techo optimista)</td><td>45.6 hrs/mes × 12 × $101.44 × 15 tiendas</td><td>$833,220 MXN</td></tr>
+            <tr><td>Tiempo del Distrital</td><td>4.5 hrs/mes × 12 × $173.08 × 15 tiendas</td><td>$140,195 MXN</td></tr>
+            <tr><td>Multas evitadas</td><td>Pendiente — falta # multas/tienda/año</td><td class="pending">Pendiente</td></tr>
+            <tr><td>Costo de implementación</td><td>Pendiente — falta cotización (Checkpoint / Senitron / Supportek)</td><td class="pending">Pendiente</td></tr>
+            <tr class="result-row"><td>Ahorro anual total (sin implementación)</td><td>Suma de las 3 filas confirmadas</td><td>~$1,036,865 MXN</td></tr>
+          </table>
+          <p style="margin-top:8px;">Con solo 15 tiendas, la merma es una fracción menor del ahorro total — el driver principal del caso de negocio es el <strong>tiempo recuperado de gerente y Distrital</strong>, no la merma. El tiempo del gerente sigue siendo el techo optimista (ver nota arriba); su destino ya está definido (capacitación continua sobre "manos de báscula"), lo que convierte este ahorro de tiempo en valor real y no solo en horas liberadas sin destino.</p>
+          <ul style="margin-top:12px;">
+            <li><strong>Sin costo de implementación, el ROI/payback reales aún no se pueden calcular</strong> — todo lo de arriba es la mitad de la ecuación (beneficio bruto); falta la cotización de lectores, tags, sensores y software.</li>
+            <li><strong>El piloto no tiene diseño de comparación ni duración definidos</strong> — se decidió el tamaño (15 tiendas) y la mezcla de arquetipos, pero falta definir cuánto dura el piloto y si se compara contra un grupo de control (tiendas similares sin RFID) para aislar el efecto de otras variables (estacionalidad, promociones nacionales). Sin grupo de control, si la merma baja durante el piloto, no se puede probar que fue por el RFID.</li>
+          </ul>
         </div>
       </div>
     </div>
