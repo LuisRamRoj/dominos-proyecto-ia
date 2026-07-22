@@ -1243,14 +1243,56 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto Año 1 ÷
         </div>
 
         <div class="field">
-          <h4>Dónde vive la IA — 3 capas (sesión de trabajo, 20 jul 2026)</h4>
+          <h4>Dónde vive la IA — 4 capas (sesión de trabajo, 22 jul 2026)</h4>
           <table class="econ-table">
             <tr><th>Capa de IA</th><th>Qué hace</th><th>Dónde vive en el diagrama</th></tr>
             <tr><td>1. Predicción de inventario requerido</td><td>Con el dato de RFID ya en Pulse, un modelo predice cuánto inventario se necesita y sugiere el pedido semanal. El gerente sigue validando/ajustando antes de enviarlo.</td><td>Paso 1 · Pedido de reabasto</td></tr>
             <tr><td>2. Llenado asistido de Excels</td><td>Genera automáticamente los 4 Excels: variación, mermas, caducidad y preparación/fermentación. Caducidad y preparación son la prioridad: al recibir el pedido del CEDIS, las fechas se generan en automático — el gerente solo imprime.</td><td>Paso 7 · Cierre de tienda</td></tr>
-            <tr><td>3. Inventario al día (no a día vencido)</td><td>Efecto transversal: la lectura en tiempo real vía RFID/IoT es la base que hace posibles las dos capas anteriores.</td><td>Base de los pasos 2 y 3 del diagrama</td></tr>
+            <tr><td>3. Inventario al día (no a día vencido)</td><td>Efecto transversal: la lectura en tiempo real vía RFID/IoT es la base que hace posibles las otras tres capas.</td><td>Base de los pasos 1, 2 y 4</td></tr>
+            <tr><td>4. Analítica avanzada e insights <span style="font-size:11px;font-weight:700;color:var(--green);">— NUEVO</span></td><td><strong>Fase 1 (subproducto directo del mismo dato, sin inversión adicional):</strong> dashboards de productos más vendidos/usados y velocidad de rotación por SKU; detección de anomalías de consumo por tienda (fuga/robo antes del corte mensual); rotación FEFO en tiempo real (alerta qué unidad usar primero, no solo reporte al cierre). <strong>Fase 2 (más ambicioso, no para el piloto inicial):</strong> mantenimiento predictivo del cooler (mismo sensor IoT, prediciendo la falla antes de que ocurra); benchmarking entre las 517 tiendas (conecta con el scorecard de PWR); mejor insumo para compras/negociación con proveedores (consumo real vs. estimado).</td><td>Reportes/dashboards — no está en un paso único, corre sobre el dato de la capa 3</td></tr>
           </table>
-          <p style="margin-top:8px;">Conexión directa con las causas de merma (ver "Situación actual"): la <strong>capa 2</strong> (fechas de caducidad automáticas) es el mecanismo específico que ataca <strong>"Vida en anaquel" (59.8% de la merma)</strong> — no solo RFID/IoT en abstracto. La <strong>capa 3</strong> (sensores IoT de temperatura, lectura transversal) es la que ataca <strong>"Fallas del cooler" (2.0%)</strong>. Entre las dos cubren el ~62% de la merma real con palanca directa — la base del 15% de reducción esperada (ver econ-box abajo).</p>
+          <p style="margin-top:8px;">Conexión directa con las causas de merma (ver "Situación actual"): la <strong>capa 2</strong> (fechas de caducidad automáticas) es el mecanismo específico que ataca <strong>"Vida en anaquel" (59.8% de la merma)</strong> — no solo RFID/IoT en abstracto. La <strong>capa 3</strong> (sensores IoT de temperatura, lectura transversal) es la que ataca <strong>"Fallas del cooler" (2.0%)</strong>. Entre las dos cubren el ~62% de la merma real con palanca directa — la base del 15% de reducción esperada (ver econ-box abajo). La <strong>capa 4</strong> no ataca una causa de merma directamente — es la capa que convierte el dato ya capturado en información accionable para dirección/Regional, más allá de los reportes operativos de las capas 1 y 2.</p>
+        </div>
+
+        <div class="field" style="background:#fff;">
+          <h4 style="margin-bottom:10px;">Diagrama — Las 4 capas de IA</h4>
+          <svg viewBox="0 0 980 520" xmlns="http://www.w3.org/2000/svg" role="img" style="width:100%;height:auto;">
+            <title>Las 4 capas de IA en Idea 2 — RFID/IoT para inventarios</title>
+            <desc>La capa base de inventario en tiempo real (RFID/IoT) alimenta tres capas de valor: predicción de pedido, llenado asistido de Excels, y la cuarta capa de analítica avanzada con fase 1 y fase 2.</desc>
+            <defs>
+              <marker id="arrCapas" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"></path>
+              </marker>
+            </defs>
+            <text x="490" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="var(--text)">Dónde vive la IA — 4 capas</text>
+            <path d="M195,430 C195,390 165,360 150,320" fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrCapas)"></path>
+            <path d="M490,430 L490,320" fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrCapas)"></path>
+            <path d="M785,430 C785,390 815,360 830,320" fill="none" stroke="var(--muted)" stroke-width="2" marker-end="url(#arrCapas)"></path>
+            <rect x="30" y="180" width="240" height="130" rx="12" fill="#eaf4fb" stroke="var(--blue)" stroke-width="1.5"></rect>
+            <text x="150" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="var(--blue)">CAPA 1</text>
+            <text x="150" y="235" text-anchor="middle" font-size="14" font-weight="600" fill="var(--text)">Predicción de</text>
+            <text x="150" y="253" text-anchor="middle" font-size="14" font-weight="600" fill="var(--text)">inventario/pedido</text>
+            <text x="150" y="278" text-anchor="middle" font-size="11.5" fill="var(--muted)">Paso 1 · Pedido de reabasto</text>
+            <text x="150" y="296" text-anchor="middle" font-size="11.5" fill="var(--muted)">Modelo sugiere, gerente valida</text>
+            <rect x="370" y="180" width="240" height="130" rx="12" fill="#eaf4fb" stroke="var(--blue)" stroke-width="1.5"></rect>
+            <text x="490" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="var(--blue)">CAPA 2</text>
+            <text x="490" y="235" text-anchor="middle" font-size="14" font-weight="600" fill="var(--text)">Llenado asistido</text>
+            <text x="490" y="253" text-anchor="middle" font-size="14" font-weight="600" fill="var(--text)">de Excels</text>
+            <text x="490" y="278" text-anchor="middle" font-size="11.5" fill="var(--muted)">Paso 7 · Cierre de tienda</text>
+            <text x="490" y="296" text-anchor="middle" font-size="11.5" fill="var(--muted)">Variación, mermas, caducidad</text>
+            <rect x="710" y="180" width="240" height="130" rx="12" fill="#eafaf0" stroke="var(--green)" stroke-width="2"></rect>
+            <text x="830" y="205" text-anchor="middle" font-size="13" font-weight="700" fill="var(--green)">CAPA 4 · NUEVO</text>
+            <text x="830" y="228" text-anchor="middle" font-size="14" font-weight="600" fill="var(--text)">Analítica avanzada</text>
+            <text x="830" y="246" text-anchor="middle" font-size="14" font-weight="600" fill="var(--text)">e insights</text>
+            <text x="830" y="271" text-anchor="middle" font-size="11.5" fill="var(--muted)">Dashboards, anomalías,</text>
+            <text x="830" y="289" text-anchor="middle" font-size="11.5" fill="var(--muted)">rotación FEFO</text>
+            <text x="830" y="307" text-anchor="middle" font-size="10.5" font-weight="600" fill="var(--green)">Fase 1</text>
+            <text x="830" y="335" text-anchor="middle" font-size="10.5" fill="#9ca3af" font-style="italic">Fase 2: mantenimiento predictivo,</text>
+            <text x="830" y="349" text-anchor="middle" font-size="10.5" fill="#9ca3af" font-style="italic">benchmarking, compras</text>
+            <rect x="30" y="430" width="920" height="70" rx="12" fill="var(--blue)"></rect>
+            <text x="490" y="460" text-anchor="middle" font-size="15" font-weight="700" fill="#ffffff">CAPA 3 — Inventario en tiempo real (RFID / IoT)</text>
+            <text x="490" y="480" text-anchor="middle" font-size="12" fill="#dceefc">Capa transversal — el dato base que alimenta a las otras tres</text>
+          </svg>
         </div>
 
         <div class="field">
