@@ -1273,18 +1273,23 @@ Payback (meses) = Costo total de inversión inicial ÷ (Beneficio neto anual ÷ 
           <p>Alsea maneja 3 distritos de 10 tiendas cada uno — Centro, Occidente y Bajío. Se evaluaron 5 tamaños de piloto posibles:</p>
           <table class="econ-table">
             <tr><th># Tiendas</th><th>Ahorro anual estimado</th><th>Cobertura geográfica sugerida</th><th>Ruido estadístico</th></tr>
-            <tr><td>5</td><td>$345,622 MXN</td><td>Selección cruzada, sin distrito completo</td><td>Alto</td></tr>
-            <tr><td>8</td><td>$552,995 MXN</td><td>Selección cruzada con arquetipos (Express, alto delivery, mixto)</td><td>Medio-alto</td></tr>
-            <tr style="background:#eaf4fb;"><td><strong>15 — decisión final</strong></td><td><strong>$1,036,865 MXN</strong></td><td>1 distrito completo + 5 tiendas de un segundo distrito</td><td>Medio</td></tr>
-            <tr><td>20</td><td>$1,382,486 MXN</td><td>2 distritos completos (Centro + Occidente)</td><td>Bajo</td></tr>
-            <tr><td>30</td><td>$2,073,730 MXN</td><td>Los 3 distritos completos (Centro, Occidente, Bajío)</td><td>Más bajo — pero ya es rollout, no piloto</td></tr>
+            <tr><td>5</td><td>$362,306 – $367,867 MXN</td><td>Selección cruzada, sin distrito completo</td><td>Alto</td></tr>
+            <tr><td>8</td><td>$579,689 – $588,587 MXN</td><td>Selección cruzada con arquetipos (Express, alto delivery, mixto)</td><td>Medio-alto</td></tr>
+            <tr style="background:#eaf4fb;"><td><strong>15 — decisión final</strong></td><td><strong>$1,086,917 – $1,103,601 MXN</strong></td><td>1 distrito completo + 5 tiendas de un segundo distrito</td><td>Medio</td></tr>
+            <tr><td>20</td><td>$1,449,222 – $1,471,468 MXN</td><td>2 distritos completos (Centro + Occidente)</td><td>Bajo</td></tr>
+            <tr><td>30</td><td>$2,173,834 – $2,207,202 MXN</td><td>Los 3 distritos completos (Centro, Occidente, Bajío)</td><td>Más bajo — pero ya es rollout, no piloto</td></tr>
           </table>
           <p style="margin-top:8px;">15 tiendas cubre variación geográfica real (algo que 5-8 tiendas no logran) sin comprometerse todavía a las 30 tiendas completas antes del primer resultado de campo. Debe incluir al menos 1 tienda formato Express (doble almacén — el caso más complejo de implementar) y una mezcla de arquetipos de canal (alto delivery, mixto, promedio).</p>
+        </div>
+        <div class="field">
+          <h4>Multas por pedido tardío/incompleto — dato confirmado y supuesto de reducción (sesión de trabajo, 22 jul 2026)</h4>
+          <p><strong>Dato confirmado (junio 2026):</strong> de 8,908 pedidos realizados en las 517 tiendas corporativas, 599 llegaron tarde o incompletos (6.73%) — cada uno genera una multa automática de $1,600 MXN. Anualizado: ~13.9 multas/tienda/año, ~$22,245 MXN/tienda/año en multas.</p>
+          <p style="margin-top:8px;"><strong>% de multas evitadas — supuesto basado en benchmark externo, no confirmado en Alsea:</strong> se usa un rango conservador de 15%-20%, por debajo de lo que muestran los benchmarks encontrados: la precisión de inventario con RFID en retail alcanza 95-98% (vs. ~65% con procesos manuales); un sistema de recomendación de reabasto automatizado en tiendas de conveniencia mostró +2.9% en nivel de servicio; el caso más comparable — un sistema de solo recordatorios/alertas, sin RFID — redujo pedidos tardíos de 17.5% a 12.6% (~28% de reducción relativa). El rango 15-20% queda por debajo incluso de ese caso más modesto, ya que nuestra propuesta es más completa (RFID + captura automática, no solo una alerta).</p>
         </div>
         <div class="econ-box">
           <h4>Impacto económico — plantilla (pendiente de datos reales)</h4>
           <div class="formula">Ahorro anual (merma) = merma mensual promedio por tienda × 12 × # tiendas × % de reducción esperada
-Ahorro anual (multas evitadas) = # multas anuales por tienda × costo por multa × # tiendas
+Ahorro anual (multas evitadas) = # multas anuales por tienda × costo por multa × # tiendas × % de multas evitadas esperado
 Ahorro anual (tiempo de gerente) = horas/mes reconciliando Excels × 12 × costo hora del gerente × # tiendas
 Ahorro anual (tiempo del Distrital) = horas/mes en el recorrido × 12 × costo hora del Distrital × # tiendas
 Payback (meses) = Costo total de implementación ÷ (Ahorro anual total ÷ 12)</div>
@@ -1293,8 +1298,9 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual total ÷ 12)</
             <tr><td>Merma mensual promedio por tienda ($)</td><td>~$2,350 MXN/tienda/mes</td><td>Confirmado, 18 jul 2026 — "Historico de mermas 2026.xlsx": $7,249,875.52 MXN de costo total de merma en la red (514 tiendas) entre ene-jun 2026, ÷ 6 meses ÷ 514 tiendas. No confirmado si el archivo cubre solo tiendas corporativas o también franquicias</td></tr>
             <tr><td># tiendas piloto (Alsea, no franquicia)</td><td>15 tiendas</td><td>Decisión de sesión, 20 jul 2026 — 1 distrito completo + 5 tiendas de un segundo distrito, incluye ≥1 tienda Express. Ver tabla "Definición del piloto" arriba</td></tr>
             <tr><td>% reducción de merma esperada</td><td>15%</td><td>Decisión de sesión, 20 jul 2026 — solo ~62% de la merma real (vida en anaquel 59.8% + fallas de cooler 2.0%) tiene palanca directa de RFID/IoT, por eso 15% es el piso conservador y defendible (no 20%, que queda como techo solo si el piloto muestra un efecto mayor al esperado en "vida en anaquel")</td></tr>
-            <tr><td># multas anuales por tienda por pedido incompleto/tardío (lunes)</td><td class="pending">Pendiente</td><td>No hay dato específico de pedidos extemporáneos — falta preguntarle al Regional</td></tr>
+            <tr><td># multas anuales por tienda por pedido incompleto/tardío</td><td>13.9 multas/tienda/año</td><td>Confirmado, 22 jul 2026 — dato de junio 2026: 599 de 8,908 pedidos (517 tiendas corporativas) llegaron tarde o incompletos (6.73%), cada uno genera multa automática. 599 ÷ 517 × 12 = 13.9/tienda/año</td></tr>
             <tr><td>Costo por multa</td><td>$1,600 MXN</td><td>Dato interno Alsea (confirmado)</td></tr>
+            <tr><td>% de multas evitadas esperado (RFID/IoT + IA)</td><td>15% a 20%</td><td>Supuesto basado en benchmark externo, no confirmado en Alsea — ver nota debajo de la tabla de definición del piloto</td></tr>
             <tr><td>Horas/mes que el gerente dedica a reconciliar el excel de variación y el excel de pedido</td><td>45.6 hrs/mes (techo optimista)</td><td>Sesión 20 jul 2026 — 1.5 hrs/día × 7 días × 4.345 sem/mes. Es el techo optimista, asume que se recupera el 100% de esa hora. <strong>Destino confirmado (Luis, 20 jul 2026):</strong> el tiempo liberado se destina a capacitación continua de personal — la mayoría de las sucursales batalla con "manos de báscula" (mal manejo/porcionamiento de producto), así que no es un ahorro "de papel"</td></tr>
             <tr><td>Costo hora del gerente</td><td>$101.44 MXN/hora</td><td>Corregido, 20 jul 2026 — la jornada real es de 48 hrs/semana, no 40. $21,099 × 12 ÷ (48 × 52). Reemplaza el dato anterior de $121.73 MXN/hora (calculado con 40 hrs/semana)</td></tr>
             <tr><td>Horas/mes que el Distrital dedica al recorrido (revisión de Excels + costos de comida + PIG report)</td><td>4-5 hrs/mes por tienda</td><td>Confirmado — se hace 1 vez al mes por tienda, ~4-5h cada vez. El consolidado del piloto (abajo) usa 4.5h (punto medio del rango) como cifra de cálculo. Nota: la fórmula asume que RFID/IoT elimina toda esta hora; la meta real documentada arriba es reducirlo "muy por debajo de ~4-5h", no necesariamente a cero — usar esto como techo optimista</td></tr>
@@ -1309,9 +1315,9 @@ Payback (meses) = Costo total de implementación ÷ (Ahorro anual total ÷ 12)</
             <tr><td>Merma (15%)</td><td>$2,350 × 12 × 15 tiendas × 15%</td><td>$63,450 MXN</td></tr>
             <tr><td>Tiempo del gerente (techo optimista)</td><td>45.6 hrs/mes × 12 × $101.44 × 15 tiendas</td><td>$833,220 MXN</td></tr>
             <tr><td>Tiempo del Distrital</td><td>4.5 hrs/mes × 12 × $173.08 × 15 tiendas</td><td>$140,195 MXN</td></tr>
-            <tr><td>Multas evitadas</td><td>Pendiente — falta # multas/tienda/año</td><td class="pending">Pendiente</td></tr>
+            <tr><td>Multas evitadas (15%-20%)</td><td>$22,245/tienda/año × 15 tiendas × 15%-20%</td><td>$50,052 – $66,736 MXN</td></tr>
             <tr><td>Costo de implementación</td><td>Pendiente — falta cotización (Checkpoint / Senitron / Supportek)</td><td class="pending">Pendiente</td></tr>
-            <tr class="result-row"><td>Ahorro anual total (sin implementación)</td><td>Suma de las 3 filas confirmadas</td><td>~$1,036,865 MXN</td></tr>
+            <tr class="result-row"><td>Ahorro anual total (sin implementación)</td><td>Suma de merma + tiempo gerente + tiempo Distrital + multas evitadas</td><td>$1,086,917 – $1,103,601 MXN</td></tr>
           </table>
           <p style="margin-top:8px;">Con solo 15 tiendas, la merma es una fracción menor del ahorro total — el driver principal del caso de negocio es el <strong>tiempo recuperado de gerente y Distrital</strong>, no la merma. El tiempo del gerente sigue siendo el techo optimista (ver nota arriba); su destino ya está definido (capacitación continua sobre "manos de báscula"), lo que convierte este ahorro de tiempo en valor real y no solo en horas liberadas sin destino.</p>
           <ul style="margin-top:12px;">
